@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gymside</string>
+    <string name="home">Home</string>
+    <string name="routines">Routines</string>
+    <string name="favourites">Favourites</string>
+    <string name="profile">Profile</string>
+    <string name="settings">Settings</string>
+</resources>
