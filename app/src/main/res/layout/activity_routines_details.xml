@@ -26,7 +26,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="@string/routines"
+                app:title="@string/routine_details"
                 app:titleTextColor="@color/white" />
 
             <ImageButton
@@ -56,9 +56,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/routines"
+            android:text="@string/routine_details"
             android:textSize="50sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/routines_text"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="228dp"
+            android:text="Routine Name" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginBottom="178dp"
+            android:text="Routine Date" />
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginBottom="148dp"
+            android:text="Routine Body" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginBottom="118dp"
+            android:text="Routine Time" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
@@ -70,12 +103,5 @@
             app:itemTextColor="@drawable/selector"
             app:menu="@menu/menu_navigation" />
 
-        <Button
-            android:id="@+id/details_button"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_above="@+id/routines_text"
-            android:text="@string/details" />
     </RelativeLayout>
 </RelativeLayout>

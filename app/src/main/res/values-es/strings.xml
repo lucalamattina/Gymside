@@ -6,4 +6,6 @@
     <string name="favourites">Favoritos</string>
     <string name="profile">Perfil</string>
     <string name="settings">Configuración</string>
+    <string name="details">Detalles</string>
+    <string name="routine_details">Detalles de rutina</string>
 </resources>

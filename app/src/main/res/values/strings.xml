@@ -5,4 +5,6 @@
     <string name="favourites">Favourites</string>
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
+    <string name="details">Details</string>
+    <string name="routine_details">Routine details</string>
 </resources>
