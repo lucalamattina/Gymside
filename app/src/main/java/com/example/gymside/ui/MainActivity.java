@@ -1,4 +1,4 @@
-package com.example.gymside;
+package com.example.gymside.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,22 +7,39 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Toast;
-import com.example.gymside.Profile;
-import com.example.gymside.Settings;
 
+import com.example.gymside.AppPreferences;
+import com.example.gymside.Favourites;
+import com.example.gymside.MyApplication;
+import com.example.gymside.Profile;
+import com.example.gymside.R;
+import com.example.gymside.Routines;
+import com.example.gymside.Settings;
+import com.example.gymside.api.ApiClient;
+import com.example.gymside.api.ApiSportService;
+import com.example.gymside.api.ApiUserService;
+import com.example.gymside.api.model.Credentials;
+import com.example.gymside.api.model.Sport;
+import com.example.gymside.api.model.Error;
+import com.example.gymside.databinding.ActivityMainBinding;
+import com.example.gymside.repository.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
+    Sport sport;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -42,16 +59,49 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.routines:
-                        startActivity(new Intent(getApplicationContext(),Routines.class));
+                        startActivity(new Intent(getApplicationContext(), Routines.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.favourites:
-                        startActivity(new Intent(getApplicationContext(),Favourites.class));
+                        startActivity(new Intent(getApplicationContext(), Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
                 return false;
             }
+        });
+
+        binding.loginButton.setOnClickListener(v->{
+            Credentials credentials = new Credentials("johndoe", "1234567890");
+            MyApplication app = (MyApplication) getApplication();
+            app.getUserRepository().login(credentials).observe(this,r -> {
+                switch (r.getStatus()) {
+                    case SUCCESS:
+                        Log.d("UI", "Success");
+                        AppPreferences preferences = new AppPreferences(app);
+                        preferences.setAuthToken(r.getData().getToken());
+                        break;
+                    default:
+                        defaultResourceHandler(r);
+                        break;
+                }
+            });
+        });
+        binding.getSportsButton.setOnClickListener(v->{
+            MyApplication app = ((MyApplication)getApplication());
+            app.getSportRepository().getSports().observe(this,r -> {
+                switch (r.getStatus()) {
+                    case SUCCESS:
+                        Log.d("UI", "Success");
+                        int count = r.getData().getResults().size();
+                        //String message = getResources().getQuantityString(R.plurals.found, count, count);
+                        //binding.result.setText(message);
+                        break;
+                    default:
+                        defaultResourceHandler(r);
+                        break;
+                }
+            });
         });
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
@@ -85,5 +135,19 @@ public class MainActivity extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+    }
+    private void defaultResourceHandler(Resource<?> resource) {
+        switch (resource.getStatus()) {
+            case LOADING:
+                Log.d("UI", "Success");
+                //binding.result.setText(R.string.loading);
+                break;
+            case ERROR:
+                Error error = resource.getError();
+                //String message = getString(R.string.error, error.getDescription(), error.getCode());
+                Log.d("UI", "Error");
+                //binding.result.setText(message);
+                break;
+        }
     }
 }
