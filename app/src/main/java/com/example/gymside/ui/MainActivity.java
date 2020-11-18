@@ -10,13 +10,17 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.example.gymside.AppPreferences;
 import com.example.gymside.Favourites;
+import com.example.gymside.Login;
 import com.example.gymside.MyApplication;
 import com.example.gymside.Profile;
 import com.example.gymside.R;
+import com.example.gymside.Register;
 import com.example.gymside.Routines;
 import com.example.gymside.Settings;
 import com.example.gymside.api.ApiClient;
@@ -28,6 +32,7 @@ import com.example.gymside.api.model.Error;
 import com.example.gymside.databinding.ActivityMainBinding;
 import com.example.gymside.repository.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,6 +50,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initialize And Assign Variable
+
+/*        Button logoutButton = findViewById(R.id.logoutButton);
+        logoutButton.setOnClickListener((view -> {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            setContentView(R.layout.activity_login);
+        }));*/
+
+        Button loginView = findViewById(R.id.loginViewButton);
+        loginView.setOnClickListener((view -> {
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            setContentView(R.layout.activity_login);
+        }));
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -104,6 +121,21 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
+        binding.logoutButton.setOnClickListener(v->{
+            MyApplication app = (MyApplication) getApplication();
+            app.getUserRepository().logout().observe(this,r -> {
+                switch (r.getStatus()) {
+                    case SUCCESS:
+                        Log.d("UI", "Success");
+                        AppPreferences preferences = new AppPreferences(app);
+                        break;
+                    default:
+                        defaultResourceHandler(r);
+                        break;
+                }
+            });
+        });
+
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,6 +156,11 @@ public class MainActivity extends AppCompatActivity {
                         }
                         if(item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
                             startActivity(new Intent(getApplicationContext(), Settings.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
+                            startActivity(new Intent(getApplicationContext(), Login.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

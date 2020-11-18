@@ -8,4 +8,14 @@
     <string name="settings">Configuración</string>
     <string name="details">Detalles</string>
     <string name="routine_details">Detalles de rutina</string>
+    <string name="exit">Salir</string>
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="signup">Registrarse</string>
+    <string name="login">Loguearse</string>
+    <string name="cancel">Cancelar</string>
+    <string name="register">Crear cuenta</string>
+    <string name="email">Email</string>
+    <string name="gymside">Gymside</string>
+    <string name="loginViewButton" />
 </resources>

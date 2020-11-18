@@ -74,6 +74,11 @@ public class Settings extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             return true;
                         }
+                        if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
                         return false;
                     }
 
