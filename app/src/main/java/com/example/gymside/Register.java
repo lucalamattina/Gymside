@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.gymside.databinding.ActivityRegisterBinding;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -30,6 +31,8 @@ public class Register extends AppCompatActivity {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             setContentView(R.layout.activity_login);
         }));
+
+
 
     }
 }

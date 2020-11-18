@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
+import com.example.gymside.databinding.ActivityLoginBinding;
 import com.example.gymside.databinding.ActivityMainBinding;
+import com.example.gymside.databinding.ActivityProfileBinding;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -56,21 +59,42 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class Login extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    ActivityLoginBinding binding;
+/*    EditText editUsername, editPassword;
+    TextView result;
+    Button buttonCheck;*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        /*setContentView(R.layout.activity_login);*/
 
-        Button buttonRegister = findViewById(R.id.buttonRegister);
+        Button buttonRegister = findViewById(R.id.signupButton);
         buttonRegister.setOnClickListener((view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            startActivity(new Intent(getApplicationContext(), Register.class));
+            overridePendingTransition(0,0);
             setContentView(R.layout.activity_register);
         }));
 
-        /*binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+
+
+
+        /*editUsername  = (EditText) findViewById(R.id.username);
+        editPassword = (EditText) findViewById(R.id.password);
+        result = (TextView) findViewById(R.id.tvShow);
+        buttonCheck = (Button) findViewById(R.id.buttonCheck);
+
+        buttonCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editUsername.getText().toString();
+                String pass = editPassword.getText().toString();
+                result.setText("Name: "+ name);
+            }
+        });*/
+
+
 
         binding.loginButton.setOnClickListener(v->{
             Credentials credentials = new Credentials("johndoe", "1234567890");
@@ -102,6 +126,6 @@ public class Login extends AppCompatActivity {
                 Log.d("UI", "Error");
                 //binding.result.setText(message);
                 break;
-        }*/
+        }
     }
 }

@@ -18,4 +18,12 @@
     <string name="email">Email</string>
     <string name="gymside">Gymside</string>
     <string name="loginViewButton" />
+    <string name="logout">logout</string>
+    <string name="loginn">Login</string>
+    <string name="get_sports">Get Sports</string>
+    <string name="avatar">avatar</string>
+    <string name="buttonCheck">Button</string>
+    <string name="avatar2">avatar</string>
+    <string name="showProfileGender">TextView</string>
+    <string name="gender">Genero:</string>
 </resources>

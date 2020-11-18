@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     Sport sport;
+    EditText editUsername, editPassword;
+    TextView result;
+    Button buttonCheck;
+    String username;
+    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,22 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        editUsername  = (EditText) findViewById(R.id.edituser);
+        editPassword = (EditText) findViewById(R.id.editpass);
+        result = (TextView) findViewById(R.id.tvShow);
+        buttonCheck = (Button) findViewById(R.id.buttonCheck);
+
+        buttonCheck.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editUsername.getText().toString();
+                String pass = editPassword.getText().toString();
+                savePass(name, pass);
+                result.setText("Name: "+ name + "\npass: " + pass);
+            }
+        });
+
+
         //Initialize And Assign Variable
 
 /*        Button logoutButton = findViewById(R.id.logoutButton);
@@ -59,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
         Button loginView = findViewById(R.id.loginViewButton);
         loginView.setOnClickListener((view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
             setContentView(R.layout.activity_login);
         }));
 
@@ -89,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.loginButton.setOnClickListener(v->{
-            Credentials credentials = new Credentials("johndoe", "1234567890");
+
+            Credentials credentials = new Credentials(username, password);
             MyApplication app = (MyApplication) getApplication();
             app.getUserRepository().login(credentials).observe(this,r -> {
                 switch (r.getStatus()) {
@@ -186,5 +208,10 @@ public class MainActivity extends AppCompatActivity {
                 //binding.result.setText(message);
                 break;
         }
+    }
+
+    private void savePass(String user, String pass){
+        this.username = user;
+        this.password = pass;
     }
 }

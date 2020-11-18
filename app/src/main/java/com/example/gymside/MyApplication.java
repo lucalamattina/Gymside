@@ -23,6 +23,6 @@ public class MyApplication extends Application {
 
         userRepository = new UserRepository(this);
 
-        sportRepository = new SportRepository(this);
+        sportRepository =new SportRepository(this);
     }
 }
