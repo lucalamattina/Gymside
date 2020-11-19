@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gymside.AppPreferences;
@@ -31,6 +34,7 @@ import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Sport;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.databinding.ActivityMainBinding;
+import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -55,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        MyDatabase db = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "database-name").build();
+
         editUsername  = (EditText) findViewById(R.id.edituser);
         editPassword = (EditText) findViewById(R.id.editpass);
         result = (TextView) findViewById(R.id.tvShow);
@@ -70,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //get the spinner from the xml.
+        Spinner dropdown = findViewById(R.id.spinner1);
+//create a list of items for the spinner.
+        String[] items = new String[]{"1", "2", "three"};
+//create an adapter to describe how the items are displayed, adapters are used in several places in android.
+//There are multiple variations of this, but this is the basic variant.
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+//set the spinners adapter to the previously created one.
+        dropdown.setAdapter(adapter);
 
         //Initialize And Assign Variable
 
@@ -83,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
         loginView.setOnClickListener((view -> {
             setContentView(R.layout.activity_login);
         }));
+
+        /*binding.loginViewButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), Settings.class));
+            overridePendingTransition(0, 0);
+        });*/
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 

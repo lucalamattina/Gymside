@@ -20,6 +20,8 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".Settings" />
+        <activity android:name=".RoutineExecution" />
+        <activity android:name=".VerifyAccount" />
         <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

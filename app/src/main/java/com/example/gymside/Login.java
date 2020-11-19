@@ -68,16 +68,27 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         /*setContentView(R.layout.activity_login);*/
 
-        Button buttonRegister = findViewById(R.id.signupButton);
+/*        Button buttonRegister = findViewById(R.id.signupButton);
         buttonRegister.setOnClickListener((view -> {
             startActivity(new Intent(getApplicationContext(), Register.class));
             overridePendingTransition(0,0);
             setContentView(R.layout.activity_register);
-        }));
+        }));*/
+
+        /*binding.signupButton.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), Register.class));
+            overridePendingTransition(0,0);
+            setContentView(R.layout.activity_register);
+        });*/
 
 
+        binding.signupButton.setOnClickListener(v -> {
+            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            overridePendingTransition(0, 0);
+        });
 
 
         /*editUsername  = (EditText) findViewById(R.id.username);

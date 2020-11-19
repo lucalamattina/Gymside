@@ -11,6 +11,14 @@ public class Credentials {
     @SerializedName("password")
     @Expose
     private String password;
+    @Expose
+    private String fullName;
+    @Expose
+    private String email;
+    @Expose
+    private String birthdate;
+    @Expose
+    private String gender;
 
     public Credentials() {
     }
@@ -19,6 +27,15 @@ public class Credentials {
         this.username = username;
         this.password = password;
     }
+
+    public Credentials(String username, String password, String fullName, String email, String gender) {
+        this.username = username;
+        this.password = password;
+        this.fullName = fullName;
+        this.email = email;
+        this.gender = gender;
+    }
+
     public String getUsername() {
         return username;
     }
