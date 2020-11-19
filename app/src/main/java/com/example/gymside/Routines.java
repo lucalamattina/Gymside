@@ -8,8 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Routines extends AppCompatActivity {
@@ -32,7 +34,7 @@ public class Routines extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.routines:
@@ -69,6 +71,11 @@ public class Routines extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             return true;
                         }
+                        if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
                         return false;
                     }
 
@@ -77,5 +84,14 @@ public class Routines extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+
+        Button detailsButton = (Button) findViewById(R.id.details_button);
+        detailsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
+                overridePendingTransition(0,0);
+            }
+        });
     }
 }

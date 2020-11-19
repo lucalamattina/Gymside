@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Favourites extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class Favourites extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.routines:
@@ -66,6 +67,11 @@ public class Favourites extends AppCompatActivity {
                         }
                         if(item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
                             startActivity(new Intent(getApplicationContext(), Settings.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
+                            startActivity(new Intent(getApplicationContext(), Login.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }
