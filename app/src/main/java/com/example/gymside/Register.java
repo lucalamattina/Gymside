@@ -3,24 +3,13 @@ package com.example.gymside;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
 
-import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
-import com.example.gymside.databinding.ActivityMainBinding;
 import com.example.gymside.databinding.ActivityRegisterBinding;
 import com.example.gymside.repository.Resource;
-import com.example.gymside.ui.MainActivity;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class Register extends AppCompatActivity {
 
@@ -34,14 +23,19 @@ public class Register extends AppCompatActivity {
 
         //Initialize And Assign Variable
 
-        Button buttonCancel = findViewById(R.id.buttonCancel);
-        buttonCancel.setOnClickListener((view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            setContentView(R.layout.activity_login);
-        }));
+        Button cancelButton = findViewById(R.id.buttonCancel);
+        cancelButton.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            overridePendingTransition(0, 0);
+        });
 
+        Button buttonCreateAccount = findViewById(R.id.createAccount);
+        buttonCreateAccount.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), VerifyAccount.class));
+            overridePendingTransition(0, 0);
+        });
 
-        binding.buttonRegister.setOnClickListener(v->{
+        /*binding.buttonRegister.setOnClickListener(v->{
             Credentials credentials = new Credentials("usuario2", "contra", "nombrecompleto", "hola@gmail.com", "masculino");
             MyApplication app = (MyApplication) getApplication();
             app.getUserRepository().createUser(credentials).observe(this,r -> {
@@ -56,7 +50,7 @@ public class Register extends AppCompatActivity {
                 }
             });
         });
-
+*/
 
     }
     private void defaultResourceHandler(Resource<?> resource) {

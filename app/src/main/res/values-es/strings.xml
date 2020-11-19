@@ -40,4 +40,5 @@
     <string name="verify">Verificar</string>
     <string name="code">Código</string>
     <string name="verifyTittle">Ingresá el código recibido en tu email para verificar la cuenta</string>
+    <string name="createAccount">Crear Cuenta</string>
 </resources>

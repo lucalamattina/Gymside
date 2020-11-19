@@ -22,5 +22,16 @@ public class VerifyAccount extends AppCompatActivity {
 
         //Initialize And Assign Variable
 
+        Button cancelButton = findViewById(R.id.buttonCancel);
+        cancelButton.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), Register.class));
+            overridePendingTransition(0, 0);
+        });
+
+        Button verifyButton = findViewById(R.id.buttonVerify);
+        verifyButton.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            overridePendingTransition(0, 0);
+        });
     }
 }

@@ -88,21 +88,13 @@ public class MainActivity extends AppCompatActivity {
 
         //Initialize And Assign Variable
 
-/*        Button logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener((view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            setContentView(R.layout.activity_login);
-        }));*/
 
         Button loginView = findViewById(R.id.loginViewButton);
         loginView.setOnClickListener((view -> {
-            setContentView(R.layout.activity_login);
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            overridePendingTransition(0, 0);
         }));
 
-        /*binding.loginViewButton.setOnClickListener(v -> {
-            startActivity(new Intent(getApplicationContext(), Settings.class));
-            overridePendingTransition(0, 0);
-        });*/
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 

@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/buttonRegister"
+        android:id="@+id/createAccount"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -19,7 +19,7 @@
         android:layout_marginEnd="53dp"
         android:layout_marginBottom="242dp"
         android:fontFamily="sans-serif-light"
-        android:text="@string/register"
+        android:text="@string/createAccount"
         android:textStyle="bold"
         app:iconTint="#FFFFFF" />
 
