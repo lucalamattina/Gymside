@@ -1,0 +1,20 @@
+package com.example.gymside.api;
+
+import androidx.lifecycle.LiveData;
+
+import com.example.gymside.api.model.Category;
+import com.example.gymside.api.model.PagedList;
+import com.example.gymside.api.model.Routine;
+import com.example.gymside.api.model.Sport;
+
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+
+public interface ApiRoutineService {
+    @POST("routines")
+    LiveData<ApiResponse<Routine>> addRoutine(@Body Routine routine);
+
+    @GET("routines")
+    LiveData<ApiResponse<PagedList<Routine>>> getRoutines();
+}
