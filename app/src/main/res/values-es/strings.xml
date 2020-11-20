@@ -14,6 +14,7 @@
     <string name="signup">Registrarse</string>
     <string name="login">Loguearse</string>
     <string name="cancel">Cancelar</string>
+    <string name="accept">Aceptar</string>
     <string name="register">Crear cuenta</string>
     <string name="email">Email</string>
     <string name="gymside">Gymside</string>
@@ -52,4 +53,12 @@
     <string name="category_label">Categoria: </string>
     <string name="detail_label">Descripcion: </string>
     <string name="rating_label">Puntuacion: </string>
+    <string name="invalidData">Datos inválidos</string>
+    <string name="modifyYourUsername">Modificá tu nombre de usuario</string>
+    <string name="modifyYourName">Modificá tu nombre</string>
+    <string name="deleteUserQuestion">¿Estás seguro que quieres borrar tu usuario?</string>
+    <string name="modifyUsernameTittle">Modificá tu usuario</string>
+    <string name="modifyNameTittle">Modificá tu nombre</string>
+    <string name="enter_new_name">Ingresa nuevo nombre</string>
+
 </resources>

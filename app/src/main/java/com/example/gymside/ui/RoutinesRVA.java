@@ -50,7 +50,6 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
     @Override
     public RoutinesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.routine_card,parent, false);
-        Log.d("UI", "holisssssss");
         return new RoutinesViewHolder(view);
     }
 
@@ -58,7 +57,6 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
     @Override
     public void onBindViewHolder(@NonNull RoutinesViewHolder holder, int position) {
         api = MyApplication.getRoutineRepository();
-        Log.d("UI", "holis");
         holder.routine_name.setText(routines.get(position).getName());
         holder.routine_difficulty.setText(routines.get(position).getDifficulty());
         holder.routine_category.setText(routines.get(position).getCategory().getName());

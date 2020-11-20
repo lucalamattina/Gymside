@@ -3,9 +3,9 @@ package com.example.gymside;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -69,6 +69,10 @@ public class Login extends AppCompatActivity {
                 //binding.result.setText(R.string.loading);
                 break;
             case ERROR:
+                TextView textError = (TextView) findViewById(R.id.textShowError);
+                if(resource.getError() != null){
+                    textError.setText(R.string.invalidData);
+                }
                 Error error = resource.getError();
                 //String message = getString(R.string.error, error.getDescription(), error.getCode());
                 Log.d("UI", "Error");

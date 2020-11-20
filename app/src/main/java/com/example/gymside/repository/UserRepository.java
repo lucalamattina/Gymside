@@ -63,6 +63,17 @@ public class UserRepository {
         }.asLiveData();
     }
 
+    public LiveData<Resource<Void>> modifyUser(Credentials credentials) {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.modifyUser(credentials);
+            }
+        }.asLiveData();
+    }
+
     public LiveData<Resource<Void>> verifyUser(Credentials credentials) {
         return new NetworkBoundResource<Void, Void>()
         {

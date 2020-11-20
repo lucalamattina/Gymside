@@ -1,5 +1,6 @@
 package com.example.gymside.ui;
 
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -7,17 +8,22 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
 
 import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
+import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import com.example.gymside.AppPreferences;
 import com.example.gymside.Favourites;
@@ -25,20 +31,15 @@ import com.example.gymside.Login;
 import com.example.gymside.MyApplication;
 import com.example.gymside.Profile;
 import com.example.gymside.R;
-import com.example.gymside.Register;
 import com.example.gymside.Routines;
 import com.example.gymside.Settings;
-import com.example.gymside.api.ApiClient;
-import com.example.gymside.api.ApiSportService;
-import com.example.gymside.api.ApiUserService;
 import com.example.gymside.api.model.Credentials;
-import com.example.gymside.api.model.Sport;
 import com.example.gymside.api.model.Error;
+import com.example.gymside.api.model.Sport;
 import com.example.gymside.databinding.ActivityMainBinding;
 import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -58,48 +59,77 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        ImageButton buttonModify = findViewById(R.id.imageView2);
+        ImageButton buttonModifyUsername = findViewById(R.id.imageView2);
 
-        buttonModify.setOnClickListener(v->{
+        buttonModifyUsername.setOnClickListener(v->{
 
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Modify your username");
-            EditText username = (EditText) findViewById(R.id.username);
+            AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
+            builder.setTitle(R.string.modifyUsernameTittle);
 
-            builder.setPositiveButton("Accept", null);
-            builder.setNegativeButton("Cancel", null);
+            builder.setPositiveButton(R.string.accept, null);
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    // Write your code here to execute after dialog
+                    dialog.cancel();
+                }
+            });
             AlertDialog dialog = builder.create();
             dialog.show();
-//            String name = editUsername.getText().toString();
-//            String pass = editPassword.getText().toString();
-//            String email = editEmail.getText().toString();
-//            Credentials credentials = new Credentials(name, pass, "0", email, 0, "male");
-//            MyApplication app = ((MyApplication)getApplication());
-//            app.getUserRepository().createUser(credentials).observe(this, r -> {
-//                switch (r.getStatus()) {
-//                    case SUCCESS:
-//                        Log.d("UI", "Success");
-//                        startActivity(new Intent(getApplicationContext(), VerifyAccount.class));
-//                        overridePendingTransition(0,0);
-//                        //int count = r.getData().getResults().size();
-//                        //String message = getResources().getQuantityString(R.plurals.found, count, count);
-//                        //binding.result.setText(message);
-//                        break;
-//                    default:
-//                        defaultResourceHandler(r);
-//                        break;
-//                }
-//            });
         });
 
+        //modify Username
+        ImageButton buttonModifyName = findViewById(R.id.imageView3);
+
+        buttonModifyName.setOnClickListener(v->{
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.modifyNameTittle);
+            EditText name;
+            name = (EditText) findViewById(R.id.enterNewName);
+
+            builder.setPositiveButton(R.string.accept, null /*new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    String new_name = name.getText().toString();
+                    Credentials credentials = new Credentials(new_name, user.getFullName(), user.getEmail(), 0, user.getGender());
+                    MyApplication app = ((MyApplication)getApplication());
+                    app.getUserRepository().modifyUser(credentials).observeForever(r -> {
+                        switch (r.getStatus()) {
+                            case SUCCESS:
+                                Log.d("UI", "Success");
+                                startActivity(new Intent(getApplicationContext(), VerifyAccount.class));
+                                overridePendingTransition(0,0);
+                                //int count = r.getData().getResults().size();
+                                //String message = getResources().getQuantityString(R.plurals.found, count, count);
+                                //binding.result.setText(message);
+                                break;
+                            default:
+                                defaultResourceHandler(r);
+                                break;
+                        }
+                    });
+                }
+            }*/);
+            builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    // Write your code here to execute after dialog
+                    dialog.cancel();
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
+
+        //modify User
         Button deleteUserButton = findViewById(R.id.deleteUserButton);
 
         deleteUserButton.setOnClickListener(v-> {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("¿Estás seguro que quieres borrar tu perfil?");
+            builder.setTitle(R.string.deleteUserQuestion);
             EditText username = (EditText) findViewById(R.id.username);
 
-            builder.setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     MyApplication app = (MyApplication) getApplication();
@@ -118,7 +148,7 @@ public class Profile extends AppCompatActivity {
                     });
                 }
             });
-            builder.setNegativeButton("Cancelar", null);
+            builder.setNegativeButton(R.string.cancel, null);
             AlertDialog dialog = builder.create();
             dialog.show();
         });
