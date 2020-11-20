@@ -105,13 +105,13 @@ public class RoutineRepository {
         }.asLiveData();
     }
 
-    public LiveData<Resource<Void>> deleteSport(int routineId) {
+    public LiveData<Resource<Void>> deleteRoutine(int routineId) {
         return new NetworkBoundResource<Void, Void>()
         {
             @NonNull
             @Override
             protected LiveData<ApiResponse<Void>> createCall() {
-                return apiService.deleteSport(routineId);
+                return apiService.deleteRoutine(routineId);
             }
         }.asLiveData();
     }

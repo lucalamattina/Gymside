@@ -1,6 +1,7 @@
 package com.example.gymside;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,28 +14,37 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymside.api.ApiRoutineService;
 import com.example.gymside.api.model.Error;
+import com.example.gymside.api.model.Routine;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.ui.MainActivity;
+import com.example.gymside.ui.RoutinesRVA;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RoutineDetails extends AppCompatActivity {
 
 
     private RoutineRepository api;
+    TextView name;
+    TextView rating;
+    TextView detail;
+    TextView category;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         api = MyApplication.getRoutineRepository();
         setContentView(R.layout.activity_routines_details);
-        TextView name = findViewById(R.id.name);
-        TextView rating = findViewById(R.id.rating);
-        TextView detail = findViewById(R.id.body);
-        TextView category = findViewById(R.id.category);
+        name = findViewById(R.id.name);
+        rating = findViewById(R.id.rating);
+        detail = findViewById(R.id.body);
+        category = findViewById(R.id.category);
         Button start = findViewById(R.id.start_routine);
 
         start.setOnClickListener(new View.OnClickListener() {
@@ -45,12 +55,12 @@ public class RoutineDetails extends AppCompatActivity {
         });
 
         Bundle extras = getIntent().getExtras();
-
-        name.setText(extras.get("ROUTINE_NAME").toString());
-        rating.setText(extras.get("ROUTINE_RATING").toString());
-        detail.setText(extras.get("ROUTINE_DETAIL").toString());
-        category.setText(extras.get("ROUTINE_CATEGORY").toString());
-
+        if(extras.get("ROUTINE_NAME") != null) {
+            name.setText(extras.get("ROUTINE_NAME").toString());
+            rating.setText(extras.get("ROUTINE_RATING").toString());
+            detail.setText(extras.get("ROUTINE_DETAIL").toString());
+            category.setText(extras.get("ROUTINE_CATEGORY").toString());
+        }
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -62,18 +72,18 @@ public class RoutineDetails extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch(menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.routines:
-                        startActivity(new Intent(getApplicationContext(),Routines.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Routines.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.favourites:
-                        startActivity(new Intent(getApplicationContext(),Favourites.class));
-                        overridePendingTransition(0,0);
+                        startActivity(new Intent(getApplicationContext(), Favourites.class));
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
@@ -94,17 +104,17 @@ public class RoutineDetails extends AppCompatActivity {
                 //registering popup with OnMenuItemClickListener
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
-                        if(item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
+                        if (item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }
-                        if(item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
+                        if (item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
                             startActivity(new Intent(getApplicationContext(), Settings.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }
-                        if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
+                        if (item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
                             MyApplication app = (MyApplication) getApplication();
                             app.getUserRepository().logout().observeForever(r -> {
                                 switch (r.getStatus()) {
@@ -129,7 +139,47 @@ public class RoutineDetails extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+        // ATTENTION: This was auto-generated to handle app links.
+        Intent appLinkIntent = getIntent();
+        String appLinkAction = appLinkIntent.getAction();
+        Uri appLinkData = appLinkIntent.getData();
+        handleIntent(appLinkIntent);
     }
+
+
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        handleIntent(intent);
+    }
+
+    private void handleIntent(Intent intent) {
+        String appLinkAction = intent.getAction();
+        Uri appLinkData = intent.getData();
+        if (Intent.ACTION_VIEW.equals(appLinkAction) && appLinkData != null){
+            String recipeId = appLinkData.getLastPathSegment();
+            Uri appData = Uri.parse("content://com.gymside/routines/").buildUpon()
+                    .appendPath(recipeId).build();
+            Log.d("UI",appData.getLastPathSegment());
+            api.getRoutine(Integer.parseInt(appData.getLastPathSegment())).observeForever(r->{
+                switch (r.getStatus()) {
+                    case SUCCESS:
+                        Log.d("UI", "Success");
+                        assert r.getData() != null;
+                        Routine rt = r.getData();
+                        name.setText(rt.getName());
+                        rating.setText(rt.getRating().toString());
+                        detail.setText(rt.getDetail());
+                        category.setText(rt.getCategory().getName());
+                        break;
+                    default:
+                        Log.d("UI", "Error fetching routine!");
+                        break;
+                }
+
+            });
+        }
+    }
+
 
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {

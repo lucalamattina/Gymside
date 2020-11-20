@@ -29,8 +29,8 @@ public interface ApiRoutineService {
     LiveData<ApiResponse<Routine>> modifyRoutine(@Path("routineId") int routineId, @Body Routine routine);
 
     @DELETE("routines/{routineId}")
-    LiveData<ApiResponse<Void>> deleteSport(@Path("routineId") int routineId);
+    LiveData<ApiResponse<Void>> deleteRoutine(@Path("routineId") int routineId);
 
-    @GET("routines")
+    @GET("user/current/routines/")
     LiveData<ApiResponse<PagedList<Routine>>> getRoutines();
 }
