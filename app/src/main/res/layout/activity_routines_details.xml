@@ -76,24 +76,57 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
+            android:layout_toRightOf="@id/category_label"
             android:layout_marginBottom="208dp"
+            android:layout_marginLeft="20dp"
             android:text="Routine Category" />
+
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginBottom="208dp"
+            android:layout_marginLeft="10dp"
+            android:text="@string/category_label" />
 
         <TextView
             android:id="@+id/body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_above="@+id/routines_text"
             android:layout_marginBottom="106dp"
+            android:layout_toRightOf="@id/category_label"
             android:text="Routine Detail" />
+
+        <TextView
+            android:id="@+id/detail_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginBottom="106dp"
+            android:text="@string/detail_label" />
 
         <TextView
             android:id="@+id/rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="1dp"
+            android:layout_toRightOf="@id/category_label"
             android:text="Routine Rating" />
+
+        <TextView
+            android:id="@+id/rating_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="1dp"
+            android:text="@string/rating_label" />
 
         <Button
             android:layout_width="wrap_content"

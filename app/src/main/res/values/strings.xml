@@ -48,4 +48,7 @@
     <string name="showAboutMe">About me</string>
     <string name="showFullName">Fullname</string>
     <string name="run_routine">START ROUTINE</string>
+    <string name="category_label">Category: </string>
+    <string name="detail_label">Detail: </string>
+    <string name="rating_label">Rating: </string>
 </resources>

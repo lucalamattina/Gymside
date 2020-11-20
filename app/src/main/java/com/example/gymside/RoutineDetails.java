@@ -50,12 +50,12 @@ public class RoutineDetails extends AppCompatActivity {
         TextView category = findViewById(R.id.category);
         Button start = findViewById(R.id.start_routine);
 
-//        start.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                ApiRoutineService
-//            }
-//        });
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //TODO agregar metodo para crear una execution y hacer las pantallas de ejecucion de rutina
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
 
