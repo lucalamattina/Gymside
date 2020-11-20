@@ -19,7 +19,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Routine;
+import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.ui.MainActivity;
 import com.example.gymside.ui.RoutinesRVA;
@@ -99,8 +101,20 @@ public class Routines extends AppCompatActivity {
                             return true;
                         }
                         if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
-                            startActivity(new Intent(getApplicationContext(), Login.class));
-                            overridePendingTransition(0, 0);
+                            MyApplication app = (MyApplication) getApplication();
+                            app.getUserRepository().logout().observeForever(r -> {
+                                switch (r.getStatus()) {
+                                    case SUCCESS:
+                                        Log.d("UI", "Success");
+                                        AppPreferences preferences = new AppPreferences(app);
+                                        startActivity(new Intent(getApplicationContext(), Login.class));
+                                        overridePendingTransition(0, 0);
+                                        break;
+                                    default:
+                                        defaultResourceHandler(r);
+                                        break;
+                                }
+                            });
                             return true;
                         }
                         return false;
@@ -158,5 +172,20 @@ public class Routines extends AppCompatActivity {
 //                overridePendingTransition(0,0);
 //            }
 //        });
+    }
+
+    private void defaultResourceHandler(Resource<?> resource) {
+        switch (resource.getStatus()) {
+            case LOADING:
+                Log.d("UI", "Success");
+                //binding.result.setText(R.string.loading);
+                break;
+            case ERROR:
+                Error error = resource.getError();
+                //String message = getString(R.string.error, error.getDescription(), error.getCode());
+                Log.d("UI", "Error");
+                //binding.result.setText(message);
+                break;
+        }
     }
 }

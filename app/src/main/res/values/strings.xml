@@ -43,4 +43,6 @@
     <string name="buttonSave">Save</string>
     <string name="verify_email">Verify Email</string>
     <string name="delete_user">Delete User</string>
+    <string name="showAboutMe">About me</string>
+    <string name="showFullName">Fullname</string>
 </resources>

@@ -7,6 +7,7 @@ import com.example.gymside.api.model.Token;
 import com.example.gymside.api.model.User;
 
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
@@ -22,6 +23,9 @@ public interface ApiUserService {
 
     @POST("user/verify_email")
     LiveData<ApiResponse<Void>> verifyUser(@Body Credentials credentials);
+
+    @DELETE("user/current")
+    LiveData<ApiResponse<Void>> deleteUser();
 
     @GET("user/current")
     LiveData<ApiResponse<User>> getCurrentUser();

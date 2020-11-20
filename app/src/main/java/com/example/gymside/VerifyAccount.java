@@ -54,7 +54,7 @@ public class VerifyAccount extends AppCompatActivity {
                 switch (r.getStatus()) {
                     case SUCCESS:
                         Log.d("UI", "Success");
-                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0,0);
                         //int count = r.getData().getResults().size();
                         //String message = getResources().getQuantityString(R.plurals.found, count, count);
