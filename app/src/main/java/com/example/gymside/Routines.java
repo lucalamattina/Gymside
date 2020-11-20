@@ -3,6 +3,9 @@ package com.example.gymside;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
+
+import android.app.Activity;
 import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,7 +19,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 import android.widget.Spinner;
 
 import com.example.gymside.api.model.Error;
@@ -31,6 +36,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Routines extends AppCompatActivity {
+    Button myButton;
+
     private RoutineRepository api;
     public List<Routine> routines = new ArrayList<>();
 
@@ -72,10 +79,14 @@ public class Routines extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
             }
         });
+
+
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +154,25 @@ public class Routines extends AppCompatActivity {
                     break;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.home != selectedItemId) {
+            setHomeItem(Routines.this);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static void setHomeItem(Activity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
 
 //        Button detailsButton = (Button) findViewById(R.id.details_button);
 
@@ -153,7 +183,6 @@ public class Routines extends AppCompatActivity {
 //                overridePendingTransition(0,0);
 //            }
 //        });
-    }
 
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {

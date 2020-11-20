@@ -1,36 +1,35 @@
 package com.example.gymside;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 
-import com.example.gymside.api.model.Error;
-import com.example.gymside.repository.Resource;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Settings extends AppCompatActivity {
+public class Rate extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_rate);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Initialize And Assign Variable
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Perform ItemSelectedListener
@@ -50,14 +49,10 @@ public class Settings extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
-                    default:
-                        return false;
                 }
-                //return false;
+                return false;
             }
         });
-
-
 
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
@@ -65,7 +60,7 @@ public class Settings extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(Settings.this, profileButton);
+                PopupMenu popup = new PopupMenu(Rate.this, profileButton);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater()
                         .inflate(R.menu.popup_menu, popup.getMenu());
@@ -84,20 +79,8 @@ public class Settings extends AppCompatActivity {
                             return true;
                         }
                         if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
-                            MyApplication app = (MyApplication) getApplication();
-                            app.getUserRepository().logout().observeForever(r -> {
-                                switch (r.getStatus()) {
-                                    case SUCCESS:
-                                        Log.d("UI", "Success");
-                                        AppPreferences preferences = new AppPreferences(app);
-                                        startActivity(new Intent(getApplicationContext(), Login.class));
-                                        overridePendingTransition(0, 0);
-                                        break;
-                                    default:
-                                        defaultResourceHandler(r);
-                                        break;
-                                }
-                            });
+                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            overridePendingTransition(0, 0);
                             return true;
                         }
                         return false;
@@ -109,44 +92,20 @@ public class Settings extends AppCompatActivity {
             }
         }); //closing the setOnClickListener method
 
-        changeMenuItemCheckedStateColor(bottomNavigationView, "#FFFFFF", "#FFFFFF");
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
 
-    }
+        if(text.equals("r")) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            bottomNavigationView.getMenu().getItem(2).setChecked(false);
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+        if(text.equals("f")){
+            bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            bottomNavigationView.getMenu().getItem(1).setChecked(false);
+            bottomNavigationView.getMenu().getItem(2).setChecked(true);
 
-    private void changeMenuItemCheckedStateColor(BottomNavigationView bottomNavigationView, String checkedColorHex, String uncheckedColorHex) {
-        int checkedColor = Color.parseColor(checkedColorHex);
-        int uncheckedColor = Color.parseColor(uncheckedColorHex);
 
-        int[][] states = new int[][] {
-                new int[] {-android.R.attr.state_checked}, // unchecked
-                new int[] {android.R.attr.state_checked}, // checked
-
-        };
-
-        int[] colors = new int[] {
-                uncheckedColor,
-                checkedColor
-        };
-
-        ColorStateList colorStateList = new ColorStateList(states, colors);
-
-        bottomNavigationView.setItemTextColor(colorStateList);
-        bottomNavigationView.setItemIconTintList(colorStateList);
-
-    }
-
-    private void defaultResourceHandler(Resource<?> resource) {
-        switch (resource.getStatus()) {
-            case LOADING:
-                Log.d("UI", "Success");
-                //binding.result.setText(R.string.loading);
-                break;
-            case ERROR:
-                Error error = resource.getError();
-                //String message = getString(R.string.error, error.getDescription(), error.getCode());
-                Log.d("UI", "Error");
-                //binding.result.setText(message);
-                break;
         }
     }
 }

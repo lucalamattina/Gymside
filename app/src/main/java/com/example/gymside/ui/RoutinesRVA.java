@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymside.MyApplication;
 import com.example.gymside.R;
+import com.example.gymside.Rate;
 import com.example.gymside.RoutineDetails;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.repository.RoutineRepository;
@@ -70,6 +71,8 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
                 intent.putExtra("ROUTINE_RATING", routines.get(position).getRating());
                 intent.putExtra("ROUTINE_DIFFICULTY", routines.get(position).getDifficulty());
                 intent.putExtra("ROUTINE_CATEGORY", routines.get(position).getCategory().getName());
+                String textToPass = "r";
+                intent.putExtra(Intent.EXTRA_TEXT, textToPass);
                 startActivity(mContext, intent ,new Bundle());
             }
         });

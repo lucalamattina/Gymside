@@ -18,6 +18,7 @@
         <activity android:name=".RoutineDetails"/>
         <activity android:name=".Profile" />
         <activity android:name=".Login" />
+        <activity android:name=".Rate" />
         <activity android:name=".Register" />
         <activity android:name=".Settings" />
         <activity android:name=".RoutineExecution" />

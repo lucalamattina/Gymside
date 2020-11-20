@@ -1,11 +1,15 @@
 package com.example.gymside;
 
+import android.app.ActivityManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.ImageButton;
+import android.widget.ToggleButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.gymside.api.ApiRoutineService;
 import com.example.gymside.api.model.Error;
@@ -21,10 +27,17 @@ import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.List;
+
 public class RoutineDetails extends AppCompatActivity {
 
 
+    Button rateButton;
+    ToggleButton toggleButton;
+
+
     private RoutineRepository api;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +63,23 @@ public class RoutineDetails extends AppCompatActivity {
         rating.setText(extras.get("ROUTINE_RATING").toString());
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
+
+        rateButton = (Button) findViewById(R.id.rate);
+
+
+
+        toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
+        toggleButton.setChecked(false);
+        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorites));
+        toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked)
+                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_fav_red_full));
+                else
+                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
+            }
+        });
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -77,6 +107,36 @@ public class RoutineDetails extends AppCompatActivity {
                         return true;
                 }
                 return false;
+            }
+        });
+
+        String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
+
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+
+        rateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(text.equals("r")) {
+                    String textToPass = "r";
+
+                    Intent intent = new Intent(getBaseContext(), Rate.class);
+                    intent.putExtra(Intent.EXTRA_TEXT, textToPass);
+                    startActivity(intent);
+
+                    //startActivity(new Intent(RoutineDetails.this, Rate.class));
+                }
+                if(text.equals("f")){
+                    String textToPass = "f";
+
+                    Intent intent = new Intent(getBaseContext(), Rate.class);
+                    intent.putExtra(Intent.EXTRA_TEXT, textToPass);
+                    startActivity(intent);
+
+                    //startActivity(new Intent(RoutineDetails.this, Rate.class));
+                }
+
             }
         });
 
@@ -129,6 +189,24 @@ public class RoutineDetails extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+
+
+        if(text.equals("r")) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            bottomNavigationView.getMenu().getItem(2).setChecked(false);
+            bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        }
+
+        //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
+            //bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(2).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        //}
+        //if(getCallingActivity().getClassName().equals("com.example.gymside.Favourites")){
+            //bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(1).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        //}
     }
 
     private void defaultResourceHandler(Resource<?> resource) {
