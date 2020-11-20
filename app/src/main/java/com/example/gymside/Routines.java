@@ -3,22 +3,37 @@ package com.example.gymside;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.lifecycle.LiveData;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.gymside.api.model.Routine;
+import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.ui.MainActivity;
+import com.example.gymside.ui.RoutinesRVA;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Routines extends AppCompatActivity {
+    private RoutineRepository api;
+    public List<Routine> routines = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        api = MyApplication.getRoutineRepository();
         setContentView(R.layout.activity_routines);
 
         //Initialize And Assign Variable
@@ -84,14 +99,52 @@ public class Routines extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
-
-        Button detailsButton = (Button) findViewById(R.id.details_button);
-        detailsButton.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
-                overridePendingTransition(0,0);
+        Log.d("UI","previo a entrar: " + Integer.toString(routines.size()));
+        api.getRoutines().observeForever(r -> {
+            switch (r.getStatus()) {
+                case SUCCESS:
+                    Log.d("UI", "Success");
+                    assert r.getData() != null;
+                    this.routines.addAll(r.getData().getResults());
+                    RecyclerView recyclerView = findViewById(R.id.recycle_view);
+                    RoutinesRVA adapter = new RoutinesRVA(this, this.routines);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    Log.d("UI", "adentro de la api: "+Integer.toString(routines.size()));
+                    break;
+                default:
+                    Log.d("UI", "Error fetching routines!");
+                    break;
             }
         });
+
+//        Button detailsButton = (Button) findViewById(R.id.details_button);
+
+//        api.getRoutines(new Callback<Result<List<Routine>>>() {
+//            @Override
+//            public void onResponse(Call<Result<List<Routine>>> call, Response<Result<List<Routine>>> response) {
+//                if(response.isSuccessful()) {
+//                    Result<List<Routine>> result = response.body();
+//                    if (result != null) {
+//                        List<Routine> routines = result.getResult();
+//                        for (Routine routine : routines) {
+//                            mRoutinesIds.add(routine.getId());
+//                            mRoutinesNames.add(routine.getName());
+//                            mRoutinesImages.add(R.drawable.routine);
+//                            adapter.notifyItemInserted(routines.size() - 1);
+//                        }
+//                    }
+//                }
+//                return;
+//            }
+//        });
+
+//        detailsButton.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
+//                overridePendingTransition(0,0);
+//            }
+//        });
     }
 }
