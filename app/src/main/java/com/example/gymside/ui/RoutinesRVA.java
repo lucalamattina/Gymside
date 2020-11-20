@@ -1,6 +1,9 @@
 package com.example.gymside.ui;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +19,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymside.MyApplication;
 import com.example.gymside.R;
+import com.example.gymside.RoutineDetails;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.repository.RoutineRepository;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.RoutinesRVA.RoutinesViewHolder>{
 
@@ -58,7 +65,14 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
         holder.routinesLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mContext, routines.get(position).getName(), Toast.LENGTH_LONG).show();
+//                Toast.makeText(mContext, routines.get(position).getName(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(mContext, RoutineDetails.class);
+                intent.putExtra("ROUTINE_NAME", routines.get(position).getName());
+                intent.putExtra("ROUTINE_DETAIL", routines.get(position).getDetail());
+                intent.putExtra("ROUTINE_RATING", routines.get(position).getRating());
+                intent.putExtra("ROUTINE_DIFFICULTY", routines.get(position).getDifficulty());
+                intent.putExtra("ROUTINE_CATEGORY", routines.get(position).getCategory().getName());
+                startActivity(mContext, intent ,new Bundle());
             }
         });
 //        holder.activateB.setOnClickListener(new View.OnClickListener() {

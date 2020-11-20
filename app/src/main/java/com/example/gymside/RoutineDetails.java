@@ -5,23 +5,51 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.gymside.api.ApiRoutineService;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.repository.Resource;
+import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class RoutineDetails extends AppCompatActivity {
+
+
+    private RoutineRepository api;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        api = MyApplication.getRoutineRepository();
         setContentView(R.layout.activity_routines_details);
+        TextView name = findViewById(R.id.name);
+        TextView rating = findViewById(R.id.rating);
+        TextView detail = findViewById(R.id.body);
+        TextView category = findViewById(R.id.category);
+        Button start = findViewById(R.id.start_routine);
+
+//        start.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                ApiRoutineService
+//            }
+//        });
+
+        Bundle extras = getIntent().getExtras();
+
+        name.setText(extras.get("ROUTINE_NAME").toString());
+        rating.setText(extras.get("ROUTINE_RATING").toString());
+        detail.setText(extras.get("ROUTINE_DETAIL").toString());
+        category.setText(extras.get("ROUTINE_CATEGORY").toString());
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

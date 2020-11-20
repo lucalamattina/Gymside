@@ -146,25 +146,6 @@ public class Routines extends AppCompatActivity {
 
 //        Button detailsButton = (Button) findViewById(R.id.details_button);
 
-//        api.getRoutines(new Callback<Result<List<Routine>>>() {
-//            @Override
-//            public void onResponse(Call<Result<List<Routine>>> call, Response<Result<List<Routine>>> response) {
-//                if(response.isSuccessful()) {
-//                    Result<List<Routine>> result = response.body();
-//                    if (result != null) {
-//                        List<Routine> routines = result.getResult();
-//                        for (Routine routine : routines) {
-//                            mRoutinesIds.add(routine.getId());
-//                            mRoutinesNames.add(routine.getName());
-//                            mRoutinesImages.add(R.drawable.routine);
-//                            adapter.notifyItemInserted(routines.size() - 1);
-//                        }
-//                    }
-//                }
-//                return;
-//            }
-//        });
-
 //        detailsButton.setOnClickListener(new View.OnClickListener(){
 //            @Override
 //            public void onClick(View v) {

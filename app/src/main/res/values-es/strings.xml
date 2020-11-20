@@ -46,4 +46,5 @@
     <string name="delete_user">Borrar Usuario</string>
     <string name="showAboutMe">Acerca de mi</string>
     <string name="showFullName">Nombre</string>
+    <string name="run_routine">INICIAR RUTINA</string>
 </resources>

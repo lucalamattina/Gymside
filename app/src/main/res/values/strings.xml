@@ -45,4 +45,5 @@
     <string name="delete_user">Delete User</string>
     <string name="showAboutMe">About me</string>
     <string name="showFullName">Fullname</string>
+    <string name="run_routine">START ROUTINE</string>
 </resources>
