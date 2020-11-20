@@ -40,4 +40,5 @@
     <string name="code">Code</string>
     <string name="verifyTittle">Upload the code you received at your email to verify your account</string>
     <string name="createAccount">create Account</string>
+    <string name="buttonSave">Save</string>
 </resources>

@@ -45,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
     Sport sport;
     EditText editUsername, editPassword;
     TextView result;
-    Button buttonCheck;
-    String username;
-    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,30 +61,8 @@ public class MainActivity extends AppCompatActivity {
         editUsername  = (EditText) findViewById(R.id.edituser);
         editPassword = (EditText) findViewById(R.id.editpass);
         result = (TextView) findViewById(R.id.tvShow);
-        buttonCheck = (Button) findViewById(R.id.buttonCheck);
-
-        buttonCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = editUsername.getText().toString();
-                String pass = editPassword.getText().toString();
-                savePass(name, pass);
-                result.setText("Name: "+ name + "\npass: " + pass);
-            }
-        });
-
-        //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.spinner1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"1", "2", "three"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
 
         //Initialize And Assign Variable
-
 
         Button loginView = findViewById(R.id.loginViewButton);
         loginView.setOnClickListener((view -> {
@@ -122,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.loginButton.setOnClickListener(v->{
-
-            Credentials credentials = new Credentials(username, password);
+            String name = editUsername.getText().toString();
+            String pass = editPassword.getText().toString();
+            Credentials credentials = new Credentials(name, pass);
             MyApplication app = (MyApplication) getApplication();
             app.getUserRepository().login(credentials).observe(this,r -> {
                 switch (r.getStatus()) {
@@ -220,10 +196,5 @@ public class MainActivity extends AppCompatActivity {
                 //binding.result.setText(message);
                 break;
         }
-    }
-
-    private void savePass(String user, String pass){
-        this.username = user;
-        this.password = pass;
     }
 }
