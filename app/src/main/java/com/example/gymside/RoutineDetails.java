@@ -76,7 +76,7 @@ public class RoutineDetails extends AppCompatActivity {
             category.setText(extras.get("ROUTINE_CATEGORY").toString());
         }
         if(extras.get("ROUTINE_ID") != null) {
-            exerciseApi.getExercises((Integer) extras.get("ROUTINE_ID"), 1).observe(this, r -> {
+            exerciseApi.getExercises((Integer) extras.get("ROUTINE_ID")).observe(this, r -> {
                 switch (r.getStatus()) {
                     case SUCCESS:
                         Log.d("UI", "Success");

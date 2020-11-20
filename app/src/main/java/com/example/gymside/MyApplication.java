@@ -27,8 +27,6 @@ public class MyApplication extends Application {
 
     public static RoutineRepository getRoutineRepository() {return routineRepository;}
 
-    public static ExerciseRepository getExerciseRepository() {return exerciseRepository;}
-
     @Override
     public void onCreate() {
         super.onCreate();
