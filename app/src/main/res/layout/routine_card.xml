@@ -32,10 +32,11 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginLeft="22dp"
                 android:text="Routine Name"
                 android:textColor="#000"
-                android:textSize="10dp" />
+                android:textSize="12dp" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
