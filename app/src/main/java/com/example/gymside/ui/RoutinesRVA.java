@@ -73,6 +73,7 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
                 intent.putExtra("ROUTINE_CATEGORY", routines.get(position).getCategory().getName());
                 String textToPass = "r";
                 intent.putExtra(Intent.EXTRA_TEXT, textToPass);
+                intent.putExtra("ROUTINE_ID", routines.get(position).getId());
                 startActivity(mContext, intent ,new Bundle());
             }
         });
