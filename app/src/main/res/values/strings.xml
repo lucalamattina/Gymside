@@ -60,4 +60,11 @@
     <string name="modifyNameTittle">Modify your name</string>
     <string name="enter_new_name">Enter new Name</string>
     <string name="share">SHARE</string>
+    <string name="filter">Filter By:</string>
+    <string-array name="filter_by">
+        <item>Date Created</item>
+        <item>Average Rating</item>
+        <item>Difficulty</item>
+        <item>Category</item>
+    </string-array>
 </resources>

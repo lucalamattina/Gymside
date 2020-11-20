@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -37,15 +38,22 @@ import java.util.List;
 
 public class Routines extends AppCompatActivity {
     Button myButton;
-
+    Spinner spinner;
     private RoutineRepository api;
     public List<Routine> routines = new ArrayList<>();
+    String [] filters = {"dateCreated", "averageRating", "difficulty", "categoryId"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         api = MyApplication.getRoutineRepository();
         setContentView(R.layout.activity_routines);
+        spinner = findViewById(R.id.filter_by);
+        ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this, R.array.filter_by, R.layout.support_simple_spinner_dropdown_item);
+        adapt.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapt);
+
+
 
         //get the spinner from the xml.
         //Spinner dropdown = findViewById(R.id.spinner1);
@@ -147,6 +155,34 @@ public class Routines extends AppCompatActivity {
                     RoutinesRVA adapter = new RoutinesRVA(this, this.routines);
                     recyclerView.setAdapter(adapter);
                     recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                            api.getRoutinesOrderedBy(filters[i]).observeForever(r->{
+                                switch (r.getStatus()) {
+                                    case SUCCESS:
+                                        Log.d("UI", "Success");
+                                        assert r.getData() != null;
+                                        routines.clear();
+                                        routines.addAll(r.getData().getResults());
+                                        RecyclerView recyclerView = findViewById(R.id.recycle_view);
+                                        RoutinesRVA adapter = new RoutinesRVA(getApplicationContext(), routines);
+                                        recyclerView.setAdapter(adapter);
+                                        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                                        Log.d("UI", "adentro de la api: "+Integer.toString(routines.size()));
+                                        break;
+                                    default:
+                                        Log.d("UI", "Error fetching routines!");
+                                        break;
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> adapterView) {
+
+                        }
+                    });
                     Log.d("UI", "adentro de la api: "+Integer.toString(routines.size()));
                     break;
                 default:
