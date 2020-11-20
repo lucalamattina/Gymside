@@ -46,6 +46,7 @@ public class RoutineDetails extends AppCompatActivity {
     TextView rating;
     TextView detail;
     TextView category;
+    Button share;
     private ExerciseRepository exerciseApi;
 
 
@@ -59,6 +60,7 @@ public class RoutineDetails extends AppCompatActivity {
         rating = findViewById(R.id.rating);
         detail = findViewById(R.id.body);
         category = findViewById(R.id.category);
+        share = findViewById(R.id.share_button);
         Button start = findViewById(R.id.start_routine);
 
         start.setOnClickListener(new View.OnClickListener() {
@@ -88,6 +90,19 @@ public class RoutineDetails extends AppCompatActivity {
                 }
             });
         }
+
+        share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "http://gymside.com/routines/" + extras.get("ROUTINE_ID"));
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            }
+        });
 
         name.setText(extras.get("ROUTINE_NAME").toString());
         rating.setText(extras.get("ROUTINE_RATING").toString());

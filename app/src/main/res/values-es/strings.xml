@@ -60,5 +60,6 @@
     <string name="modifyUsernameTittle">Modificá tu usuario</string>
     <string name="modifyNameTittle">Modificá tu nombre</string>
     <string name="enter_new_name">Ingresa nuevo nombre</string>
+    <string name="share">SHARE</string>
 
 </resources>
