@@ -14,6 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiRoutineService {
     @POST("routines")
@@ -29,8 +30,11 @@ public interface ApiRoutineService {
     LiveData<ApiResponse<Routine>> modifyRoutine(@Path("routineId") int routineId, @Body Routine routine);
 
     @DELETE("routines/{routineId}")
-    LiveData<ApiResponse<Void>> deleteSport(@Path("routineId") int routineId);
+    LiveData<ApiResponse<Void>> deleteRoutine(@Path("routineId") int routineId);
 
-    @GET("routines")
+    @GET("user/current/routines/?page=0&size=99999&orderBy=dateCreated&direction=desc")
     LiveData<ApiResponse<PagedList<Routine>>> getRoutines();
+
+    @GET("user/current/routines/?page=0&size=99999&direction=desc")
+    LiveData<ApiResponse<PagedList<Routine>>> getRoutinesOrderedBy(@Query("orderBy") String order);
 }

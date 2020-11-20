@@ -60,5 +60,12 @@
     <string name="modifyUsernameTittle">Modificá tu usuario</string>
     <string name="modifyNameTittle">Modificá tu nombre</string>
     <string name="enter_new_name">Ingresa nuevo nombre</string>
-
+    <string name="share">SHARE</string>
+    <string name="filter">Filtrar Por:</string>
+    <string-array name="filter_by">
+        <item value="dateCreated">Fecha de Creacion</item>
+        <item value="averageRating">Puntaje Promedio</item>
+        <item value="difficulty">Dificultad</item>
+        <item value="categoryId">Categoria</item>
+    </string-array>
 </resources>

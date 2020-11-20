@@ -2,6 +2,7 @@ package com.example.gymside;
 
 import android.app.Application;
 
+import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.repository.SportRepository;
 import com.example.gymside.repository.UserRepository;
@@ -10,9 +11,14 @@ public class MyApplication extends Application {
     private static UserRepository userRepository;
     private SportRepository sportRepository;
     private static RoutineRepository routineRepository;
+    private static ExerciseRepository exerciseRepository;
 
     public static UserRepository getUserRepository() {
         return userRepository;
+    }
+
+    public static ExerciseRepository getExerciseRepository() {
+        return exerciseRepository;
     }
 
     public SportRepository getSportRepository() {
@@ -27,8 +33,12 @@ public class MyApplication extends Application {
 
         userRepository = new UserRepository(this);
 
+        exerciseRepository = new ExerciseRepository(this);
+
         sportRepository =new SportRepository(this);
 
         routineRepository = new RoutineRepository(this);
+
+        exerciseRepository = new ExerciseRepository(this);
     }
 }

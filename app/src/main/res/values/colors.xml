@@ -10,4 +10,5 @@
     <color name="blue">#FF2d4059</color>
     <color name="pink">#FFFF66F2</color>
     <color name="orange">#ea5455</color>
+    <color name="transparent"></color>
 </resources>
