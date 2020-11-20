@@ -52,6 +52,7 @@ public class Login extends AppCompatActivity {
                         preferences.setAuthToken(r.getData().getToken());
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         overridePendingTransition(0,0);
+
                         break;
                     default:
                         defaultResourceHandler(r);

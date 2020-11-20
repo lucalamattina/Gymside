@@ -72,7 +72,8 @@ tools:context=".Register">
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:text="@string/code" />
+        android:text="@string/code"
+        android:drawableEnd="@drawable/baseline_vpn_key_black_18dp"/>
 
     <EditText
         android:id="@+id/emailRegister"
@@ -90,6 +91,8 @@ tools:context=".Register">
         android:fontFamily="sans-serif-light"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:text="@string/email" />
+        android:text="@string/email"
+        android:drawableEnd="@drawable/baseline_email_blackk_18dp"/>
+
 
 </RelativeLayout>

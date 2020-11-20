@@ -19,6 +19,8 @@ public class Credentials {
     private int birthdate;
     @Expose
     private String gender;
+    @Expose
+    private String code;
 
     public Credentials() {
     }
@@ -35,6 +37,11 @@ public class Credentials {
         this.email = email;
         this.birthdate = birthdate;
         this.gender = gender;
+    }
+
+    public Credentials(String email, String code, String codeaux) {
+        this.email = email;
+        this.code = code;
     }
 
     public String getUsername() {

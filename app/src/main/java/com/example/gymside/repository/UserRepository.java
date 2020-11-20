@@ -41,6 +41,17 @@ public class UserRepository {
         }.asLiveData();
     }
 
+    public LiveData<Resource<Void>> deleteUser() {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.deleteUser();
+            }
+        }.asLiveData();
+    }
+
     public LiveData<Resource<Void>> createUser(Credentials credentials) {
         return new NetworkBoundResource<Void, Void>()
         {
@@ -48,6 +59,17 @@ public class UserRepository {
             @Override
             protected LiveData<ApiResponse<Void>> createCall() {
                 return apiService.createUser(credentials);
+            }
+        }.asLiveData();
+    }
+
+    public LiveData<Resource<Void>> verifyUser(Credentials credentials) {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.verifyUser(credentials);
             }
         }.asLiveData();
     }
