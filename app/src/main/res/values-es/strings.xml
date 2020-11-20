@@ -24,6 +24,22 @@
     <string name="avatar">avatar</string>
     <string name="buttonCheck">Button</string>
     <string name="avatar2">avatar</string>
+    <string name="avatarr">TODO</string>
     <string name="showProfileGender">TextView</string>
     <string name="gender">Genero:</string>
+    <string name="time">Tiempo</string>
+    <string name="interval">Intervalo</string>
+    <string name="default_interval">Intervalo por default</string>
+    <string name="start">Comenzar</string>
+    <string name="stop">Parar</string>
+    <string name="pause">Pausar</string>
+    <string name="resume">Resumen</string>
+    <string name="add_time">Agregar tiempo</string>
+    <string name="done">TERMINADO!</string>
+    <string name="pencil">TODO</string>
+    <string name="verify">Verificar</string>
+    <string name="code">Código</string>
+    <string name="verifyTittle">Ingresá el código recibido en tu email para verificar la cuenta</string>
+    <string name="createAccount">Crear Cuenta</string>
+    <string name="buttonSave">Guardar</string>
 </resources>

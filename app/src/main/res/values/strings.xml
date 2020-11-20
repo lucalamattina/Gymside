@@ -26,4 +26,19 @@
     <string name="avatarr">TODO</string>
     <string name="showProfileGender">TextView</string>
     <string name="gender">Gender:</string>
+    <string name="time">time</string>
+    <string name="interval">interval</string>
+    <string name="default_interval">default interval</string>
+    <string name="start">start</string>
+    <string name="stop">stop</string>
+    <string name="pause">pause</string>
+    <string name="resume">resume</string>
+    <string name="add_time">add time</string>
+    <string name="done">DONE!</string>
+    <string name="pencil">TODO</string>
+    <string name="verify">Verify</string>
+    <string name="code">Code</string>
+    <string name="verifyTittle">Upload the code you received at your email to verify your account</string>
+    <string name="createAccount">create Account</string>
+    <string name="buttonSave">Save</string>
 </resources>

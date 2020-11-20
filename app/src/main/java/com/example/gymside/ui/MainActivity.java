@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.gymside.AppPreferences;
@@ -31,6 +34,7 @@ import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Sport;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.databinding.ActivityMainBinding;
+import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.Resource;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,9 +45,6 @@ public class MainActivity extends AppCompatActivity {
     Sport sport;
     EditText editUsername, editPassword;
     TextView result;
-    Button buttonCheck;
-    String username;
-    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,34 +56,20 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        MyDatabase db = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "database-name").build();
+
         editUsername  = (EditText) findViewById(R.id.edituser);
         editPassword = (EditText) findViewById(R.id.editpass);
         result = (TextView) findViewById(R.id.tvShow);
-        buttonCheck = (Button) findViewById(R.id.buttonCheck);
-
-        buttonCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = editUsername.getText().toString();
-                String pass = editPassword.getText().toString();
-                savePass(name, pass);
-                result.setText("Name: "+ name + "\npass: " + pass);
-            }
-        });
-
 
         //Initialize And Assign Variable
 
-/*        Button logoutButton = findViewById(R.id.logoutButton);
-        logoutButton.setOnClickListener((view -> {
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            setContentView(R.layout.activity_login);
-        }));*/
-
         Button loginView = findViewById(R.id.loginViewButton);
         loginView.setOnClickListener((view -> {
-            setContentView(R.layout.activity_login);
+            startActivity(new Intent(getApplicationContext(), Login.class));
+            overridePendingTransition(0, 0);
         }));
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -110,8 +97,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.loginButton.setOnClickListener(v->{
-
-            Credentials credentials = new Credentials(username, password);
+            String name = editUsername.getText().toString();
+            String pass = editPassword.getText().toString();
+            Credentials credentials = new Credentials(name, pass);
             MyApplication app = (MyApplication) getApplication();
             app.getUserRepository().login(credentials).observe(this,r -> {
                 switch (r.getStatus()) {
@@ -208,10 +196,5 @@ public class MainActivity extends AppCompatActivity {
                 //binding.result.setText(message);
                 break;
         }
-    }
-
-    private void savePass(String user, String pass){
-        this.username = user;
-        this.password = pass;
     }
 }
