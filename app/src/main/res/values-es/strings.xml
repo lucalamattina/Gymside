@@ -47,4 +47,7 @@
     <string name="showAboutMe">Acerca de mi</string>
     <string name="showFullName">Nombre</string>
     <string name="run_routine">INICIAR RUTINA</string>
+    <string name="category_label">Categoria: </string>
+    <string name="detail_label">Descripcion: </string>
+    <string name="rating_label">Puntuacion: </string>
 </resources>
