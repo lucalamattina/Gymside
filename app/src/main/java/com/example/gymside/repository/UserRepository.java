@@ -9,6 +9,8 @@ import com.example.gymside.api.ApiClient;
 import com.example.gymside.api.ApiResponse;
 import com.example.gymside.api.ApiUserService;
 import com.example.gymside.api.model.Credentials;
+import com.example.gymside.api.model.PagedList;
+import com.example.gymside.api.model.Routine;
 import com.example.gymside.api.model.Token;
 import com.example.gymside.api.model.User;
 
@@ -94,5 +96,16 @@ public class UserRepository {
                 return apiService.getCurrentUser();
             }
         }.asLiveData();
+    }
+
+    public LiveData<Resource<PagedList<Routine>>> getFavourites() {
+        return new NetworkBoundResource<PagedList<Routine>, PagedList<Routine>>() {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<PagedList<Routine>>> createCall() {
+                return apiService.getFavourites();
+            }
+        }.asLiveData();
+
     }
 }

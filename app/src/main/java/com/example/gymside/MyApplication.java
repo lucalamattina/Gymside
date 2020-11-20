@@ -7,11 +7,11 @@ import com.example.gymside.repository.SportRepository;
 import com.example.gymside.repository.UserRepository;
 
 public class MyApplication extends Application {
-    private UserRepository userRepository;
+    private static UserRepository userRepository;
     private SportRepository sportRepository;
     private static RoutineRepository routineRepository;
 
-    public UserRepository getUserRepository() {
+    public static UserRepository getUserRepository() {
         return userRepository;
     }
 
