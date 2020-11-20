@@ -20,6 +20,9 @@ public interface ApiUserService {
     @POST("user")
     LiveData<ApiResponse<Void>> createUser(@Body Credentials credentials);
 
+    @POST("user/verify_email")
+    LiveData<ApiResponse<Void>> verifyUser(@Body Credentials credentials);
+
     @GET("user/current")
     LiveData<ApiResponse<User>> getCurrentUser();
 }

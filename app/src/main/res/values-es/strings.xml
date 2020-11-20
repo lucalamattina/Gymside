@@ -42,4 +42,6 @@
     <string name="verifyTittle">Ingresá el código recibido en tu email para verificar la cuenta</string>
     <string name="createAccount">Crear Cuenta</string>
     <string name="buttonSave">Guardar</string>
+    <string name="verify_email">Verificá tu cuenta</string>
+    <string name="delete_user">Borrar Usuario</string>
 </resources>

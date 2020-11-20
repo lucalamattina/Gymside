@@ -32,12 +32,11 @@ public class Register extends AppCompatActivity {
             overridePendingTransition(0, 0);
         });
 
-        /*Button buttonCreateAccount = findViewById(R.id.createAccount);
-        buttonCreateAccount.setOnClickListener(v->{
+        Button verifyView = findViewById(R.id.verifyView);
+        verifyView.setOnClickListener(v->{
             startActivity(new Intent(getApplicationContext(), VerifyAccount.class));
             overridePendingTransition(0, 0);
-        });*/
-
+        });
 
         EditText editUsername, editPassword, editEmail;
         editUsername  = (EditText) findViewById(R.id.usernameRegister);

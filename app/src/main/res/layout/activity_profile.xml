@@ -8,6 +8,21 @@
     tools:context=".Profile">
 
     <ImageButton
+        android:id="@+id/imageView3"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="505dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="194dp"
+        android:background="@drawable/roundcornerwhite"
+        android:contentDescription="@string/pencil"
+        app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    <ImageButton
         android:id="@+id/imageView2"
         style="@style/Widget.AppCompat.ImageButton"
         android:layout_width="wrap_content"
@@ -64,21 +79,6 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/bottom_navigation"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="123dp"
-        android:layout_marginTop="474dp"
-        android:layout_marginEnd="139dp"
-        android:layout_marginBottom="135dp"
-        android:text="@string/profile"
-        android:textSize="50sp"
-        android:textStyle="bold" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -160,8 +160,7 @@
         android:layout_marginStart="127dp"
         android:layout_marginTop="377dp"
         android:layout_marginEnd="67dp"
-        android:layout_marginBottom="303dp"
-        android:text="@string/showProfileGender" />
+        android:layout_marginBottom="303dp" />
 
     <ImageButton
         android:id="@+id/imageView"
@@ -177,6 +176,37 @@
         android:background="@drawable/roundcornerwhite"
         android:contentDescription="@string/pencil" />
 
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="83dp"
+        android:layout_height="42dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="309dp"
+        android:layout_marginBottom="189dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/email"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/showEmailProfile"
+        android:layout_width="224dp"
+        android:layout_height="47dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="59dp"
+        android:layout_marginBottom="186dp" />
+
+    <Button
+        android:id="@+id/deleteUserButton"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="158dp"
+        android:layout_marginBottom="107dp"
+        android:drawableEnd="@android:drawable/ic_menu_delete"
+        android:text="@string/delete_user" />
 
 
 
