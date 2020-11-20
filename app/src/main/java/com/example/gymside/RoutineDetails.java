@@ -23,15 +23,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.example.gymside.api.model.Error;
+import com.example.gymside.api.model.Exercise;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
+import com.example.gymside.ui.ExercisesRVA;
 import com.example.gymside.ui.MainActivity;
 import com.example.gymside.ui.RoutinesRVA;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RoutineDetails extends AppCompatActivity {
@@ -48,6 +51,7 @@ public class RoutineDetails extends AppCompatActivity {
     TextView category;
     Button share;
     private ExerciseRepository exerciseApi;
+    public List<Exercise> exercises = new ArrayList<>();
 
 
     @Override
@@ -109,11 +113,17 @@ public class RoutineDetails extends AppCompatActivity {
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
 
-        exerciseApi.getExercises(1).observe(this, r->{
+        exerciseApi.getExercises((Integer)extras.get("ROUTINE_ID")).observeForever(r->{
             switch (r.getStatus()) {
                 case SUCCESS:
                     Log.d("UI", "Success");
-                    category.setText(r.getData().getResults().get(0).getName());
+                    assert r.getData() != null;
+                    this.exercises.addAll(r.getData().getResults());
+                    RecyclerView recyclerView = findViewById(R.id.recycler_view2);
+                    ExercisesRVA adapter = new ExercisesRVA(this, this.exercises);
+                    recyclerView.setAdapter(adapter);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    Log.d("UI", "adentro de la api: "+Integer.toString(exercises.size()));
                     break;
                 default:
                     defaultResourceHandler(r);

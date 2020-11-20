@@ -3,29 +3,22 @@ package com.example.gymside.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.gymside.MyApplication;
 import com.example.gymside.R;
-import com.example.gymside.Rate;
 import com.example.gymside.RoutineDetails;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.repository.RoutineRepository;
-import com.google.android.material.snackbar.Snackbar;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,10 +97,10 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
         public RoutinesViewHolder(@NonNull View itemView) {
             super(itemView);
 //            routine_image = itemView.findViewById(R.id.routine_image);
-            routine_name = itemView.findViewById(R.id.routine_name);
-            routine_difficulty = itemView.findViewById(R.id.routine_difficulty);
-            routine_category = itemView.findViewById(R.id.routine_category);
-            routine_rating = itemView.findViewById(R.id.routine_rating);
+            routine_name = itemView.findViewById(R.id.exercise_name);
+            routine_difficulty = itemView.findViewById(R.id.exercise_duration);
+            routine_category = itemView.findViewById(R.id.exercise_detail);
+            routine_rating = itemView.findViewById(R.id.exercise_type);
             routinesLayout = itemView.findViewById(R.id.routine_layout);
 //            activateB = itemView.findViewById(R.id.activateButton);
 

@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/routine_layout">
+    android:id="@+id/exercise_layout">
 
 <!--    <Button-->
 <!--        android:id="@+id/details_button"-->
@@ -17,8 +17,7 @@
         android:layout_height="80dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginTop="10dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/blue"
         >
@@ -31,11 +30,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="22dp"
-                android:text="Routine Name"
+                android:text="Exercise Name"
                 android:textColor="#FFF"
                 android:textSize="18dp" />
 
@@ -45,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="55dp"
-                android:text="Routine Name"
+                android:text="Exercise Name"
                 android:textColor="#FFF"
                 android:textSize="14dp" />
 
@@ -53,9 +51,9 @@
                 android:id="@+id/exercise_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
                 android:layout_centerHorizontal="true"
-                android:text="Routine Name"
+                android:layout_marginTop="55dp"
+                android:text="Exercise Name"
                 android:textColor="#FFF"
                 android:textSize="14dp" />
             <TextView
