@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -77,6 +78,10 @@ public class Register extends AppCompatActivity {
                 //binding.result.setText(R.string.loading);
                 break;
             case ERROR:
+                TextView textError = (TextView) findViewById(R.id.showErrorText);
+                if(resource.getError() != null){
+                    textError.setText(R.string.invalidData);
+                }
                 Error error = resource.getError();
                 //String message = getString(R.string.error, error.getDescription(), error.getCode());
                 Log.d("UI", "Error");

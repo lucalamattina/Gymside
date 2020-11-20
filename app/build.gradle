@@ -71,4 +71,7 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
+    //youtube back button bottom navigation behaviour
+    implementation 'com.github.lndmflngs:memorizing-pager:2.0.5'
+
 }

@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.gymside.api.model.Error;
@@ -45,8 +47,20 @@ public class Favourites extends AppCompatActivity {
                         return true;
                     case R.id.favourites:
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
+            }
+        });
+
+        Button detailsButton = (Button) findViewById(R.id.detailsFav);
+        detailsButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getApplicationContext(), RoutineDetails.class), 1);
+                //startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
+                overridePendingTransition(0,0);
             }
         });
 
@@ -98,7 +112,28 @@ public class Favourites extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+        bottomNavigationView.getMenu().findItem(R.id.favourites).setChecked(true);
     }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.home != selectedItemId) {
+            setHomeItem(Favourites.this);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static void setHomeItem(Activity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
+
+
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {
             case LOADING:

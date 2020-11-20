@@ -13,6 +13,7 @@
     <string name="signup">Signup</string>
     <string name="login">Login</string>
     <string name="cancel">Cancel</string>
+    <string name="accept">Accept</string>
     <string name="register">Register</string>
     <string name="email">Email</string>
     <string name="gymside">Gymside</string>
@@ -40,6 +41,8 @@
     <string name="code">Code</string>
     <string name="verifyTittle">Upload the code you received at your email to verify your account</string>
     <string name="createAccount">create Account</string>
+    <string name="submit">Submit</string>
+    <string name="currRating">current rating is: </string>
     <string name="buttonSave">Save</string>
     <string name="verify_email">Verify Email</string>
     <string name="delete_user">Delete User</string>
@@ -49,4 +52,11 @@
     <string name="category_label">Category: </string>
     <string name="detail_label">Detail: </string>
     <string name="rating_label">Rating: </string>
+    <string name="invalidData">Invalid Data</string>
+    <string name="modifyYourUsername">Modify your username</string>
+    <string name="modifyYourName">Modify your name</string>
+    <string name="deleteUserQuestion">Are you sure you want to delete your account?</string>
+    <string name="modifyUsernameTittle">Modify your username</string>
+    <string name="modifyNameTittle">Modify your name</string>
+    <string name="enter_new_name">Enter new Name</string>
 </resources>

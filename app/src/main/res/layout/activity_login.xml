@@ -17,9 +17,10 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="72dp"
             android:layout_marginBottom="264dp"
+            android:backgroundTint="#988C8C"
             android:fontFamily="sans-serif-light"
             android:text="@string/login"
-            android:textColor="#B1A6A6"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -92,12 +93,25 @@
             app:layout_constraintVertical_bias="0.647" />
 
 
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             app:layout_constraintGuide_begin="20dp" />
+
+        <TextView
+            android:id="@+id/textShowError"
+            android:layout_width="123dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginBottom="336dp"
+            android:textColor="#FF0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+           />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

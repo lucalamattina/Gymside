@@ -124,5 +124,15 @@
         android:layout_marginBottom="242dp"
         android:text="@string/verify_email" />
 
+    <TextView
+        android:id="@+id/showErrorText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="319dp"
+        android:textColor="#FF0000" />
+
 
 </RelativeLayout>

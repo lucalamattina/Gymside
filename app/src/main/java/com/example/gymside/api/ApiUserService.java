@@ -10,6 +10,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 public interface ApiUserService {
     @POST("user/login")
@@ -29,4 +30,7 @@ public interface ApiUserService {
 
     @GET("user/current")
     LiveData<ApiResponse<User>> getCurrentUser();
+
+    @PUT("user/current")
+        LiveData<ApiResponse<Void>> modifyUser(@Body Credentials credentials);
 }
