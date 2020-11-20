@@ -24,6 +24,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Routine;
+import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
@@ -87,6 +88,23 @@ public class RoutineDetails extends AppCompatActivity {
                 }
             });
         }
+
+        name.setText(extras.get("ROUTINE_NAME").toString());
+        rating.setText(extras.get("ROUTINE_RATING").toString());
+        detail.setText(extras.get("ROUTINE_DETAIL").toString());
+        category.setText(extras.get("ROUTINE_CATEGORY").toString());
+
+        exerciseApi.getExercises(1).observe(this, r->{
+            switch (r.getStatus()) {
+                case SUCCESS:
+                    Log.d("UI", "Success");
+                    category.setText(r.getData().getResults().get(0).getName());
+                    break;
+                default:
+                    defaultResourceHandler(r);
+                    break;
+            }
+        });
 
         rateButton = (Button) findViewById(R.id.rate);
 

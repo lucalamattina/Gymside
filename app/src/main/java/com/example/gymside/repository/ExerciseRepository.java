@@ -23,16 +23,16 @@ public class ExerciseRepository {
     private LiveData<List<Exercise>> exercises;
 
     public ExerciseRepository(Context context){
-        this.apiService = ApiClient.create(context,ApiExerciseService.class);
+        this.apiService = ApiClient.create(context, ApiExerciseService.class);
     }
 
-    public LiveData<Resource<PagedList<Exercise>>> getExercises(int routineId, int cycleId) {
+    public LiveData<Resource<PagedList<Exercise>>> getExercises(int routineId) {
         return new NetworkBoundResource<PagedList<Exercise>, PagedList<Exercise>>()
         {
             @NonNull
             @Override
             protected LiveData<ApiResponse<PagedList<Exercise>>> createCall() {
-                return apiService.getExercises(routineId, cycleId);
+                return apiService.getExercises(routineId);
             }
         }.asLiveData();
     }
