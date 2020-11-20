@@ -23,7 +23,7 @@ public interface ApiRoutineService {
     LiveData<ApiResponse<Routine>> getRoutine(@Path("routineId") int routineId);
 
     @POST("routines/{routineId}/executions")
-    LiveData<ApiResponse<Sport>> addExecution(@Body Execution execution);
+    LiveData<ApiResponse<Routine>> addExecution(@Path("routineId") int routineId, @Body Execution execution);
 
     @PUT("routines/{routineId}")
     LiveData<ApiResponse<Routine>> modifyRoutine(@Path("routineId") int routineId, @Body Routine routine);

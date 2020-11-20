@@ -10,6 +10,7 @@ import androidx.room.Room;
 import com.example.gymside.api.ApiClient;
 import com.example.gymside.api.ApiResponse;
 import com.example.gymside.api.ApiRoutineService;
+import com.example.gymside.api.model.Execution;
 import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.db.MyDatabase;
@@ -71,13 +72,24 @@ public class RoutineRepository {
         }.asLiveData();
     }
 
-    public LiveData<Resource<Routine>> addSport(Routine routine) {
+    public LiveData<Resource<Routine>> addRoutine(Routine routine) {
         return new NetworkBoundResource<Routine, Routine>()
         {
             @NonNull
             @Override
             protected LiveData<ApiResponse<Routine>> createCall() {
                 return apiService.addRoutine(routine);
+            }
+        }.asLiveData();
+    }
+
+    public LiveData<Resource<Routine>> createExecution(int routineId, Execution execution) {
+        return new NetworkBoundResource<Routine, Routine>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Routine>> createCall() {
+                return apiService.addExecution(routineId, execution);
             }
         }.asLiveData();
     }
