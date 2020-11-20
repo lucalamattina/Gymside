@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Routine {
 
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -14,11 +17,14 @@ public class Routine {
     @SerializedName("isPublic")
     @Expose
     private boolean isPublic;
+    @SerializedName("averageRating")
+    @Expose
+    private Float averageRating;
     @SerializedName("difficulty")
     @Expose
     private String difficulty;
     @SerializedName("category")
-    @Expose
+    @Expose(serialize = false)
     private Category category;
 
     /**
@@ -34,13 +40,18 @@ public class Routine {
      * @param detail
      * @param category
      */
-    public Routine(String name, String detail, boolean isPublic, String difficulty, Category category) {
+    public Routine(Integer id, String name, String detail, boolean isPublic, String difficulty, Category category) {
         super();
+        this.id = id;
         this.name = name;
         this.detail = detail;
         this.isPublic = isPublic;
         this.difficulty = difficulty;
         this.category = category;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getName() {
@@ -71,6 +82,10 @@ public class Routine {
         return difficulty;
     }
 
+    public Float getRating() {
+        return averageRating;
+    }
+
     public void setDifficulty(String difficulty) {
         this.difficulty = difficulty;
     }
@@ -82,4 +97,6 @@ public class Routine {
     public void setCategory(Category category) {
         this.category = category;
     }
+
+
 }

@@ -42,4 +42,10 @@
     <string name="createAccount">create Account</string>
     <string name="submit">Submit</string>
     <string name="currRating">current rating is: </string>
+    <string name="buttonSave">Save</string>
+    <string name="verify_email">Verify Email</string>
+    <string name="delete_user">Delete User</string>
+    <string name="showAboutMe">About me</string>
+    <string name="showFullName">Fullname</string>
+    <string name="run_routine">START ROUTINE</string>
 </resources>

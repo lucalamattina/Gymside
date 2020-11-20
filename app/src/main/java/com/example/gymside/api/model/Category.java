@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName;
 
 public class Category {
 
+    @SerializedName("id")
+    @Expose
+    private Integer id;
     @SerializedName("name")
     @Expose
     private String name;
@@ -24,8 +27,9 @@ public class Category {
      * @param name
      * @param detail
      */
-    public Category(String name, String detail) {
+    public Category(Integer id, String name, String detail) {
         super();
+        this.id = id;
         this.name = name;
         this.detail = detail;
     }

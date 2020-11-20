@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity {
     Sport sport;
     EditText editUsername, editPassword;
     TextView result;
-    Button buttonCheck;
-    String username;
-    String password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         editUsername  = (EditText) findViewById(R.id.edituser);
         editPassword = (EditText) findViewById(R.id.editpass);
         result = (TextView) findViewById(R.id.tvShow);
+<<<<<<< HEAD
         buttonCheck = (Button) findViewById(R.id.buttonCheck);
 
 
@@ -88,9 +86,10 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
 //set the spinners adapter to the previously created one.
         dropdown.setAdapter(adapter);
+=======
+>>>>>>> 1ac65bbc4cebb4561e5a533db5366c879d26b28b
 
         //Initialize And Assign Variable
-
 
         Button loginView = findViewById(R.id.loginViewButton);
         loginView.setOnClickListener((view -> {
@@ -129,8 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
 
         binding.loginButton.setOnClickListener(v->{
-
-            Credentials credentials = new Credentials(username, password);
+            String name = editUsername.getText().toString();
+            String pass = editPassword.getText().toString();
+            Credentials credentials = new Credentials(name, pass);
             MyApplication app = (MyApplication) getApplication();
             app.getUserRepository().login(credentials).observe(this,r -> {
                 switch (r.getStatus()) {
@@ -229,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+<<<<<<< HEAD
 
     private void savePass(String user, String pass){
         this.username = user;
@@ -253,4 +254,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+=======
+>>>>>>> 1ac65bbc4cebb4561e5a533db5366c879d26b28b
 }

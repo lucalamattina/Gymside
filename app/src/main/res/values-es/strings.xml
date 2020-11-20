@@ -26,7 +26,7 @@
     <string name="avatar2">avatar</string>
     <string name="avatarr">TODO</string>
     <string name="showProfileGender">TextView</string>
-    <string name="gender">Genero:</string>
+    <string name="gender">Genero</string>
     <string name="time">Tiempo</string>
     <string name="interval">Intervalo</string>
     <string name="default_interval">Intervalo por default</string>
@@ -43,4 +43,10 @@
     <string name="createAccount">Crear Cuenta</string>
     <string name="submit">Enviar</string>
     <string name="currRating">puntuaje actual es: </string>
+    <string name="buttonSave">Guardar</string>
+    <string name="verify_email">Verificá tu cuenta</string>
+    <string name="delete_user">Borrar Usuario</string>
+    <string name="showAboutMe">Acerca de mi</string>
+    <string name="showFullName">Nombre</string>
+    <string name="run_routine">INICIAR RUTINA</string>
 </resources>

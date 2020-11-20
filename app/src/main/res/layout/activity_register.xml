@@ -11,13 +11,13 @@
     <Button
         android:id="@+id/createAccount"
         android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_height="70dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="430dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="242dp"
+        android:layout_marginTop="424dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="237dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/createAccount"
         android:textStyle="bold"
@@ -55,19 +55,20 @@
         android:inputType="textPassword"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:text="@string/password" />
+        android:text="@string/password"
+        android:drawableEnd="@drawable/baseline_lock_blackk_18dp"/>
 
     <Button
         android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="429dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="514dp"
         android:layout_marginEnd="26dp"
-        android:layout_marginBottom="238dp"
+        android:layout_marginBottom="166dp"
         android:layout_toStartOf="@+id/buttonRegister"
         android:fontFamily="sans-serif-light"
         android:text="@string/cancel"
@@ -89,6 +90,7 @@
         android:inputType="text"
         android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:drawableEnd="@drawable/baseline_person_blackk_18dp"
         android:text="@string/username" />
 
     <EditText
@@ -105,6 +107,22 @@
         android:fontFamily="sans-serif-light"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:text="@string/email" />
+        android:text="@string/email"
+        android:drawableEnd="@drawable/baseline_email_blackk_18dp"/>
+
+    <Button
+        android:id="@+id/verifyView"
+        android:layout_width="wrap_content"
+        android:layout_height="67dp"
+        android:layout_below="@+id/emailRegister"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="62dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="214dp"
+        android:layout_marginBottom="242dp"
+        android:text="@string/verify_email" />
+
 
 </RelativeLayout>
