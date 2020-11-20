@@ -17,6 +17,9 @@ public class Routine {
     @SerializedName("isPublic")
     @Expose
     private boolean isPublic;
+    @SerializedName("averageRating")
+    @Expose
+    private Float averageRating;
     @SerializedName("difficulty")
     @Expose
     private String difficulty;
@@ -77,6 +80,10 @@ public class Routine {
 
     public String getDifficulty() {
         return difficulty;
+    }
+
+    public Float getRating() {
+        return averageRating;
     }
 
     public void setDifficulty(String difficulty) {

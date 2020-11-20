@@ -52,6 +52,9 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
         api = MyApplication.getRoutineRepository();
         Log.d("UI", "holis");
         holder.routine_name.setText(routines.get(position).getName());
+        holder.routine_difficulty.setText(routines.get(position).getDifficulty());
+        holder.routine_category.setText(routines.get(position).getCategory().getName());
+        holder.routine_rating.setText(Float.toString(routines.get(position).getRating()));
         holder.routinesLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +79,9 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
     public class RoutinesViewHolder extends RecyclerView.ViewHolder{
 
         TextView routine_name;
+        TextView routine_difficulty;
+        TextView routine_category;
+        TextView routine_rating;
         RelativeLayout routinesLayout;
         //Button activateB;
 
@@ -83,6 +89,9 @@ public class RoutinesRVA extends RecyclerView.Adapter<com.example.gymside.ui.Rou
             super(itemView);
 //            routine_image = itemView.findViewById(R.id.routine_image);
             routine_name = itemView.findViewById(R.id.routine_name);
+            routine_difficulty = itemView.findViewById(R.id.routine_difficulty);
+            routine_category = itemView.findViewById(R.id.routine_category);
+            routine_rating = itemView.findViewById(R.id.routine_rating);
             routinesLayout = itemView.findViewById(R.id.routine_layout);
 //            activateB = itemView.findViewById(R.id.activateButton);
 
