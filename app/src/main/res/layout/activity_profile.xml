@@ -197,8 +197,18 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="118dp"
         android:layout_marginBottom="106dp"
+        android:backgroundTint="@color/orange"
         android:drawableEnd="@android:drawable/ic_menu_delete"
         android:text="@string/delete_user" />
+
+    <EditText
+        android:id="@+id/enterNewName"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="500dp"
+        android:hint="Name"
+        android:text="@string/enter_new_name" />
 
 
 </RelativeLayout>

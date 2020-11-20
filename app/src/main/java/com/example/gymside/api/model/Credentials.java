@@ -39,6 +39,14 @@ public class Credentials {
         this.gender = gender;
     }
 
+    public Credentials(String username, String fullName, String email, int birthdate, String gender) {
+        this.username = username;
+        this.fullName = fullName;
+        this.email = email;
+        this.birthdate = birthdate;
+        this.gender = gender;
+    }
+
     public Credentials(String email, String code, String codeaux) {
         this.email = email;
         this.code = code;
