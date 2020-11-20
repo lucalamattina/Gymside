@@ -112,10 +112,13 @@ public class RoutineDetails extends AppCompatActivity {
 
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
 
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
+                if(text.equals("r")) {
                     String textToPass = "r";
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
@@ -124,7 +127,7 @@ public class RoutineDetails extends AppCompatActivity {
 
                     //startActivity(new Intent(RoutineDetails.this, Rate.class));
                 }
-                if(getCallingActivity().getClassName().equals("com.example.gymside.Favourites")){
+                if(text.equals("f")){
                     String textToPass = "f";
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
@@ -188,20 +191,22 @@ public class RoutineDetails extends AppCompatActivity {
         }); //closing the setOnClickListener method
 
 
-
-
-        if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
+        if(text.equals("r")) {
             bottomNavigationView.getMenu().getItem(0).setChecked(false);
             bottomNavigationView.getMenu().getItem(2).setChecked(false);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
         }
-        if(getCallingActivity().getClassName().equals("com.example.gymside.Favourites")){
-            bottomNavigationView.getMenu().getItem(0).setChecked(false);
-            bottomNavigationView.getMenu().getItem(1).setChecked(false);
-            bottomNavigationView.getMenu().getItem(2).setChecked(true);
 
-
-        }
+        //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
+            //bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(2).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(1).setChecked(true);
+        //}
+        //if(getCallingActivity().getClassName().equals("com.example.gymside.Favourites")){
+            //bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(1).setChecked(false);
+            //bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        //}
     }
 
     private void defaultResourceHandler(Resource<?> resource) {

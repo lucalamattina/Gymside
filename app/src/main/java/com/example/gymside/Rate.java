@@ -30,7 +30,6 @@ public class Rate extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         //Initialize And Assign Variable
-        String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Perform ItemSelectedListener

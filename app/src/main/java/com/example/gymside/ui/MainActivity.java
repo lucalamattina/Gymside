@@ -62,32 +62,6 @@ public class MainActivity extends AppCompatActivity {
         editUsername  = (EditText) findViewById(R.id.edituser);
         editPassword = (EditText) findViewById(R.id.editpass);
         result = (TextView) findViewById(R.id.tvShow);
-<<<<<<< HEAD
-        buttonCheck = (Button) findViewById(R.id.buttonCheck);
-
-
-
-        buttonCheck.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = editUsername.getText().toString();
-                String pass = editPassword.getText().toString();
-                savePass(name, pass);
-                result.setText("Name: "+ name + "\npass: " + pass);
-            }
-        });
-
-        //get the spinner from the xml.
-        Spinner dropdown = findViewById(R.id.spinner1);
-//create a list of items for the spinner.
-        String[] items = new String[]{"1", "2", "three"};
-//create an adapter to describe how the items are displayed, adapters are used in several places in android.
-//There are multiple variations of this, but this is the basic variant.
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-//set the spinners adapter to the previously created one.
-        dropdown.setAdapter(adapter);
-=======
->>>>>>> 1ac65bbc4cebb4561e5a533db5366c879d26b28b
 
         //Initialize And Assign Variable
 
@@ -118,14 +92,10 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
-                    default:
-                        return false;
                 }
-                //return false;
+                return false;
             }
         });
-
-
 
         binding.loginButton.setOnClickListener(v->{
             String name = editUsername.getText().toString();
@@ -213,7 +183,6 @@ public class MainActivity extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
-        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
     }
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {
@@ -228,12 +197,6 @@ public class MainActivity extends AppCompatActivity {
                 //binding.result.setText(message);
                 break;
         }
-    }
-<<<<<<< HEAD
-
-    private void savePass(String user, String pass){
-        this.username = user;
-        this.password = pass;
     }
 
     @Override
@@ -252,8 +215,4 @@ public class MainActivity extends AppCompatActivity {
                 activity.findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
-
-
-=======
->>>>>>> 1ac65bbc4cebb4561e5a533db5366c879d26b28b
 }
