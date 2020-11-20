@@ -3,25 +3,38 @@ package com.example.gymside;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
+import androidx.core.content.ContextCompat;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.ToggleButton;
 
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Routines extends AppCompatActivity {
-
+    Button myButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_routines);
 
         //Initialize And Assign Variable
+
+        myButton = (Button) findViewById(R.id.details_button);
+
+        myButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Routines.this, RoutineDetails.class));
+            }
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -43,10 +56,14 @@ public class Routines extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
             }
         });
+
+
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -89,9 +106,28 @@ public class Routines extends AppCompatActivity {
         detailsButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
+                startActivityForResult(new Intent(getApplicationContext(), RoutineDetails.class), 1);
+                //startActivity(new Intent(getApplicationContext(), RoutineDetails.class));
                 overridePendingTransition(0,0);
             }
         });
+        bottomNavigationView.getMenu().findItem(R.id.routines).setChecked(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.home != selectedItemId) {
+            setHomeItem(Routines.this);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static void setHomeItem(Activity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }

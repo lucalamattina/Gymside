@@ -6,6 +6,7 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.room.Room;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         result = (TextView) findViewById(R.id.tvShow);
         buttonCheck = (Button) findViewById(R.id.buttonCheck);
 
+
+
         buttonCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,10 +119,14 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
             }
         });
+
+
 
         binding.loginButton.setOnClickListener(v->{
 
@@ -206,6 +213,7 @@ public class MainActivity extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+        bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
     }
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {
@@ -226,4 +234,23 @@ public class MainActivity extends AppCompatActivity {
         this.username = user;
         this.password = pass;
     }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.home != selectedItemId) {
+            setHomeItem(MainActivity.this);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    public static void setHomeItem(Activity activity) {
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                activity.findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
+
 }

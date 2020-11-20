@@ -1,6 +1,8 @@
 package com.example.gymside;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -62,10 +64,14 @@ public class Profile extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
             }
         });
+
+
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +109,35 @@ public class Profile extends AppCompatActivity {
                 popup.show(); //showing popup menu
             }
         }); //closing the setOnClickListener method
+
+
+
+        changeMenuItemCheckedStateColor(bottomNavigationView, "#FFFFFF", "#FFFFFF");
+
     }
+
+    private void changeMenuItemCheckedStateColor(BottomNavigationView bottomNavigationView, String checkedColorHex, String uncheckedColorHex) {
+        int checkedColor = Color.parseColor(checkedColorHex);
+        int uncheckedColor = Color.parseColor(uncheckedColorHex);
+
+        int[][] states = new int[][] {
+                new int[] {-android.R.attr.state_checked}, // unchecked
+                new int[] {android.R.attr.state_checked}, // checked
+
+        };
+
+        int[] colors = new int[] {
+                uncheckedColor,
+                checkedColor
+        };
+
+        ColorStateList colorStateList = new ColorStateList(states, colors);
+
+        bottomNavigationView.setItemTextColor(colorStateList);
+        bottomNavigationView.setItemIconTintList(colorStateList);
+
+    }
+
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {
             case LOADING:
