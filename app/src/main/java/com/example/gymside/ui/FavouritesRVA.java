@@ -104,10 +104,10 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
         public RoutinesViewHolder(@NonNull View itemView) {
             super(itemView);
 //            routine_image = itemView.findViewById(R.id.routine_image);
-            routine_name = itemView.findViewById(R.id.routine_name);
-            routine_difficulty = itemView.findViewById(R.id.routine_difficulty);
-            routine_category = itemView.findViewById(R.id.routine_category);
-            routine_rating = itemView.findViewById(R.id.routine_rating);
+            routine_name = itemView.findViewById(R.id.exercise_name);
+            routine_difficulty = itemView.findViewById(R.id.exercise_duration);
+            routine_category = itemView.findViewById(R.id.exercise_detail);
+            routine_rating = itemView.findViewById(R.id.exercise_type);
             routinesLayout = itemView.findViewById(R.id.routine_layout);
 //            activateB = itemView.findViewById(R.id.activateButton);
 
