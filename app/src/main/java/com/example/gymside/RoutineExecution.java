@@ -25,7 +25,7 @@ public class RoutineExecution extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         executionApi = MyApplication.getExecutionRepository();
-        routineApi = MyApplication.getRoutineRepository();
+        //routineApi = MyApplication.getRoutineRepository();
 
         binding = ActivityRoutineExecutionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -114,7 +114,7 @@ public class RoutineExecution extends AppCompatActivity {
         binding.addTime.setEnabled(true);*/
 
         binding.start.setOnClickListener(v -> {
-            if(viewModel.getCountDownTimer().getStatus().getValue().toString().equals(' ') || Integer.parseInt(viewModel.getCountDownTimer().getStatus().getValue().toString()) <= 0) {
+            /*if(viewModel.getCountDownTimer().getStatus().getValue().toString().equals(' ') || Integer.parseInt(viewModel.getCountDownTimer().getStatus().getValue().toString()) <= 0) {
                 routineApi.createExecution((Integer) extras.get("ROUTINE_ID"), new ExecutionCreate(Integer.parseInt(viewModel.getCountDownTimer().getStatus().getValue().toString()), false)).observeForever(r -> {
                     switch (r.getStatus()) {
                         case SUCCESS:
@@ -125,7 +125,7 @@ public class RoutineExecution extends AppCompatActivity {
                             break;
                     }
                 });
-            }
+            }*/
             //long time = Integer.parseInt(binding.time.getText().toString()) * 1000;
             //long interval = Integer.parseInt(binding.interval.getText().toString()) * 1000;
 
