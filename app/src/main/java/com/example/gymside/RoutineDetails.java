@@ -203,6 +203,7 @@ public class RoutineDetails extends AppCompatActivity {
                             belongs = true;
                             toggleButton.setChecked(true);
                             toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_full));
+
                         }
                     }
                     if (!belongs) {
