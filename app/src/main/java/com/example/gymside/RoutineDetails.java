@@ -320,11 +320,6 @@ public class RoutineDetails extends AppCompatActivity {
                             overridePendingTransition(0, 0);
                             return true;
                         }
-                        if (item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
-                            startActivity(new Intent(getApplicationContext(), Settings.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-                        }
                         if (item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
                             MyApplication app = (MyApplication) getApplication();
                             app.getUserRepository().logout().observeForever(r -> {
