@@ -92,21 +92,19 @@ public class RoutineDetails extends AppCompatActivity {
                 switch (r.getStatus()){
                     case SUCCESS:
                         cycleId = r.getData().getResults().get(0).getId();
-                        cycleName = r.getData().getResults().get(0).getName();
-                        Log.d("UI", cycleName);
-                        break;
-                    default:
-                        defaultResourceHandler(r);
-                        break;
-                }
-            });
-        }
-        if(extras.get("ROUTINE_ID") != null) {
-            exerciseApi.getExercises(routineId, cycleId).observe(this, r -> {
-                switch (r.getStatus()) {
-                    case SUCCESS:
-                        Log.d("UI", "Success");
-                        category.setText(r.getData().getResults().get(0).getName());
+                        if(extras.get("ROUTINE_ID") != null) {
+                            exerciseApi.getExercises(routineId, cycleId).observe(this, resp -> {
+                                switch (resp.getStatus()) {
+                                    case SUCCESS:
+                                        Log.d("UI", "Success");
+                                        category.setText(resp.getData().getResults().get(0).getName());
+                                        break;
+                                    default:
+                                        defaultResourceHandler(resp);
+                                        break;
+                                }
+                            });
+                        }
                         break;
                     default:
                         defaultResourceHandler(r);
@@ -137,24 +135,23 @@ public class RoutineDetails extends AppCompatActivity {
             switch (r.getStatus()){
                 case SUCCESS:
                     cycleId = r.getData().getResults().get(0).getId();
-                    break;
-                default:
-                    defaultResourceHandler(r);
-                    break;
-            }
-        });
-
-        exerciseApi.getExercises(routineId, cycleId).observeForever(r->{
-            switch (r.getStatus()) {
-                case SUCCESS:
-                    Log.d("UI", "Success");
-                    assert r.getData() != null;
-                    this.exercises.addAll(r.getData().getResults());
-                    RecyclerView recyclerView = findViewById(R.id.recycler_view2);
-                    ExercisesRVA adapter = new ExercisesRVA(this, this.exercises);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    Log.d("UI", "adentro de la api: "+Integer.toString(exercises.size()));
+                    exerciseApi.getExercises(routineId, cycleId).observeForever(resp->{
+                        switch (resp.getStatus()) {
+                            case SUCCESS:
+                                Log.d("UI", "Success");
+                                assert resp.getData() != null;
+                                this.exercises.addAll(resp.getData().getResults());
+                                RecyclerView recyclerView = findViewById(R.id.recycler_view2);
+                                ExercisesRVA adapter = new ExercisesRVA(this, this.exercises);
+                                recyclerView.setAdapter(adapter);
+                                recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                                Log.d("UI", "adentro de la api: "+Integer.toString(exercises.size()));
+                                break;
+                            default:
+                                defaultResourceHandler(resp);
+                                break;
+                        }
+                    });
                     break;
                 default:
                     defaultResourceHandler(r);
