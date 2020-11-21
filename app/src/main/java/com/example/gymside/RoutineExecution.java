@@ -56,28 +56,12 @@ public class RoutineExecution extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         int routineId = (Integer)extras.get("ROUTINE_ID");
 
-        /*
-        * ------------------------- CODIGO DE ANEXO INFORME -------------------------------------
-        * Caso de uso:
-        * Rutina id 1 con 3 ejecuciones asociadas (id's 1,2,3)
-        * Rutina id 2 con 1 ejecución asociada (id 4)
-        * Rutinas id 3 y 4 sin ejecución asociada
-        *
-        * Resultados:
-        * Rutinas id 1 y 2: en ejecución de código va a defaultResourceHandler con código ERROR
-        * Rutinas id 3 y 4: en ejecución de código accede al fragmento de código deseado
-        * con código SUCCESS.
-        *
-        * Para probar lo encontrado: cambiar línea 75 por lo siguiente:
-        * 'executionApi.getExecution(id_deseada).observeForever(r->{', siendo id_deseada la id que
-        * se desea probar en cuestión
-        -----------------------------------------------------------------------------------------*/
-        executionApi.getExecution(3).observeForever(r->{
+        executionApi.getExecution(1).observeForever(r->{
             switch(r.getStatus()) {
                 case SUCCESS:
                     assert r.getData() != null;
                     //time = r.getData().getResults().get(0).getDuration();
-                    viewModel.getCountDownTimer().start( 30 * 1000, 1000);
+                    viewModel.getCountDownTimer().start( r.getData().getResults().get(0).getDuration() * 1000, 1000);
                     binding.start.setEnabled(false);
                     binding.stop.setEnabled(true);
                     binding.pause.setEnabled(true);

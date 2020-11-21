@@ -13,7 +13,7 @@ public class Execution {
     private int userId;
     @SerializedName("date")
     @Expose
-    private int date;
+    private long date;
     @SerializedName("duration")
     @Expose
     private int duration;
@@ -66,11 +66,11 @@ public class Execution {
         this.userId = userId;
     }
 
-    public int getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(long date) {
         this.date = date;
     }
 
