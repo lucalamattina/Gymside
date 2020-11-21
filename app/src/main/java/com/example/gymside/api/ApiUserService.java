@@ -13,6 +13,7 @@ import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Path;
 
 public interface ApiUserService {
     @POST("user/login")
@@ -38,4 +39,10 @@ public interface ApiUserService {
 
     @GET("user/current/routines/favourites")
     LiveData<ApiResponse<PagedList<Routine>>> getFavourites();
+
+    @POST("user/current/routines/{routineId}/favourites")
+    LiveData<ApiResponse<Void>> postFavourite(@Path("routineId") int routineId);
+
+    @DELETE("user/current/routines/{routineId}/favourites")
+    LiveData<ApiResponse<Void>> deleteFavourite(@Path("routineId") int routineId);
 }

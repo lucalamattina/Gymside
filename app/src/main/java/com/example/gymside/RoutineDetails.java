@@ -1,6 +1,5 @@
 package com.example.gymside;
 
-import android.app.ActivityManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,31 +10,32 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ToggleButton;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Exercise;
+import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Routine;
-import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
+import com.example.gymside.repository.UserRepository;
 import com.example.gymside.ui.ExercisesRVA;
 import com.example.gymside.ui.MainActivity;
-import com.example.gymside.ui.RoutinesRVA;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class RoutineDetails extends AppCompatActivity {
 
@@ -51,6 +51,7 @@ public class RoutineDetails extends AppCompatActivity {
     TextView category;
     Button share;
     private ExerciseRepository exerciseApi;
+    private UserRepository userApi;
     public List<Exercise> exercises = new ArrayList<>();
 
 
@@ -59,6 +60,7 @@ public class RoutineDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         api = MyApplication.getRoutineRepository();
         exerciseApi = MyApplication.getExerciseRepository();
+        userApi = MyApplication.getUserRepository();
         setContentView(R.layout.activity_routines_details);
         name = findViewById(R.id.name);
         rating = findViewById(R.id.rating);
@@ -134,17 +136,53 @@ public class RoutineDetails extends AppCompatActivity {
         rateButton = (Button) findViewById(R.id.rate);
 
 
+        LiveData<Resource<PagedList<Routine>>> favs = this.userApi.getFavourites();
+        LiveData<com.example.gymside.repository.Resource<com.example.gymside.api.model.Routine>> currRoutine = this.api.getRoutine((Integer)extras.get("ROUTINE_ID"));
 
         toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
-        toggleButton.setChecked(false);
         toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorites));
+
+
+
+        userApi.getFavourites().observeForever(r->{
+            switch (r.getStatus()) {
+                case SUCCESS:
+                    Log.d("EntroSuccess", "EntroSuccess");
+                    Boolean belongs = false;
+                    assert r.getData() != null;
+                    for (Routine i : r.getData().getResults()) {
+                        if (i.getId().equals((Integer) extras.get("ROUTINE_ID"))) {
+                            belongs = true;
+                            toggleButton.setChecked(true);
+                            toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_full));
+                        }
+                    }
+                    if (!belongs) {
+                        toggleButton.setChecked(false);
+                        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
+                    }
+                    break;
+                default:
+                    defaultResourceHandler(r);
+                    break;
+            }
+        });
+
+
+
+
+
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked)
-                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_fav_red_full));
-                else
+                if (isChecked) {
+                    toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_full));
+                    userApi.postFavourite((Integer) extras.get("ROUTINE_ID"));
+                }
+                else{
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
+                    userApi.deleteFavourite((Integer) extras.get("ROUTINE_ID"));
+                }
             }
         });
 

@@ -108,4 +108,26 @@ public class UserRepository {
         }.asLiveData();
 
     }
+
+    public LiveData<Resource<Void>> postFavourite(int routine) {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.postFavourite(routine);
+            }
+        }.asLiveData();
+    }
+
+    public LiveData<Resource<Void>> deleteFavourite(int routine) {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.deleteFavourite(routine);
+            }
+        }.asLiveData();
+    }
 }
