@@ -31,11 +31,13 @@ import com.example.gymside.Login;
 import com.example.gymside.MyApplication;
 import com.example.gymside.Profile;
 import com.example.gymside.R;
+import com.example.gymside.Register;
 import com.example.gymside.Routines;
 import com.example.gymside.Settings;
 import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Sport;
+import com.example.gymside.databinding.ActivityLoginBinding;
 import com.example.gymside.databinding.ActivityMainBinding;
 import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.Resource;
@@ -44,11 +46,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    Sport sport;
-    EditText editUsername, editPassword;
-    TextView result;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -59,10 +58,6 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         MyDatabase db = Room.databaseBuilder(getApplicationContext(), MyDatabase.class, "database-name").build();
-
-        editUsername  = (EditText) findViewById(R.id.edituser);
-        editPassword = (EditText) findViewById(R.id.editpass);
-        result = (TextView) findViewById(R.id.tvShow);
 
         //Initialize And Assign Variable
 
@@ -98,55 +93,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        binding.loginButton.setOnClickListener(v->{
-            String name = editUsername.getText().toString();
-            String pass = editPassword.getText().toString();
-            Credentials credentials = new Credentials(name, pass);
-            MyApplication app = (MyApplication) getApplication();
-            app.getUserRepository().login(credentials).observe(this,r -> {
-                switch (r.getStatus()) {
-                    case SUCCESS:
-                        Log.d("UI", "Success");
-                        AppPreferences preferences = new AppPreferences(app);
-                        preferences.setAuthToken(r.getData().getToken());
-                        break;
-                    default:
-                        defaultResourceHandler(r);
-                        break;
-                }
-            });
-        });
-        binding.getSportsButton.setOnClickListener(v->{
-            MyApplication app = ((MyApplication)getApplication());
-            app.getSportRepository().getSports().observe(this,r -> {
-                switch (r.getStatus()) {
-                    case SUCCESS:
-                        Log.d("UI", "Success");
-                        int count = r.getData().getResults().size();
-                        //String message = getResources().getQuantityString(R.plurals.found, count, count);
-                        //binding.result.setText(message);
-                        break;
-                    default:
-                        defaultResourceHandler(r);
-                        break;
-                }
-            });
-        });
-
-        binding.logoutButton.setOnClickListener(v->{
-            MyApplication app = (MyApplication) getApplication();
-            app.getUserRepository().logout().observe(this,r -> {
-                switch (r.getStatus()) {
-                    case SUCCESS:
-                        Log.d("UI", "Success");
-                        AppPreferences preferences = new AppPreferences(app);
-                        break;
-                    default:
-                        defaultResourceHandler(r);
-                        break;
-                }
-            });
-        });
 
         ImageButton profileButton = (ImageButton) findViewById(R.id.profileButton);
         profileButton.setOnClickListener(new View.OnClickListener() {
@@ -215,5 +161,70 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 activity.findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
+    }*/
+
+
+    EditText editUsername, editPassword;
+    String username;
+    String password;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+
+        setContentView(binding.getRoot());
+
+        editUsername  = (EditText) findViewById(R.id.username);
+        editPassword = (EditText) findViewById(R.id.password);
+
+        Button signUpButton = findViewById(R.id.signupButtonn);
+        signUpButton.setOnClickListener(v->{
+            startActivity(new Intent(getApplicationContext(), Register.class));
+            overridePendingTransition(0, 0);
+        });
+
+        Button loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(v->{
+            String name = editUsername.getText().toString();
+            String pass = editPassword.getText().toString();
+            Credentials credentials = new Credentials(name, pass);
+            MyApplication app = (MyApplication) getApplication();
+            app.getUserRepository().login(credentials).observe(this,r -> {
+                switch (r.getStatus()) {
+                    case SUCCESS:
+                        Log.d("UI", "Success");
+                        AppPreferences preferences = new AppPreferences(app);
+                        preferences.setAuthToken(r.getData().getToken());
+                        startActivity(new Intent(getApplicationContext(), Login.class));
+                        overridePendingTransition(0,0);
+
+                        break;
+                    default:
+                        defaultResourceHandler(r);
+                        break;
+                }
+            });
+        });
+    }
+
+    private void defaultResourceHandler(Resource<?> resource) {
+        switch (resource.getStatus()) {
+            case LOADING:
+                Log.d("UI", "Success");
+                //binding.result.setText(R.string.loading);
+                break;
+            case ERROR:
+                TextView textError = (TextView) findViewById(R.id.textShowError);
+                if(resource.getError() != null){
+                    textError.setText(R.string.invalidData);
+                }
+                Error error = resource.getError();
+                //String message = getString(R.string.error, error.getDescription(), error.getCode());
+                Log.d("UI", "Error");
+                //binding.result.setText(message);
+                break;
+        }
     }
 }

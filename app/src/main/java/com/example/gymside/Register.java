@@ -29,8 +29,7 @@ public class Register extends AppCompatActivity {
 
         Button cancelButton = findViewById(R.id.buttonCancel);
         cancelButton.setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(), Login.class));
-            overridePendingTransition(0, 0);
+            finish();
         });
 
         Button verifyView = findViewById(R.id.verifyView);

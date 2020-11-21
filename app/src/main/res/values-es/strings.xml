@@ -43,7 +43,7 @@
     <string name="verifyTittle">Ingresá el código recibido en tu email para verificar la cuenta</string>
     <string name="createAccount">Crear Cuenta</string>
     <string name="submit">Enviar</string>
-    <string name="currRating">puntuaje actual es: </string>
+    <string name="currRating">El puntaje de la rutina es: </string>
     <string name="buttonSave">Guardar</string>
     <string name="verify_email">Verificá tu cuenta</string>
     <string name="delete_user">Borrar Usuario</string>
@@ -62,6 +62,7 @@
     <string name="enter_new_name">Ingresa nuevo nombre</string>
     <string name="share">SHARE</string>
     <string name="filter">Filtrar Por:</string>
+    <string name="homeTittle">¿Por qué entrenar con gymside?</string>
     <string name="difficulty_label">Dificultad:</string>
     <string-array name="filter_by">
         <item value="dateCreated">Fecha de Creacion</item>

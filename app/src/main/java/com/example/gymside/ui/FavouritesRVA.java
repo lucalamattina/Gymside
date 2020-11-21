@@ -37,7 +37,7 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
     private static final String TAG = "FavouritesRVA";
 
     private Context mContext;
-    private UserRepository api;
+    private RoutineRepository api;
     private List<Routine> routines;
 
     public FavouritesRVA(Context context, List<Routine> routines)
@@ -57,7 +57,7 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
 
     @Override
     public void onBindViewHolder(@NonNull RoutinesViewHolder holder, int position) {
-        api = MyApplication.getUserRepository();
+        api = MyApplication.getRoutineRepository();
         holder.routine_name.setText(routines.get(position).getName());
         holder.routine_difficulty.setText(routines.get(position).getDifficulty());
         holder.routine_category.setText(routines.get(position).getCategory().getName());

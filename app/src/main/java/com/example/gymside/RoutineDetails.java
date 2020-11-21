@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.TextView;
 
@@ -24,6 +25,9 @@ import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Exercise;
 import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Routine;
+
+import com.example.gymside.db.MyDatabase;
+import com.example.gymside.repository.CycleRepository;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
@@ -50,8 +54,12 @@ public class RoutineDetails extends AppCompatActivity {
     TextView detail;
     TextView category;
     Button share;
+    int routineId;
+    int cycleId;
+    String cycleName;
     private ExerciseRepository exerciseApi;
     private UserRepository userApi;
+    private CycleRepository cycleApi;
     public List<Exercise> exercises = new ArrayList<>();
 
 
@@ -61,6 +69,7 @@ public class RoutineDetails extends AppCompatActivity {
         api = MyApplication.getRoutineRepository();
         exerciseApi = MyApplication.getExerciseRepository();
         userApi = MyApplication.getUserRepository();
+        cycleApi = MyApplication.getCycleRepository();
         setContentView(R.layout.activity_routines_details);
         name = findViewById(R.id.name);
         rating = findViewById(R.id.rating);
@@ -69,12 +78,13 @@ public class RoutineDetails extends AppCompatActivity {
         share = findViewById(R.id.share_button);
         Button start = findViewById(R.id.playButton);
 
-        start.setOnClickListener(new View.OnClickListener() {
+
+        /*start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //TODO agregar metodo para crear una execution y hacer las pantallas de ejecucion de rutina
             }
-        });
+        });*/
 
         Bundle extras = getIntent().getExtras();
         if(extras.get("ROUTINE_NAME") != null) {
@@ -82,13 +92,29 @@ public class RoutineDetails extends AppCompatActivity {
             rating.setText(extras.get("ROUTINE_RATING").toString());
             detail.setText(extras.get("ROUTINE_DETAIL").toString());
             category.setText(extras.get("ROUTINE_CATEGORY").toString());
-        }
-        if(extras.get("ROUTINE_ID") != null) {
-            exerciseApi.getExercises((Integer) extras.get("ROUTINE_ID")).observe(this, r -> {
-                switch (r.getStatus()) {
+            routineId = (Integer)extras.get("ROUTINE_ID");
+            cycleApi.getCycles(routineId).observeForever( r->{
+                switch (r.getStatus()){
                     case SUCCESS:
-                        Log.d("UI", "Success");
-                        category.setText(r.getData().getResults().get(0).getName());
+                        if(r.getData().getResults().size() != 0){
+                            cycleId = r.getData().getResults().get(0).getId();
+                            if(extras.get("ROUTINE_ID") != null) {
+                                exerciseApi.getExercises(routineId, cycleId).observeForever(resp -> {
+                                    switch (resp.getStatus()) {
+                                        case SUCCESS:
+                                            Log.d("UI", "Success");
+                                            assert resp.getData() != null;
+                                            if(resp.getData().getResults() != null && !resp.getData().getResults().isEmpty()) {
+                                                category.setText(resp.getData().getResults().get(0).getName());
+                                            }
+                                            break;
+                                        default:
+                                            defaultResourceHandler(resp);
+                                            break;
+                                    }
+                                });
+                            }
+                        }
                         break;
                     default:
                         defaultResourceHandler(r);
@@ -96,6 +122,15 @@ public class RoutineDetails extends AppCompatActivity {
                 }
             });
         }
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RoutineDetails.class);
+                intent.putExtra("ROUTINE_ID", routineId);
+                startActivity(intent, new Bundle());
+            }
+        });
 
         share.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,28 +145,40 @@ public class RoutineDetails extends AppCompatActivity {
             }
         });
 
-        name.setText(extras.get("ROUTINE_NAME").toString());
+        /*name.setText(extras.get("ROUTINE_NAME").toString());
         rating.setText(extras.get("ROUTINE_RATING").toString());
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
-
-        exerciseApi.getExercises((Integer)extras.get("ROUTINE_ID")).observeForever(r->{
-            switch (r.getStatus()) {
+        routineId = (Integer)extras.get("ROUTINE_ID");
+        cycleApi.getCycles(routineId).observeForever( r->{
+            switch (r.getStatus()){
                 case SUCCESS:
-                    Log.d("UI", "Success");
-                    assert r.getData() != null;
-                    this.exercises.addAll(r.getData().getResults());
-                    RecyclerView recyclerView = findViewById(R.id.recycler_view2);
-                    ExercisesRVA adapter = new ExercisesRVA(this, this.exercises);
-                    recyclerView.setAdapter(adapter);
-                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-                    Log.d("UI", "adentro de la api: "+Integer.toString(exercises.size()));
+                    if(r.getData().getResults().size() != 0){
+                        cycleId = r.getData().getResults().get(0).getId();
+                        exerciseApi.getExercises(routineId, cycleId).observeForever(resp->{
+                            switch (resp.getStatus()) {
+                                case SUCCESS:
+                                    Log.d("UI", "Success");
+                                    assert resp.getData() != null;
+                                    this.exercises.addAll(resp.getData().getResults());
+                                    RecyclerView recyclerView = findViewById(R.id.recycler_view2);
+                                    ExercisesRVA adapter = new ExercisesRVA(this, this.exercises);
+                                    recyclerView.setAdapter(adapter);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                                    Log.d("UI", "adentro de la api: "+Integer.toString(exercises.size()));
+                                    break;
+                                default:
+                                    defaultResourceHandler(resp);
+                                    break;
+                            }
+                        });
+                    }
                     break;
                 default:
                     defaultResourceHandler(r);
                     break;
             }
-        });
+        });*/
 
         rateButton = (Button) findViewById(R.id.rate);
 
@@ -140,6 +187,7 @@ public class RoutineDetails extends AppCompatActivity {
         LiveData<com.example.gymside.repository.Resource<com.example.gymside.api.model.Routine>> currRoutine = this.api.getRoutine((Integer)extras.get("ROUTINE_ID"));
 
         toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
+
         toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorites));
 
 
@@ -167,10 +215,6 @@ public class RoutineDetails extends AppCompatActivity {
                     break;
             }
         });
-
-
-
-
 
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -228,7 +272,10 @@ public class RoutineDetails extends AppCompatActivity {
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
                     intent.putExtra(Intent.EXTRA_TEXT, textToPass);
-                    startActivity(intent);
+                    intent.putExtra("ROUTINE_RATING", extras.get("ROUTINE_RATING").toString());
+                    intent.putExtra("ROUTINE_ID", extras.get("ROUTINE_ID").toString());
+
+                    startActivityForResult(intent,1);
 
                     //startActivity(new Intent(RoutineDetails.this, Rate.class));
                 }
@@ -237,7 +284,9 @@ public class RoutineDetails extends AppCompatActivity {
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
                     intent.putExtra(Intent.EXTRA_TEXT, textToPass);
-                    startActivity(intent);
+                    intent.putExtra("ROUTINE_RATING", extras.get("ROUTINE_RATING").toString());
+                    intent.putExtra("ROUTINE_ID", extras.get("ROUTINE_ID").toString());
+                    startActivityForResult(intent,1);
 
                     //startActivity(new Intent(RoutineDetails.this, Rate.class));
                 }
@@ -276,7 +325,7 @@ public class RoutineDetails extends AppCompatActivity {
                                     case SUCCESS:
                                         Log.d("UI", "Success");
                                         AppPreferences preferences = new AppPreferences(app);
-                                        startActivity(new Intent(getApplicationContext(), Login.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                         overridePendingTransition(0, 0);
                                         break;
                                     default:
@@ -311,13 +360,14 @@ public class RoutineDetails extends AppCompatActivity {
         handleIntent(appLinkIntent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);
-
-
-
         //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
             //bottomNavigationView.getMenu().getItem(0).setChecked(false);
             //bottomNavigationView.getMenu().getItem(2).setChecked(false);
