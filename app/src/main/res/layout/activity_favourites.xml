@@ -47,23 +47,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/favourites"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
-
-
-
-
-
-
-
-
-
-    <RelativeLayout>
+    <RelativeLayout android:layout_height="match_parent" android:layout_marginTop="55dp" android:layout_width="match_parent">
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"

@@ -62,6 +62,7 @@
     <string name="share">SHARE</string>
     <string name="filter">Filter By:</string>
     <string name="homeTittle">Why gymside?</string>
+    <string name="difficulty_label">Difficulty:</string>
     <string-array name="filter_by">
         <item>Date Created</item>
         <item>Average Rating</item>

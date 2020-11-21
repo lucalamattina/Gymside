@@ -305,7 +305,6 @@ public class RoutineDetails extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);
-
         //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
             //bottomNavigationView.getMenu().getItem(0).setChecked(false);
             //bottomNavigationView.getMenu().getItem(2).setChecked(false);

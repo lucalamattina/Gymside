@@ -72,6 +72,7 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
                 intent.putExtra("ROUTINE_RATING", routines.get(position).getRating());
                 intent.putExtra("ROUTINE_DIFFICULTY", routines.get(position).getDifficulty());
                 intent.putExtra("ROUTINE_CATEGORY", routines.get(position).getCategory().getName());
+                intent.putExtra("ROUTINE_ID", routines.get(position).getId());
                 String textToPass = "f";
                 intent.putExtra(Intent.EXTRA_TEXT, textToPass);
                 startActivity(mContext, intent ,new Bundle());
@@ -98,6 +99,7 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
         TextView routine_difficulty;
         TextView routine_category;
         TextView routine_rating;
+        TextView routine_body;
         RelativeLayout routinesLayout;
         //Button activateB;
 
