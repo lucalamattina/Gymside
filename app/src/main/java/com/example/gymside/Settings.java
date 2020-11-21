@@ -39,7 +39,7 @@ public class Settings extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Login.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.routines:
@@ -90,7 +90,7 @@ public class Settings extends AppCompatActivity {
                                     case SUCCESS:
                                         Log.d("UI", "Success");
                                         AppPreferences preferences = new AppPreferences(app);
-                                        startActivity(new Intent(getApplicationContext(), Login.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                         overridePendingTransition(0, 0);
                                         break;
                                     default:
