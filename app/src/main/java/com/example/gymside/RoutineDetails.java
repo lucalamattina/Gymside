@@ -61,6 +61,7 @@ public class RoutineDetails extends AppCompatActivity {
     private UserRepository userApi;
     private CycleRepository cycleApi;
     public List<Exercise> exercises = new ArrayList<>();
+    String text;
 
 
     @Override
@@ -222,11 +223,17 @@ public class RoutineDetails extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_full));
-                    userApi.postFavourite((Integer) extras.get("ROUTINE_ID"));
+                    userApi.postFavourite((Integer) extras.get("ROUTINE_ID")).observeForever(r->{
+
+                    });
+                    Log.d("UI","agregado paaaaaaaa");
                 }
                 else{
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
-                    userApi.deleteFavourite((Integer) extras.get("ROUTINE_ID"));
+                    userApi.deleteFavourite((Integer) extras.get("ROUTINE_ID")).observeForever(r->{
+
+                    });
+                    Log.d("UI","removido paaaaaaa");
                 }
             }
         });
@@ -263,7 +270,7 @@ public class RoutineDetails extends AppCompatActivity {
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+        text = intent.getStringExtra(Intent.EXTRA_TEXT);
 
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -364,6 +371,11 @@ public class RoutineDetails extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, text.equals("r") ? Routines.class : Favourites.class));
     }
 
     protected void onNewIntent(Intent intent) {
