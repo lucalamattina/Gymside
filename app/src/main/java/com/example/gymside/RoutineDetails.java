@@ -146,7 +146,7 @@ public class RoutineDetails extends AppCompatActivity {
             }
         });
 
-        /*name.setText(extras.get("ROUTINE_NAME").toString());
+        name.setText(extras.get("ROUTINE_NAME").toString());
         rating.setText(extras.get("ROUTINE_RATING").toString());
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
@@ -179,7 +179,7 @@ public class RoutineDetails extends AppCompatActivity {
                     defaultResourceHandler(r);
                     break;
             }
-        });*/
+        });
 
         rateButton = (Button) findViewById(R.id.rate);
 
