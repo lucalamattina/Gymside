@@ -63,6 +63,7 @@
     <string name="share">SHARE</string>
     <string name="filter">Filtrar Por:</string>
     <string name="homeTittle">¿Por qué entrenar con gymside?</string>
+    <string name="difficulty_label">Dificultad:</string>
     <string-array name="filter_by">
         <item value="dateCreated">Fecha de Creacion</item>
         <item value="averageRating">Puntaje Promedio</item>

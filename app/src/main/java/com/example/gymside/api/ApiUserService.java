@@ -3,6 +3,8 @@ package com.example.gymside.api;
 import androidx.lifecycle.LiveData;
 
 import com.example.gymside.api.model.Credentials;
+import com.example.gymside.api.model.PagedList;
+import com.example.gymside.api.model.Routine;
 import com.example.gymside.api.model.Token;
 import com.example.gymside.api.model.User;
 
@@ -32,5 +34,8 @@ public interface ApiUserService {
     LiveData<ApiResponse<User>> getCurrentUser();
 
     @PUT("user/current")
-        LiveData<ApiResponse<Void>> modifyUser(@Body Credentials credentials);
+    LiveData<ApiResponse<Void>> modifyUser(@Body Credentials credentials);
+
+    @GET("user/current/routines/favourites")
+    LiveData<ApiResponse<PagedList<Routine>>> getFavourites();
 }

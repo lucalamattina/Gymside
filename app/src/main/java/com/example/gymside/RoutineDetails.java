@@ -169,7 +169,7 @@ public class RoutineDetails extends AppCompatActivity {
 
         toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
         toggleButton.setChecked(false);
-        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorites));
+        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -293,6 +293,11 @@ public class RoutineDetails extends AppCompatActivity {
             bottomNavigationView.getMenu().getItem(2).setChecked(false);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
         }
+        if(text.equals("f")) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            bottomNavigationView.getMenu().getItem(1).setChecked(false);
+            bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        }
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
@@ -304,7 +309,6 @@ public class RoutineDetails extends AppCompatActivity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         handleIntent(intent);
-
         //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
             //bottomNavigationView.getMenu().getItem(0).setChecked(false);
             //bottomNavigationView.getMenu().getItem(2).setChecked(false);
