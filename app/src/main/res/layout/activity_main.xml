@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,6 +36,7 @@
             android:layout_width="267dp"
             android:layout_height="44dp"
             android:autofillHints="@string/username"
+            android:drawableEnd="@drawable/baseline_person_blackk_18dp"
             android:fontFamily="sans-serif-light"
             android:hint="@string/username"
             android:inputType="text"
@@ -42,14 +48,14 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.363"
-            android:drawableEnd="@drawable/baseline_person_blackk_18dp"/>
+            app:layout_constraintVertical_bias="0.363" />
 
         <EditText
             android:id="@+id/password"
             android:layout_width="271dp"
             android:layout_height="47dp"
             android:autofillHints="@string/username"
+            android:drawableEnd="@drawable/baseline_lock_blackk_18dp"
             android:fontFamily="sans-serif-light"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -61,8 +67,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
-            app:layout_constraintVertical_bias="0.094"
-            android:drawableEnd="@drawable/baseline_lock_blackk_18dp" />
+            app:layout_constraintVertical_bias="0.094" />
 
         <Button
             android:id="@+id/signupButtonn"
@@ -93,7 +98,6 @@
             app:layout_constraintVertical_bias="0.647" />
 
 
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline"
             android:layout_width="wrap_content"
@@ -109,13 +113,13 @@
             android:layout_marginBottom="336dp"
             android:textColor="#FF0000"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </RelativeLayout>
+</androidx.core.widget.NestedScrollView>
 <!--
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -208,3 +212,4 @@
 
 
 </RelativeLayout>-->
+

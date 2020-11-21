@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
@@ -23,9 +25,11 @@ import com.example.gymside.api.model.Rating;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.snackbar.Snackbar;
+
 
 public class Rate extends AppCompatActivity {
-
+    Integer rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,9 +116,11 @@ public class Rate extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         TextView rating;
+        RatingBar ratingBar = findViewById(R.id.ratingBar3);
+
         rating = findViewById(R.id.textView5);
 
-        if(extras.get("ROUTINE_NAME") != null){
+        if(extras.get("ROUTINE_RATING") != null){
             rating.setText(extras.get("ROUTINE_RATING").toString());
         }
 
@@ -127,20 +133,33 @@ public class Rate extends AppCompatActivity {
         buttonSubmit.setOnClickListener(v->{
             MyApplication app = ((MyApplication)getApplication());
             if(extras.get("ROUTINE_ID") != null){
-                app.getRoutineRepository().setRoutineRating((Integer) extras.get("ROUTINE_ID"), new Rating(2, "0")).observe(this, r -> {
+                app.getRoutineRepository().setRoutineRating( Integer.parseInt((String) extras.get("ROUTINE_ID")), new Rating(rate, "0")).observeForever( r -> {
                     switch (r.getStatus()) {
                         case SUCCESS:
                             Log.d("UI", "Success");
+//                            Snackbar.make(v, "Thanks for rating this routine!", Snackbar.LENGTH_SHORT);
+                            Intent data = new Intent();
+                            data.putExtra("RATING", rate);
+                            setResult(RESULT_OK, data);
                             finish();
+
                             //int count = r.getData().getResults().size();
                             //String message = getResources().getQuantityString(R.plurals.found, count, count);
                             //binding.result.setText(message);
                             break;
                         default:
+                            Log.d("UI", "Failed to submit rating");
                             defaultResourceHandler(r);
                             break;
                     }
                 });
+            }
+        });
+
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
+                rate = Math.round(v) * 2;
             }
         });
 

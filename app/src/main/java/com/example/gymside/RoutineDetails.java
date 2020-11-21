@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -94,11 +95,14 @@ public class RoutineDetails extends AppCompatActivity {
                         if(r.getData().getResults().size() != 0){
                             cycleId = r.getData().getResults().get(0).getId();
                             if(extras.get("ROUTINE_ID") != null) {
-                                exerciseApi.getExercises(routineId, cycleId).observe(this, resp -> {
+                                exerciseApi.getExercises(routineId, cycleId).observeForever(resp -> {
                                     switch (resp.getStatus()) {
                                         case SUCCESS:
                                             Log.d("UI", "Success");
-                                            category.setText(resp.getData().getResults().get(0).getName());
+                                            assert resp.getData() != null;
+                                            if(resp.getData().getResults() != null && !resp.getData().getResults().isEmpty()) {
+                                                category.setText(resp.getData().getResults().get(0).getName());
+                                            }
                                             break;
                                         default:
                                             defaultResourceHandler(resp);
@@ -231,7 +235,10 @@ public class RoutineDetails extends AppCompatActivity {
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
                     intent.putExtra(Intent.EXTRA_TEXT, textToPass);
-                    startActivity(intent);
+                    intent.putExtra("ROUTINE_RATING", extras.get("ROUTINE_RATING").toString());
+                    intent.putExtra("ROUTINE_ID", extras.get("ROUTINE_ID").toString());
+
+                    startActivityForResult(intent,1);
 
                     //startActivity(new Intent(RoutineDetails.this, Rate.class));
                 }
@@ -240,7 +247,9 @@ public class RoutineDetails extends AppCompatActivity {
 
                     Intent intent = new Intent(getBaseContext(), Rate.class);
                     intent.putExtra(Intent.EXTRA_TEXT, textToPass);
-                    startActivity(intent);
+                    intent.putExtra("ROUTINE_RATING", extras.get("ROUTINE_RATING").toString());
+                    intent.putExtra("ROUTINE_ID", extras.get("ROUTINE_ID").toString());
+                    startActivityForResult(intent,1);
 
                     //startActivity(new Intent(RoutineDetails.this, Rate.class));
                 }
@@ -314,6 +323,10 @@ public class RoutineDetails extends AppCompatActivity {
         handleIntent(appLinkIntent);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
 
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
