@@ -11,6 +11,7 @@ import com.example.gymside.api.ApiClient;
 import com.example.gymside.api.ApiResponse;
 import com.example.gymside.api.ApiRoutineService;
 import com.example.gymside.api.model.Execution;
+import com.example.gymside.api.model.ExecutionCreate;
 import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Rating;
 import com.example.gymside.api.model.Routine;
@@ -95,7 +96,7 @@ public class RoutineRepository {
         }.asLiveData();
     }
 
-    public LiveData<Resource<Routine>> createExecution(int routineId, Execution execution) {
+    public LiveData<Resource<Routine>> createExecution(int routineId, ExecutionCreate execution) {
         return new NetworkBoundResource<Routine, Routine>()
         {
             @NonNull
