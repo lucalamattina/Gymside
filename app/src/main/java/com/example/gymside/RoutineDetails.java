@@ -61,6 +61,7 @@ public class RoutineDetails extends AppCompatActivity {
     private UserRepository userApi;
     private CycleRepository cycleApi;
     public List<Exercise> exercises = new ArrayList<>();
+    String text;
 
 
     @Override
@@ -268,7 +269,7 @@ public class RoutineDetails extends AppCompatActivity {
         String sessionId = getIntent().getStringExtra("EXTRA_SESSION_ID");
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
+        text = intent.getStringExtra(Intent.EXTRA_TEXT);
 
         rateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -369,6 +370,11 @@ public class RoutineDetails extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(this, text.equals("r") ? Routines.class : Favourites.class));
     }
 
     protected void onNewIntent(Intent intent) {
