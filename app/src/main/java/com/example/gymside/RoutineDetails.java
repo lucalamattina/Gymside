@@ -65,7 +65,7 @@ public class RoutineDetails extends AppCompatActivity {
         detail = findViewById(R.id.body);
         category = findViewById(R.id.category);
         share = findViewById(R.id.share_button);
-        Button start = findViewById(R.id.start_routine);
+        Button start = findViewById(R.id.playButton);
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
