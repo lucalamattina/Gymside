@@ -12,20 +12,6 @@ android:layout_height="match_parent"
 tools:context=".Register">
 
 
-    <Button
-        android:id="@+id/buttonVerify"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="115dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="30dp"
-        android:layout_toRightOf="@id/buttonCancel"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/verify"
-        android:textStyle="bold"
-        app:iconTint="#FFFFFF" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="372dp"
@@ -45,17 +31,49 @@ tools:context=".Register">
 
     <Button
         android:id="@+id/buttonCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="142dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="200dp"
+        android:layout_marginStart="192dp"
         android:layout_marginLeft="200dp"
         android:layout_marginTop="40dp"
-        android:layout_marginBottom="31dp"
+        android:layout_marginBottom="44dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/cancel"
         android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonVerify"
+        android:layout_width="159dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="47dp"
+        android:layout_toRightOf="@id/buttonCancel"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/verify"
+        android:textStyle="bold"
+        app:iconTint="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/emailRegister"
+        android:layout_width="287dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/passwordRegister"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="205dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="88dp"
+        android:layout_marginBottom="157dp"
+        android:autofillHints=""
+        android:drawableEnd="@drawable/baseline_email_blackk_18dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/codeRegister"
@@ -63,8 +81,8 @@ tools:context=".Register">
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="138dp"
+        android:layout_marginStart="205dp"
+        android:layout_marginTop="107dp"
         android:layout_marginEnd="20dp"
         android:autofillHints="@string/code"
         android:drawableEnd="@drawable/baseline_vpn_key_black_18dp"
@@ -75,32 +93,14 @@ tools:context=".Register">
         android:singleLine="true"
         android:text="@string/code" />
 
-    <EditText
-        android:id="@+id/emailRegister"
-        android:layout_width="287dp"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/passwordRegister"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="53dp"
-        android:layout_marginEnd="88dp"
-        android:layout_marginBottom="126dp"
-        android:autofillHints=""
-        android:drawableEnd="@drawable/baseline_email_blackk_18dp"
-        android:fontFamily="sans-serif-light"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:text="@string/email" />
-
     <TextView
         android:id="@+id/showErrorTextv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="164dp"
+        android:layout_height="34dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="302dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="113dp"
         android:textColor="#FF0000" />
 
 

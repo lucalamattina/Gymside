@@ -53,20 +53,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="55dp">
+
         <TextView
+            android:id="@+id/filter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/filter"
-            android:id="@+id/filter"
-            android:textSize="15dp"
             android:paddingTop="15dp"
-            ></TextView>
+            android:text="@string/filter"
+            android:textSize="25dp"></TextView>
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/filter_by"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:layout_marginLeft="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="12dp"
             android:layout_toRightOf="@id/filter"></androidx.appcompat.widget.AppCompatSpinner>
 
         <androidx.recyclerview.widget.RecyclerView

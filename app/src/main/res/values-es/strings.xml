@@ -65,7 +65,7 @@
     <string name="difficulty_label">Dificultad:</string>
     <string name="rate">Puntuar</string>
     <string name="share">Compartir</string>
-    <string name="texthome">"1. Entrenar en casa es más barato
+    <string name="texthome">1. Entrenar en casa es más barato
 
 2. Ahorras tiempo
 
@@ -73,7 +73,7 @@
 
 4. Eres el dueño de tu entorno al entrenar en casa
 
-5. Al entrenar en casa le dices adiós a las excusas"</string>
+5. Al entrenar en casa le dices adiós a las excusas</string>
     <string-array name="filter_by">
         <item value="dateCreated">Fecha de Creacion</item>
         <item value="averageRating">Puntaje Promedio</item>

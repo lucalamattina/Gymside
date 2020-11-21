@@ -68,24 +68,25 @@
 
     <TextView
         android:id="@+id/homeTittle"
-        android:layout_width="372dp"
-        android:layout_height="103dp"
+        android:layout_width="239dp"
+        android:layout_height="102dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="437dp"
-        android:layout_marginBottom="213dp"
+        android:layout_marginEnd="245dp"
+        android:layout_marginBottom="236dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/homeTittle"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textHome"
-        android:layout_width="282dp"
-        android:layout_height="248dp"
+        android:layout_width="481dp"
+        android:layout_height="123dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="291dp"
-        android:layout_marginBottom="78dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="82dp"
         android:text="TextView" />
 
 

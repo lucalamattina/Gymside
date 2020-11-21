@@ -14,18 +14,30 @@
 
     <Button
         android:id="@+id/createAccount"
-        android:layout_width="194dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailRegister"
         android:layout_alignStart="@+id/emailRegister"
         android:layout_alignEnd="@+id/emailRegister"
-        android:layout_marginStart="469dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="377dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/createAccount"
         android:textStyle="bold"
         app:iconTint="#FFFFFF" />
+
+    <Button
+        android:id="@+id/verifyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/emailRegister"
+        android:layout_alignStart="@+id/emailRegister"
+        android:layout_alignEnd="@+id/emailRegister"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="248dp"
+        android:text="@string/verify_email" />
 
     <TextView
         android:id="@+id/textView4"
@@ -38,23 +50,21 @@
         android:textSize="40sp" />
 
     <EditText
-        android:id="@+id/passwordRegister"
-        android:layout_width="274dp"
+        android:id="@+id/emailRegister"
+        android:layout_width="273dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/usernameRegister"
+        android:layout_alignTop="@+id/passwordRegister"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="71dp"
         android:layout_marginTop="53dp"
-        android:layout_marginEnd="62dp"
-        android:autofillHints="@string/username"
-        android:drawableEnd="@drawable/baseline_lock_blackk_18dp"
+        android:layout_marginEnd="63dp"
+        android:autofillHints=""
+        android:drawableEnd="@drawable/baseline_email_blackk_18dp"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:selectAllOnFocus="true"
-        android:singleLine="true"
-        android:text="@string/password" />
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:text="@string/email" />
 
     <EditText
         android:id="@+id/usernameRegister"
@@ -63,9 +73,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="62dp"
+        android:layout_marginStart="71dp"
+        android:layout_marginTop="98dp"
+        android:layout_marginEnd="63dp"
         android:autofillHints="@string/username"
         android:drawableEnd="@drawable/baseline_person_blackk_18dp"
         android:fontFamily="sans-serif-light"
@@ -76,52 +86,44 @@
         android:text="@string/username" />
 
     <EditText
-        android:id="@+id/emailRegister"
-        android:layout_width="273dp"
+        android:id="@+id/passwordRegister"
+        android:layout_width="274dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/passwordRegister"
+        android:layout_alignTop="@+id/usernameRegister"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="72dp"
+        android:layout_marginStart="71dp"
         android:layout_marginTop="53dp"
-        android:layout_marginEnd="62dp"
-        android:autofillHints=""
-        android:drawableEnd="@drawable/baseline_email_blackk_18dp"
+        android:layout_marginEnd="63dp"
+        android:autofillHints="@string/username"
+        android:drawableEnd="@drawable/baseline_lock_blackk_18dp"
         android:fontFamily="sans-serif-light"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:text="@string/email" />
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/password" />
 
     <Button
         android:id="@+id/buttonCancel"
-        android:layout_width="98dp"
+        android:layout_width="138dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/emailRegister"
         android:layout_alignStart="@+id/emailRegister"
-        android:layout_alignEnd="@+id/emailRegister"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="560dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="44dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/cancel"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/verifyView"
-        android:layout_width="182dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/emailRegister"
-        android:layout_alignStart="@+id/emailRegister"
-        android:layout_alignEnd="@+id/emailRegister"
-        android:layout_marginStart="211dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="302dp"
-        android:text="@string/verify_email" />
-
     <TextView
         android:id="@+id/showErrorText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="163dp"
+        android:layout_height="33dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="268dp"
+        android:layout_marginEnd="68dp"
         android:textColor="#FF0000" />
 
 

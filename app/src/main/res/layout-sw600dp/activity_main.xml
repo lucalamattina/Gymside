@@ -20,20 +20,35 @@
             android:id="@+id/loginButton"
             android:layout_width="218dp"
             android:layout_height="94dp"
-            android:layout_marginEnd="192dp"
-            android:layout_marginBottom="264dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginBottom="504dp"
             android:backgroundTint="#988C8C"
             android:fontFamily="sans-serif-light"
             android:text="@string/login"
             android:textColor="#FFFFFF"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <Button
+            android:id="@+id/signupButtonn"
+            android:layout_width="216dp"
+            android:layout_height="94dp"
+            android:layout_marginBottom="504dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/signup"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/loginButton"
+            app:layout_constraintHorizontal_bias="0.446"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <EditText
             android:id="@+id/username"
-            android:layout_width="345dp"
-            android:layout_height="118dp"
+            android:layout_width="549dp"
+            android:layout_height="116dp"
             android:autofillHints="@string/username"
             android:drawableEnd="@drawable/baseline_person_blackk_18dp"
             android:fontFamily="sans-serif-light"
@@ -42,6 +57,7 @@
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:text="@string/username"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -51,8 +67,8 @@
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="370dp"
-            android:layout_height="113dp"
+            android:layout_width="544dp"
+            android:layout_height="112dp"
             android:autofillHints="@string/username"
             android:drawableEnd="@drawable/baseline_lock_blackk_18dp"
             android:fontFamily="sans-serif-light"
@@ -61,25 +77,13 @@
             android:selectAllOnFocus="true"
             android:singleLine="true"
             android:text="@string/password"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintVertical_bias="0.094" />
-
-        <Button
-            android:id="@+id/signupButtonn"
-            android:layout_width="216dp"
-            android:layout_height="94dp"
-            android:layout_marginBottom="264dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/signup"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/loginButton"
-            app:layout_constraintHorizontal_bias="0.419"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/Gymside"
@@ -106,11 +110,12 @@
 
         <TextView
             android:id="@+id/textShowError"
-            android:layout_width="123dp"
-            android:layout_height="18dp"
-            android:layout_marginEnd="408dp"
-            android:layout_marginBottom="732dp"
+            android:layout_width="259dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="204dp"
+            android:layout_marginBottom="708dp"
             android:textColor="#FF0000"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 

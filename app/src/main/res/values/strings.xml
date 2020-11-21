@@ -64,7 +64,15 @@
     <string name="difficulty_label">Difficulty:</string>
     <string name="rate">Rate</string>
     <string name="share">Share</string>
-    <string name="texthome">"    1. Entrenar en casa es más barato     2. Ahorras tiempo     3. Tú pones tu propia agenda     4. Comodidad     5. Eres el dueño de tu entorno al entrenar en casa     6. Siempre tienes el equipo necesario     7. Compartir los ejercicios en familia     8. Si necesitas comer algo, no necesitas comprarlo     9. Al entrenar en casa le dices adiós a las excusas     10. Los individuos que te encuentras en el gimnasio"</string>
+    <string name="texthome">1. Train at home
+
+2. Gain time
+
+3. Comodity
+
+4. Train where you want
+
+5. No excuses</string>
     <string-array name="filter_by">
         <item>Date Created</item>
         <item>Average Rating</item>

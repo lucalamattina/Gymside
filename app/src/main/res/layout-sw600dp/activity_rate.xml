@@ -84,7 +84,8 @@
             android:layout_marginBottom="1417dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/currRating"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/ratingBar3"
@@ -98,29 +99,31 @@
             android:layout_marginBottom="1042dp" />
 
         <Button
-            android:id="@+id/submitButton"
-            android:layout_width="215dp"
-            android:layout_height="98dp"
-            android:layout_above="@+id/bottom_navigation"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="138dp"
-            android:layout_marginBottom="252dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/submit" />
-
-        <Button
             android:id="@+id/cancelButton"
             android:layout_width="209dp"
             android:layout_height="86dp"
             android:layout_alignTop="@+id/submitButton"
             android:layout_alignBottom="@+id/submitButton"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="207dp"
+            android:layout_marginEnd="208dp"
             android:layout_marginBottom="4dp"
             android:layout_toStartOf="@+id/submitButton"
             android:background="#7C7979"
             android:fontFamily="sans-serif-light"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="215dp"
+            android:layout_height="98dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="183dp"
+            android:layout_marginBottom="665dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/submit"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textView5"

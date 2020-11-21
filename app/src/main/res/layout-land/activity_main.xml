@@ -20,8 +20,8 @@
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="280dp"
-            android:layout_marginBottom="88dp"
+            android:layout_marginEnd="244dp"
+            android:layout_marginBottom="76dp"
             android:backgroundTint="#988C8C"
             android:fontFamily="sans-serif-light"
             android:text="@string/login"
@@ -29,6 +29,19 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/signupButtonn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="76dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/signup"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/loginButton"
+            app:layout_constraintHorizontal_bias="0.78"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/username"
@@ -68,19 +81,6 @@
             app:layout_constraintTop_toBottomOf="@+id/username"
             app:layout_constraintVertical_bias="0.094" />
 
-        <Button
-            android:id="@+id/signupButtonn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="88dp"
-            android:fontFamily="sans-serif-light"
-            android:text="@string/signup"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/loginButton"
-            app:layout_constraintHorizontal_bias="0.75"
-            app:layout_constraintStart_toStartOf="parent" />
-
         <TextView
             android:id="@+id/Gymside"
             android:layout_width="wrap_content"
@@ -108,8 +108,8 @@
             android:id="@+id/textShowError"
             android:layout_width="123dp"
             android:layout_height="18dp"
-            android:layout_marginEnd="72dp"
-            android:layout_marginBottom="336dp"
+            android:layout_marginEnd="244dp"
+            android:layout_marginBottom="140dp"
             android:textColor="#FF0000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
