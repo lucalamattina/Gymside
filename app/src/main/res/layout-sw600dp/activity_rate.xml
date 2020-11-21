@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Rate">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/routines"
+                app:titleTextColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/profileButton"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/roundcorner"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555"
+                app:srcCompat="@drawable/ic_profile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_above="@id/bottom_navigation"
+            android:background="@drawable/shadow"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#2d4059"
+            app:itemBackground="@color/blue"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:menu="@menu/menu_navigation" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="138dp"
+            android:layout_marginEnd="-25dp"
+            android:layout_marginBottom="1417dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/currRating"
+            android:textSize="50sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar3"
+            android:layout_width="298dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_alignEnd="@+id/textView5"
+            android:layout_marginStart="217dp"
+            android:layout_marginEnd="118dp"
+            android:layout_marginBottom="1042dp" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="215dp"
+            android:layout_height="98dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="138dp"
+            android:layout_marginBottom="252dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/submit" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="209dp"
+            android:layout_height="86dp"
+            android:layout_alignTop="@+id/submitButton"
+            android:layout_alignBottom="@+id/submitButton"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="207dp"
+            android:layout_marginBottom="4dp"
+            android:layout_toStartOf="@+id/submitButton"
+            android:background="#7C7979"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/cancel" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_alignBottom="@+id/textView3"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="190dp"
+            android:layout_marginBottom="-1dp"
+            android:text="0.0"
+            android:textSize="50sp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Register">
+
+
+    <Button
+        android:id="@+id/buttonVerify"
+        android:layout_width="192dp"
+        android:layout_height="94dp"
+        android:layout_alignBottom="@+id/buttonCancel"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="459dp"
+        android:layout_marginEnd="159dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/verify"
+        android:textStyle="bold"
+        app:iconTint="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="372dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="39dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="541dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/verifyTittle"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/buttonCancel"
+        android:layout_width="167dp"
+        android:layout_height="109dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="218dp"
+        android:layout_marginTop="471dp"
+        android:layout_marginEnd="575dp"
+        android:layout_marginBottom="224dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/cancel"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/codeRegister"
+        android:layout_width="286dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="342dp"
+        android:layout_marginEnd="86dp"
+        android:autofillHints="@string/code"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/code"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:text="@string/code"
+        android:drawableEnd="@drawable/baseline_vpn_key_black_18dp"/>
+
+    <EditText
+        android:id="@+id/emailRegister"
+        android:layout_width="273dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/passwordRegister"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="53dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="1106dp"
+        android:autofillHints=""
+        android:drawableEnd="@drawable/baseline_email_blackk_18dp"
+        android:fontFamily="sans-serif-light"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:text="@string/email" />
+
+    <TextView
+        android:id="@+id/showErrorTextv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="302dp"
+        android:textColor="#FF0000" />
+
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>

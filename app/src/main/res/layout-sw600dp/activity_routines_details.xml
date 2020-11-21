@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Routines">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/routine_details"
+                app:titleTextColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/profileButton"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/roundcorner"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555"
+                app:srcCompat="@drawable/ic_profile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="55dp"
+        >
+
+        <TextView
+            android:id="@+id/difficulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/difficulty_label"
+            android:layout_alignBottom="@+id/difficulty_label"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="-3dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Difficulty"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/difficulty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="139dp"
+            android:text="@string/difficulty_label"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/routines_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text=""
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:text="Routine Name"
+            android:textSize="50dp" />
+
+        <TextView
+            android:id="@+id/category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/category_label"
+            android:layout_alignBottom="@+id/category_label"
+            android:layout_marginLeft="74dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="-6dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Category"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="350dp"
+            android:text="@string/category_label"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/detail_label"
+            android:layout_alignBottom="@+id/detail_label"
+            android:layout_marginLeft="71dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Detail"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/detail_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="-34dp"
+            android:text="@string/detail_label"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/rating_label"
+            android:layout_alignBottom="@+id/rating_label"
+            android:layout_marginLeft="75dp"
+            android:layout_marginTop="-9dp"
+            android:layout_marginBottom="9dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Rating"
+            android:textSize="50" />
+
+        <TextView
+            android:id="@+id/rating_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="-200dp"
+            android:text="@string/rating_label"
+            android:textSize="50" />
+
+        <Button
+            android:id="@+id/playButton"
+            android:layout_width="302dp"
+            android:layout_height="88dp"
+            android:layout_above="@id/bottom_navigation"
+            android:layout_alignStart="@+id/recycler_view2"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="312dp"
+            android:layout_marginEnd="334dp"
+            android:layout_marginBottom="38dp"
+            android:backgroundTint="@color/orange"
+            android:text="@string/run_routine"
+            android:textSize="20dp"></Button>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:layout_above="@id/bottom_navigation"
+            android:background="@drawable/shadow"/>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="#2d4059"
+            app:itemBackground="@color/blue"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:menu="@menu/menu_navigation" />
+
+        <ToggleButton
+            android:id="@+id/myToggleButton"
+            android:layout_width="111dp"
+            android:layout_height="76dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="838dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="11dp"
+            android:text="ToggleButton"
+            android:textOff=" "
+            android:textOn=" " />
+
+        <Button
+            android:id="@+id/rate"
+            android:layout_width="164dp"
+            android:layout_height="67dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="406dp"
+            android:text="Rate" />
+
+        <Button
+            android:id="@+id/share_button"
+            android:layout_width="142dp"
+            android:layout_height="87dp"
+            android:layout_above="@+id/bottom_navigation"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="95dp"
+            android:layout_marginBottom="392dp"
+            android:text="@string/share" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="224dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="196dp" />
+
+    </RelativeLayout>
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
