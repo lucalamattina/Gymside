@@ -6,14 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gymside.databinding.ActivityRoutineExecutionBinding;
+import com.example.gymside.repository.ExecutionRepository;
 
 
 public class RoutineExecution extends AppCompatActivity {
     ActivityRoutineExecutionBinding binding;
+    private ExecutionRepository executionApi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        executionApi = MyApplication.getExecutionRepository();
 
         binding = ActivityRoutineExecutionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -41,15 +45,31 @@ public class RoutineExecution extends AppCompatActivity {
             }
         });
 
-        binding.start.setOnClickListener(v -> {
-            long time = Integer.parseInt(binding.time.getText().toString()) * 1000;
-            long interval = Integer.parseInt(binding.interval.getText().toString()) * 1000;
+        Bundle extras = getIntent().getExtras();
 
-            viewModel.getCountDownTimer().start(time, interval);
+        executionApi.getExecution((Integer)extras.get("ROUTINE_ID")).observe(this, r->{
+            viewModel.getCountDownTimer().start(r.getData().getResults().get(0).getDuration() * 1000, 1000);
             binding.start.setEnabled(false);
             binding.stop.setEnabled(true);
             binding.pause.setEnabled(true);
             binding.addTime.setEnabled(true);
+        });
+
+        /*viewModel.getCountDownTimer().start(30*1000, 1000);
+        binding.start.setEnabled(false);
+        binding.stop.setEnabled(true);
+        binding.pause.setEnabled(true);
+        binding.addTime.setEnabled(true);*/
+
+        binding.start.setOnClickListener(v -> {
+            //long time = Integer.parseInt(binding.time.getText().toString()) * 1000;
+            //long interval = Integer.parseInt(binding.interval.getText().toString()) * 1000;
+
+            /*viewModel.getCountDownTimer().start(30*1000, 1000);
+            binding.start.setEnabled(false);
+            binding.stop.setEnabled(true);
+            binding.pause.setEnabled(true);
+            binding.addTime.setEnabled(true);*/
         });
 
         binding.stop.setOnClickListener(v -> {
@@ -79,8 +99,7 @@ public class RoutineExecution extends AppCompatActivity {
         binding.addTime.setOnClickListener(v -> {
             viewModel.getCountDownTimer().stop();
             long time = (viewModel.getCountDownTimer().getStatus().getValue().getRemainingTime() + 10) * 1000;
-            int interval = Integer.parseInt(binding.interval.getText().toString()) * 1000;
-            viewModel.getCountDownTimer().start(time, interval);
+            viewModel.getCountDownTimer().start(time, 1000);
         });
     }
 }

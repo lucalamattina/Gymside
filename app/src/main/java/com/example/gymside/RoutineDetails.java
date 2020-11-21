@@ -115,6 +115,15 @@ public class RoutineDetails extends AppCompatActivity {
             });
         }
 
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), RoutineDetails.class);
+                intent.putExtra("ROUTINE_ID", routineId);
+                startActivity(intent, new Bundle());
+            }
+        });
+
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,7 +137,7 @@ public class RoutineDetails extends AppCompatActivity {
             }
         });
 
-        name.setText(extras.get("ROUTINE_NAME").toString());
+        /*name.setText(extras.get("ROUTINE_NAME").toString());
         rating.setText(extras.get("ROUTINE_RATING").toString());
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
@@ -161,7 +170,7 @@ public class RoutineDetails extends AppCompatActivity {
                     defaultResourceHandler(r);
                     break;
             }
-        });
+        });*/
 
         rateButton = (Button) findViewById(R.id.rate);
 
