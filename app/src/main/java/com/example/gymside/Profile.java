@@ -24,6 +24,7 @@ import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.User;
 import com.example.gymside.repository.Resource;
+import com.example.gymside.EditProfile;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -59,7 +60,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
-        ImageButton buttonModifyUsername = findViewById(R.id.imageView2);
+        /*ImageButton buttonModifyUsername = findViewById(R.id.imageView2);
 
         buttonModifyUsername.setOnClickListener(v->{
 
@@ -95,10 +96,10 @@ public class Profile extends AppCompatActivity {
             });
             AlertDialog dialog = builder.create();
             dialog.show();
-        });
+        });*/
 
         //modify Username
-        ImageButton buttonModifyName = findViewById(R.id.imageView3);
+        /*ImageButton buttonModifyName = findViewById(R.id.imageView3);
 
         buttonModifyName.setOnClickListener(v->{
 
@@ -134,7 +135,7 @@ public class Profile extends AppCompatActivity {
             });
             AlertDialog dialog = builder.create();
             dialog.show();
-        });
+        });*/
 
         //modify User
         Button deleteUserButton = findViewById(R.id.deleteUserButton);
@@ -213,6 +214,11 @@ public class Profile extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Edit Profile") || item.getTitle().equals("Editar perfil")) {
+                            startActivity(new Intent(getApplicationContext(), EditProfile.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

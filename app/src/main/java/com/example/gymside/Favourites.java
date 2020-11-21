@@ -12,17 +12,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.repository.Resource;
-import com.example.gymside.repository.RoutineRepository;
 import com.example.gymside.repository.UserRepository;
 import com.example.gymside.ui.FavouritesRVA;
 import com.example.gymside.ui.MainActivity;
-import com.example.gymside.ui.RoutinesRVA;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -85,6 +82,11 @@ public class Favourites extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Edit Profile") || item.getTitle().equals("Editar perfil")) {
+                            startActivity(new Intent(getApplicationContext(), EditProfile.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

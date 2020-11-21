@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.TextView;
 
@@ -26,7 +25,6 @@ import com.example.gymside.api.model.Exercise;
 import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Routine;
 
-import com.example.gymside.db.MyDatabase;
 import com.example.gymside.repository.CycleRepository;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
@@ -38,8 +36,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class RoutineDetails extends AppCompatActivity {
 
@@ -251,7 +247,7 @@ public class RoutineDetails extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(new Intent(getApplicationContext(), Login.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.routines:
@@ -318,6 +314,11 @@ public class RoutineDetails extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Edit Profile") || item.getTitle().equals("Editar perfil")) {
+                            startActivity(new Intent(getApplicationContext(), EditProfile.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

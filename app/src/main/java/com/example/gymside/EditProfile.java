@@ -1,39 +1,41 @@
 package com.example.gymside;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.RatingBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
-import com.example.gymside.api.model.Rating;
+import com.example.gymside.api.model.User;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.ui.MainActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-
-public class Rate extends AppCompatActivity {
-    Integer rate;
+public class EditProfile extends AppCompatActivity {
+    User user = new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rate);
+        setContentView(R.layout.activity_editprofile);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         //Initialize And Assign Variable
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         //Perform ItemSelectedListener
@@ -53,8 +55,25 @@ public class Rate extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),Favourites.class));
                         overridePendingTransition(0,0);
                         return true;
+                    default:
+                        return false;
                 }
-                return false;
+                //return false;
+            }
+        });
+
+
+        MyApplication app = (MyApplication) getApplication();
+        app.getUserRepository().getCurrentUser().observe(this,r -> {
+            switch (r.getStatus()) {
+                case SUCCESS:
+                    Log.d("UI", "Success");
+                    assert r.getData() != null;
+                    this.user = r.getData();
+                    break;
+                default:
+                    defaultResourceHandler(r);
+                    break;
             }
         });
 
@@ -64,7 +83,7 @@ public class Rate extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Creating the instance of PopupMenu
-                PopupMenu popup = new PopupMenu(Rate.this, profileButton);
+                PopupMenu popup = new PopupMenu(EditProfile.this, profileButton);
                 //Inflating the Popup using xml file
                 popup.getMenuInflater()
                         .inflate(R.menu.popup_menu, popup.getMenu());
@@ -108,71 +127,61 @@ public class Rate extends AppCompatActivity {
             }
         }); //closing the setOnClickListener method
 
-        Bundle extras = getIntent().getExtras();
-        TextView rating;
-        RatingBar ratingBar = findViewById(R.id.ratingBar3);
+        changeMenuItemCheckedStateColor(bottomNavigationView, "#FFFFFF", "#FFFFFF");
 
-        rating = findViewById(R.id.textView5);
+        Button buttonModifyName = findViewById(R.id.saveDate);
+        EditText name;
+        name = (EditText) findViewById(R.id.EditFullnamameee);
 
-        if(extras.get("ROUTINE_RATING") != null){
-            rating.setText(extras.get("ROUTINE_RATING").toString());
-        }
+        buttonModifyName.setOnClickListener(v->{
+                    String new_name = name.getText().toString();
+                    Credentials credentials = new Credentials(user.getUsername(), "psw", new_name, user.getEmail(), 0, user.getGender());
+                    MyApplication appp = ((MyApplication) getApplication());
+                    appp.getUserRepository().modifyUser(credentials).observeForever(r -> {
+                        switch (r.getStatus()) {
+                            case SUCCESS:
+                                Log.d("UI", "Success");
+                                startActivity(new Intent(getApplicationContext(), Profile.class));
+                                overridePendingTransition(0, 0);
+                                break;
+                            default:
+                                defaultResourceHandler(r);
+                                break;
+                        }
+                    });
 
-        Button cancelButton = findViewById(R.id.cancelButton);
+            });
+
+        Button cancelButton = findViewById(R.id.buttonCancel);
         cancelButton.setOnClickListener(v->{
             finish();
         });
 
-        Button buttonSubmit = findViewById(R.id.submitButton);
-        buttonSubmit.setOnClickListener(v->{
-            MyApplication app = ((MyApplication)getApplication());
-            if(extras.get("ROUTINE_ID") != null){
-                app.getRoutineRepository().setRoutineRating( Integer.parseInt((String) extras.get("ROUTINE_ID")), new Rating(rate, "0")).observeForever( r -> {
-                    switch (r.getStatus()) {
-                        case SUCCESS:
-                            Log.d("UI", "Success");
-//                            Snackbar.make(v, "Thanks for rating this routine!", Snackbar.LENGTH_SHORT);
-                            Intent data = new Intent();
-                            data.putExtra("RATING", rate);
-                            setResult(RESULT_OK, data);
-                            finish();
 
-                            //int count = r.getData().getResults().size();
-                            //String message = getResources().getQuantityString(R.plurals.found, count, count);
-                            //binding.result.setText(message);
-                            break;
-                        default:
-                            Log.d("UI", "Failed to submit rating");
-                            defaultResourceHandler(r);
-                            break;
-                    }
-                });
-            }
-        });
-
-        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                rate = Math.round(v) * 2;
-            }
-        });
-
-        Intent intent = getIntent();
-        String text = intent.getStringExtra(Intent.EXTRA_TEXT);
-
-        if(text.equals("r")) {
-            bottomNavigationView.getMenu().getItem(0).setChecked(false);
-            bottomNavigationView.getMenu().getItem(2).setChecked(false);
-            bottomNavigationView.getMenu().getItem(1).setChecked(true);
-        }
-        if(text.equals("f")){
-            bottomNavigationView.getMenu().getItem(0).setChecked(false);
-            bottomNavigationView.getMenu().getItem(1).setChecked(false);
-            bottomNavigationView.getMenu().getItem(2).setChecked(true);
-
-
-        }
     }
+
+    private void changeMenuItemCheckedStateColor(BottomNavigationView bottomNavigationView, String checkedColorHex, String uncheckedColorHex) {
+        int checkedColor = Color.parseColor(checkedColorHex);
+        int uncheckedColor = Color.parseColor(uncheckedColorHex);
+
+        int[][] states = new int[][] {
+                new int[] {-android.R.attr.state_checked}, // unchecked
+                new int[] {android.R.attr.state_checked}, // checked
+
+        };
+
+        int[] colors = new int[] {
+                uncheckedColor,
+                checkedColor
+        };
+
+        ColorStateList colorStateList = new ColorStateList(states, colors);
+
+        bottomNavigationView.setItemTextColor(colorStateList);
+        bottomNavigationView.setItemIconTintList(colorStateList);
+
+    }
+
     private void defaultResourceHandler(Resource<?> resource) {
         switch (resource.getStatus()) {
             case LOADING:

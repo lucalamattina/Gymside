@@ -6,6 +6,10 @@
         android:title="@string/profile"/>
 
     <item
+        android:id="@+id/editProfile"
+        android:title="@string/editProfile"/>
+
+    <item
         android:id="@+id/exit"
         android:title="@string/exit"/>
 

@@ -73,6 +73,9 @@
 4. Train where you want
 
 5. No excuses</string>
+    <string name="editProfile">Edit Profile</string>
+    <string name="edit_your_fullname">Edit your fullname</string>
+    <string name="saveData">Save</string>
     <string-array name="filter_by">
         <item>Date Created</item>
         <item>Average Rating</item>

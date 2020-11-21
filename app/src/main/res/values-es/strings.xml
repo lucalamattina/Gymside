@@ -74,6 +74,9 @@
 4. Eres el dueño de tu entorno al entrenar en casa
 
 5. Al entrenar en casa le dices adiós a las excusas</string>
+    <string name="editProfile">Editar perfil</string>
+    <string name="edit_your_fullname">Edita tu nombre</string>
+    <string name="saveData">Guardar</string>
     <string-array name="filter_by">
         <item value="dateCreated">Fecha de Creacion</item>
         <item value="averageRating">Puntaje Promedio</item>

@@ -9,32 +9,6 @@
     tools:context=".Profile">
 
 
-    <ImageButton
-        android:id="@+id/imageView3"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="84dp"
-        android:layout_height="59dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="49dp"
-        android:layout_marginBottom="218dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-    <ImageButton
-        android:id="@+id/imageView2"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="66dp"
-        android:layout_height="53dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="66dp"
-        android:layout_marginBottom="123dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -106,12 +80,13 @@
         android:layout_width="166dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="59dp"
-        android:layout_marginBottom="252dp"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="204dp"
         android:layout_toStartOf="@+id/showProfileName"
         android:fontFamily="sans-serif-light"
         android:text="@string/username"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/showFullNamee"
@@ -123,7 +98,8 @@
         android:layout_marginTop="220dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/showFullName"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/showFullName"
@@ -133,10 +109,10 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="249dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="240dp"
-        android:layout_marginBottom="258dp" />
+        android:layout_marginStart="253dp"
+        android:layout_marginTop="161dp"
+        android:layout_marginEnd="236dp"
+        android:layout_marginBottom="196dp" />
 
     <TextView
         android:id="@+id/email"
@@ -144,11 +120,12 @@
         android:layout_height="42dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginBottom="257dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/email"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/showEmailProfile"
@@ -156,8 +133,8 @@
         android:layout_height="45dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="293dp"
-        android:layout_marginBottom="203dp" />
+        android:layout_marginEnd="281dp"
+        android:layout_marginBottom="256dp" />
 
     <Button
         android:id="@+id/deleteUserButton"

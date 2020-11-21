@@ -12,33 +12,18 @@
     tools:context=".Profile">
 
 
-    <ImageButton
-        android:id="@+id/imageView3"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="187dp"
-        android:layout_height="145dp"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="391dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-    <ImageButton
-        android:id="@+id/imageView2"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="237dp"
-        android:layout_height="157dp"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentEnd="false"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="373dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="326dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+    <TextView
+        android:id="@+id/FullName"
+        android:layout_width="221dp"
+        android:layout_height="90dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="892dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/showFullName"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -100,26 +85,24 @@
 
     <TextView
         android:id="@+id/showProfileName"
-        android:layout_width="154dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_width="598dp"
+        android:layout_height="231dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="366dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="313dp" />
+        android:layout_marginEnd="53dp"
+        android:layout_marginBottom="608dp" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="208dp"
-        android:layout_height="129dp"
+        android:layout_width="291dp"
+        android:layout_height="175dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="false"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="false"
-        android:layout_marginStart="357dp"
+        android:layout_marginStart="322dp"
         android:layout_marginTop="84dp"
-        android:layout_marginEnd="396dp"
+        android:layout_marginEnd="347dp"
         android:layout_marginBottom="540dp"
         android:background="@color/blue"
         android:contentDescription="@string/avatarr"
@@ -127,73 +110,51 @@
 
     <TextView
         android:id="@+id/Username"
-        android:layout_width="97dp"
-        android:layout_height="wrap_content"
+        android:layout_width="221dp"
+        android:layout_height="90dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="370dp"
-        android:layout_marginEnd="11dp"
-        android:layout_marginBottom="318dp"
-        android:layout_toStartOf="@+id/showProfileName"
+        android:layout_marginTop="602dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/username"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/showFullNamee"
-        android:layout_width="124dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="266dp"
-        android:layout_marginBottom="186dp"
-        android:fontFamily="sans-serif-light"
-        android:text="@string/showFullName"
-        android:textSize="20sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/showFullName"
-        android:layout_width="wrap_content"
-        android:layout_height="41dp"
+        android:layout_width="418dp"
+        android:layout_height="116dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="509dp"
-        android:layout_marginEnd="65dp"
-        android:layout_marginBottom="181dp" />
+        android:layout_marginStart="350dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="974dp" />
 
     <TextView
         android:id="@+id/email"
-        android:layout_width="83dp"
-        android:layout_height="42dp"
+        android:layout_width="219dp"
+        android:layout_height="150dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="262dp"
-        android:layout_marginEnd="293dp"
-        android:layout_marginBottom="427dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginEnd="722dp"
+        android:layout_marginBottom="1223dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/email"
-        android:textSize="20sp" />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/showEmailProfile"
-        android:layout_width="185dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
+        android:layout_width="570dp"
+        android:layout_height="101dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="60dp"
-        android:layout_marginBottom="422dp" />
+        android:layout_marginEnd="69dp"
+        android:layout_marginBottom="1258dp" />
 
     <Button
         android:id="@+id/deleteUserButton"
@@ -201,21 +162,12 @@
         android:layout_height="103dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="276dp"
-        android:layout_marginBottom="127dp"
+        android:layout_marginEnd="284dp"
+        android:layout_marginBottom="272dp"
         android:backgroundTint="@color/orange"
         android:drawableEnd="@android:drawable/ic_menu_delete"
         android:text="@string/delete_user"
         android:textSize="25sp" />
-
-    <EditText
-        android:id="@+id/enterNewName"
-        android:layout_width="698dp"
-        android:layout_height="431dp"
-        android:layout_alignParentBottom="false"
-        android:layout_marginBottom="500dp"
-        android:hint="Name"
-        android:text="@string/enter_new_name" />
 
 
 </RelativeLayout>

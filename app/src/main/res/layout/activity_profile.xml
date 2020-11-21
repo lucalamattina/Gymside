@@ -8,36 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".Profile">
 
-    <ImageButton
-        android:id="@+id/imageView3"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="505dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="194dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
-
-
-    <ImageButton
-        android:id="@+id/imageView2"
-        style="@style/Widget.AppCompat.ImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="373dp"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="326dp"
-        android:background="@drawable/roundcornerwhite"
-        android:contentDescription="@string/pencil"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -211,16 +181,6 @@
         android:backgroundTint="@color/orange"
         android:drawableEnd="@android:drawable/ic_menu_delete"
         android:text="@string/delete_user" />
-
-    <EditText
-        android:id="@+id/enterNewName"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="500dp"
-        android:fontFamily="sans-serif-light"
-        android:hint="Name"
-        android:text="@string/enter_new_name" />
 
 
 </RelativeLayout>

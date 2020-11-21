@@ -3,15 +3,12 @@ package com.example.gymside;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
-import androidx.lifecycle.LiveData;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,9 +17,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
-import android.widget.ToggleButton;
 import android.widget.Spinner;
 
 import com.example.gymside.api.model.Error;
@@ -111,6 +106,11 @@ public class Routines extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
+                            overridePendingTransition(0, 0);
+                            return true;
+                        }
+                        if(item.getTitle().equals("Edit Profile") || item.getTitle().equals("Editar perfil")) {
+                            startActivity(new Intent(getApplicationContext(), EditProfile.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }
