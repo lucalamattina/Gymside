@@ -26,6 +26,7 @@ import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Exercise;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.db.MyDatabase;
+import com.example.gymside.repository.CycleRepository;
 import com.example.gymside.repository.ExerciseRepository;
 import com.example.gymside.repository.Resource;
 import com.example.gymside.repository.RoutineRepository;
@@ -50,7 +51,11 @@ public class RoutineDetails extends AppCompatActivity {
     TextView detail;
     TextView category;
     Button share;
+    int routineId;
+    int cycleId;
+    String cycleName;
     private ExerciseRepository exerciseApi;
+    private CycleRepository cycleApi;
     public List<Exercise> exercises = new ArrayList<>();
 
 
@@ -59,20 +64,21 @@ public class RoutineDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         api = MyApplication.getRoutineRepository();
         exerciseApi = MyApplication.getExerciseRepository();
+        cycleApi = MyApplication.getCycleRepository();
         setContentView(R.layout.activity_routines_details);
         name = findViewById(R.id.name);
         rating = findViewById(R.id.rating);
         detail = findViewById(R.id.body);
         category = findViewById(R.id.category);
         share = findViewById(R.id.share_button);
-        Button start = findViewById(R.id.start_routine);
+        //Button start = findViewById(R.id.start_routine);
 
-        start.setOnClickListener(new View.OnClickListener() {
+        /*start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //TODO agregar metodo para crear una execution y hacer las pantallas de ejecucion de rutina
             }
-        });
+        });*/
 
         Bundle extras = getIntent().getExtras();
         if(extras.get("ROUTINE_NAME") != null) {
@@ -80,9 +86,22 @@ public class RoutineDetails extends AppCompatActivity {
             rating.setText(extras.get("ROUTINE_RATING").toString());
             detail.setText(extras.get("ROUTINE_DETAIL").toString());
             category.setText(extras.get("ROUTINE_CATEGORY").toString());
+            routineId = (Integer)extras.get("ROUTINE_ID");
+            cycleApi.getCycles(routineId).observeForever( r->{
+                switch (r.getStatus()){
+                    case SUCCESS:
+                        cycleId = r.getData().getResults().get(0).getId();
+                        cycleName = r.getData().getResults().get(0).getName();
+                        Log.d("UI", cycleName);
+                        break;
+                    default:
+                        defaultResourceHandler(r);
+                        break;
+                }
+            });
         }
         if(extras.get("ROUTINE_ID") != null) {
-            exerciseApi.getExercises((Integer) extras.get("ROUTINE_ID")).observe(this, r -> {
+            exerciseApi.getExercises(routineId, cycleId).observe(this, r -> {
                 switch (r.getStatus()) {
                     case SUCCESS:
                         Log.d("UI", "Success");
@@ -112,8 +131,19 @@ public class RoutineDetails extends AppCompatActivity {
         rating.setText(extras.get("ROUTINE_RATING").toString());
         detail.setText(extras.get("ROUTINE_DETAIL").toString());
         category.setText(extras.get("ROUTINE_CATEGORY").toString());
+        routineId = (Integer)extras.get("ROUTINE_ID");
+        cycleApi.getCycles(routineId).observeForever( r->{
+            switch (r.getStatus()){
+                case SUCCESS:
+                    cycleId = r.getData().getResults().get(0).getId();
+                    break;
+                default:
+                    defaultResourceHandler(r);
+                    break;
+            }
+        });
 
-        exerciseApi.getExercises((Integer)extras.get("ROUTINE_ID")).observeForever(r->{
+        exerciseApi.getExercises(routineId, cycleId).observeForever(r->{
             switch (r.getStatus()) {
                 case SUCCESS:
                     Log.d("UI", "Success");
