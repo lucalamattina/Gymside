@@ -151,7 +151,7 @@ public class Login extends AppCompatActivity {
                             return true;
                         }
                         if(item.getTitle().equals("Logout") || item.getTitle().equals("Salir")) {
-                            startActivity(new Intent(getApplicationContext(), Login.class));
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

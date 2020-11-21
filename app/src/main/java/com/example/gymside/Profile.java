@@ -65,8 +65,28 @@ public class Profile extends AppCompatActivity {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(Profile.this);
             builder.setTitle(R.string.modifyUsernameTittle);
+            EditText name;
+            name = (EditText) findViewById(R.id.enterNewName);
 
-            builder.setPositiveButton(R.string.accept, null);
+            builder.setPositiveButton(R.string.accept, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+
+                    String new_name = name.getText().toString();
+                    Credentials credentials = new Credentials(user.getUsername(), "psw", "pedro", user.getEmail(), 0, user.getGender());
+                    MyApplication app = ((MyApplication)getApplication());
+                    app.getUserRepository().modifyUser(credentials).observeForever(r -> {
+                        switch (r.getStatus()) {
+                            case SUCCESS:
+                                Log.d("UI", "Success");
+                                break;
+                            default:
+                                defaultResourceHandler(r);
+                                break;
+                        }
+                    });
+                }
+            });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     // Write your code here to execute after dialog
@@ -87,22 +107,17 @@ public class Profile extends AppCompatActivity {
             EditText name;
             name = (EditText) findViewById(R.id.enterNewName);
 
-            builder.setPositiveButton(R.string.accept, null /*new DialogInterface.OnClickListener() {
+            builder.setPositiveButton(R.string.accept,  new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
 
                     String new_name = name.getText().toString();
-                    Credentials credentials = new Credentials(new_name, user.getFullName(), user.getEmail(), 0, user.getGender());
+                    Credentials credentials = new Credentials(user.getUsername(), "psw", "pedro", user.getEmail(), 0, user.getGender());
                     MyApplication app = ((MyApplication)getApplication());
                     app.getUserRepository().modifyUser(credentials).observeForever(r -> {
                         switch (r.getStatus()) {
                             case SUCCESS:
                                 Log.d("UI", "Success");
-                                startActivity(new Intent(getApplicationContext(), VerifyAccount.class));
-                                overridePendingTransition(0,0);
-                                //int count = r.getData().getResults().size();
-                                //String message = getResources().getQuantityString(R.plurals.found, count, count);
-                                //binding.result.setText(message);
                                 break;
                             default:
                                 defaultResourceHandler(r);
@@ -110,7 +125,7 @@ public class Profile extends AppCompatActivity {
                         }
                     });
                 }
-            }*/);
+            });
             builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     // Write your code here to execute after dialog

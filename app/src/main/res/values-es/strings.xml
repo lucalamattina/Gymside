@@ -60,10 +60,20 @@
     <string name="modifyUsernameTittle">Modificá tu usuario</string>
     <string name="modifyNameTittle">Modificá tu nombre</string>
     <string name="enter_new_name">Ingresa nuevo nombre</string>
-    <string name="share">SHARE</string>
     <string name="filter">Filtrar Por:</string>
     <string name="homeTittle">¿Por qué entrenar con gymside?</string>
     <string name="difficulty_label">Dificultad:</string>
+    <string name="rate">Puntuar</string>
+    <string name="share">Compartir</string>
+    <string name="texthome">"1. Entrenar en casa es más barato
+
+2. Ahorras tiempo
+
+3. Comodidad
+
+4. Eres el dueño de tu entorno al entrenar en casa
+
+5. Al entrenar en casa le dices adiós a las excusas"</string>
     <string-array name="filter_by">
         <item value="dateCreated">Fecha de Creacion</item>
         <item value="averageRating">Puntaje Promedio</item>

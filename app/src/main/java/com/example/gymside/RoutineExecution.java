@@ -7,21 +7,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gymside.api.model.Error;
-import com.example.gymside.api.model.Execution;
-import com.example.gymside.api.model.ExecutionCreate;
 import com.example.gymside.databinding.ActivityRoutineExecutionBinding;
 import com.example.gymside.repository.ExecutionRepository;
 import com.example.gymside.repository.Resource;
-import com.example.gymside.repository.RoutineRepository;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class RoutineExecution extends AppCompatActivity {
     ActivityRoutineExecutionBinding binding;
     private ExecutionRepository executionApi;
-    private RoutineRepository routineApi;
+    static int time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
         executionApi = MyApplication.getExecutionRepository();
@@ -41,6 +41,54 @@ public class RoutineExecution extends AppCompatActivity {
         binding.resume.setEnabled(started && paused);
         binding.addTime.setEnabled(started && !paused);
 
+        /*viewModel.getCountDownTimer().getStatus().observe(this, countDownTimerStatus -> {
+            if (countDownTimerStatus.isFinished()) {
+                binding.countdown.setText(R.string.done);
+                binding.start.setEnabled(true);
+                binding.stop.setEnabled(false);
+                binding.pause.setEnabled(false);
+                binding.addTime.setEnabled(false);
+            } else {
+                binding.countdown.setText(String.valueOf(countDownTimerStatus.getRemainingTime()));
+            }
+        });*/
+
+        Bundle extras = getIntent().getExtras();
+        int routineId = (Integer)extras.get("ROUTINE_ID");
+
+        executionApi.getExecution(2).observeForever(r->{
+            switch(r.getStatus()) {
+                case SUCCESS:
+                    assert r.getData() != null;
+                    //time = r.getData().getResults().get(0).getDuration();
+                    viewModel.getCountDownTimer().start( 30 * 1000, 1000);
+                    binding.start.setEnabled(false);
+                    binding.stop.setEnabled(true);
+                    binding.pause.setEnabled(true);
+                    binding.addTime.setEnabled(true);
+                    viewModel.getCountDownTimer().getStatus().observe(this, countDownTimerStatus -> {
+                        if (countDownTimerStatus.isFinished()) {
+                            binding.countdown.setText(R.string.done);
+                            binding.start.setEnabled(true);
+                            binding.stop.setEnabled(false);
+                            binding.pause.setEnabled(false);
+                            binding.addTime.setEnabled(false);
+                        } else {
+                            binding.countdown.setText(String.valueOf(countDownTimerStatus.getRemainingTime()));
+                        }
+                    });
+                    break;
+                default:
+                    defaultResourceHandler(r);
+                    break;
+            }
+        });
+
+        /*viewModel.getCountDownTimer().start( 30 * 1000, 1000);
+        binding.start.setEnabled(false);
+        binding.stop.setEnabled(true);
+        binding.pause.setEnabled(true);
+        binding.addTime.setEnabled(true);
         viewModel.getCountDownTimer().getStatus().observe(this, countDownTimerStatus -> {
             if (countDownTimerStatus.isFinished()) {
                 binding.countdown.setText(R.string.done);
@@ -51,9 +99,13 @@ public class RoutineExecution extends AppCompatActivity {
             } else {
                 binding.countdown.setText(String.valueOf(countDownTimerStatus.getRemainingTime()));
             }
-        });
+        });*/
 
-        Bundle extras = getIntent().getExtras();
+        /*viewModel.getCountDownTimer().start( time * 1000, 1000);
+        binding.start.setEnabled(false);
+        binding.stop.setEnabled(true);
+        binding.pause.setEnabled(true);
+        binding.addTime.setEnabled(true);*/
 
         /*viewModel.getCountDownTimer().start(30*1000, 1000);
         binding.start.setEnabled(false);

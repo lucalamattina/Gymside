@@ -31,10 +31,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_centerVertical="true"
-                android:layout_centerHorizontal="true"
+                android:layout_centerInParent="true"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="22dp"
+                android:fontFamily="sans-serif-light"
                 android:text="Routine Name"
                 android:textColor="#FFF"
                 android:textSize="18dp" />
@@ -45,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="55dp"
+                android:fontFamily="sans-serif-light"
                 android:text="Routine Name"
                 android:textColor="#FFF"
                 android:textSize="14dp" />
@@ -53,17 +54,20 @@
                 android:id="@+id/exercise_duration"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="55dp"
+                android:fontFamily="sans-serif-light"
                 android:text="Routine Name"
                 android:textColor="#FFF"
                 android:textSize="14dp" />
+
             <TextView
                 android:id="@+id/exercise_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="55dp"
                 android:layout_marginLeft="330dp"
+                android:layout_marginTop="55dp"
+                android:fontFamily="sans-serif-light"
                 android:text="4"
                 android:textColor="#FFF"
                 android:textSize="14dp" />
