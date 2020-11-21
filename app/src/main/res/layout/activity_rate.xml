@@ -77,7 +77,8 @@
             android:layout_marginBottom="517dp"
             android:fontFamily="sans-serif-light"
             android:text="@string/currRating"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <RatingBar
             android:id="@+id/ratingBar3"
@@ -97,7 +98,8 @@
             android:layout_marginEnd="114dp"
             android:layout_marginBottom="272dp"
             android:fontFamily="sans-serif-light"
-            android:text="@string/submit" />
+            android:text="@string/submit"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/cancelButton"
@@ -109,7 +111,8 @@
             android:layout_toStartOf="@+id/submitButton"
             android:background="#7C7979"
             android:fontFamily="sans-serif-light"
-            android:text="@string/cancel" />
+            android:text="@string/cancel"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView5"

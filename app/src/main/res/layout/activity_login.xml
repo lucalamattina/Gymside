@@ -69,10 +69,12 @@
         android:id="@+id/homeTittle"
         android:layout_width="372dp"
         android:layout_height="103dp"
+        android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="536dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="540dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/homeTittle"
         android:textSize="30sp" />
@@ -85,7 +87,9 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="57dp"
         android:layout_marginBottom="232dp"
-        android:text="TextView" />
+        android:fontFamily="sans-serif-light"
+        android:text="@string/texthome"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
