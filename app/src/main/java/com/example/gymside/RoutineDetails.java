@@ -221,11 +221,17 @@ public class RoutineDetails extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_full));
-                    userApi.postFavourite((Integer) extras.get("ROUTINE_ID"));
+                    userApi.postFavourite((Integer) extras.get("ROUTINE_ID")).observeForever(r->{
+
+                    });
+                    Log.d("UI","agregado paaaaaaaa");
                 }
                 else{
                     toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
-                    userApi.deleteFavourite((Integer) extras.get("ROUTINE_ID"));
+                    userApi.deleteFavourite((Integer) extras.get("ROUTINE_ID")).observeForever(r->{
+
+                    });
+                    Log.d("UI","removido paaaaaaa");
                 }
             }
         });
