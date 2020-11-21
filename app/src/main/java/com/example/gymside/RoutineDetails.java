@@ -266,7 +266,7 @@ public class RoutineDetails extends AppCompatActivity {
                                     case SUCCESS:
                                         Log.d("UI", "Success");
                                         AppPreferences preferences = new AppPreferences(app);
-                                        startActivity(new Intent(getApplicationContext(), Login.class));
+                                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                         overridePendingTransition(0, 0);
                                         break;
                                     default:

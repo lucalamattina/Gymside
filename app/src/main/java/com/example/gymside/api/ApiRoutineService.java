@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData;
 import com.example.gymside.api.model.Category;
 import com.example.gymside.api.model.Execution;
 import com.example.gymside.api.model.PagedList;
+import com.example.gymside.api.model.Rating;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.api.model.Sport;
 
@@ -37,4 +38,7 @@ public interface ApiRoutineService {
 
     @GET("user/current/routines/?page=0&size=99999&direction=desc")
     LiveData<ApiResponse<PagedList<Routine>>> getRoutinesOrderedBy(@Query("orderBy") String order);
+
+    @POST("routines/{routineId}/ratings")
+    LiveData<ApiResponse<Void>> setRoutineRating(@Path("routineId") int routineId, @Body Rating rating);
 }

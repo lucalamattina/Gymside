@@ -42,7 +42,7 @@
     <string name="verifyTittle">Upload the code you received at your email to verify your account</string>
     <string name="createAccount">create Account</string>
     <string name="submit">Submit</string>
-    <string name="currRating">current rating is: </string>
+    <string name="currRating">Current rutine rating is:</string>
     <string name="buttonSave">Save</string>
     <string name="verify_email">Verify Email</string>
     <string name="delete_user">Delete User</string>
@@ -61,6 +61,7 @@
     <string name="enter_new_name">Enter new Name</string>
     <string name="share">SHARE</string>
     <string name="filter">Filter By:</string>
+    <string name="homeTittle">Why gymside?</string>
     <string-array name="filter_by">
         <item>Date Created</item>
         <item>Average Rating</item>

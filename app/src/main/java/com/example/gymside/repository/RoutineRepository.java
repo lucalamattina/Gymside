@@ -12,6 +12,7 @@ import com.example.gymside.api.ApiResponse;
 import com.example.gymside.api.ApiRoutineService;
 import com.example.gymside.api.model.Execution;
 import com.example.gymside.api.model.PagedList;
+import com.example.gymside.api.model.Rating;
 import com.example.gymside.api.model.Routine;
 import com.example.gymside.db.MyDatabase;
 import com.example.gymside.db.dao.RoutineDao;
@@ -123,6 +124,17 @@ public class RoutineRepository {
             @Override
             protected LiveData<ApiResponse<Void>> createCall() {
                 return apiService.deleteRoutine(routineId);
+            }
+        }.asLiveData();
+    }
+
+    public LiveData<Resource<Void>> setRoutineRating(int routineId, Rating rating) {
+        return new NetworkBoundResource<Void, Void>()
+        {
+            @NonNull
+            @Override
+            protected LiveData<ApiResponse<Void>> createCall() {
+                return apiService.setRoutineRating(routineId, rating);
             }
         }.asLiveData();
     }
