@@ -91,6 +91,7 @@
         android:id="@+id/bottom_navigation"
         app:itemBackground="@color/blue"
         app:itemTextColor="@drawable/selector"
+        android:background="@color/blue"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"/>

@@ -60,6 +60,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/bottom_navigation"
         app:itemBackground="@color/blue"
+        android:background="@color/blue"
         app:itemTextColor="@drawable/selector"
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
@@ -71,8 +72,8 @@
         android:layout_height="103dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="23dp"
-        android:layout_marginBottom="536dp"
+        android:layout_marginEnd="437dp"
+        android:layout_marginBottom="213dp"
         android:fontFamily="sans-serif-light"
         android:text="@string/homeTittle"
         android:textSize="30sp" />
@@ -83,8 +84,8 @@
         android:layout_height="248dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="57dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginEnd="291dp"
+        android:layout_marginBottom="78dp"
         android:text="TextView" />
 
 

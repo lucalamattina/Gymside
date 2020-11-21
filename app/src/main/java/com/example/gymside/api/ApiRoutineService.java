@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.gymside.api.model.Category;
 import com.example.gymside.api.model.Execution;
+import com.example.gymside.api.model.ExecutionCreate;
 import com.example.gymside.api.model.PagedList;
 import com.example.gymside.api.model.Rating;
 import com.example.gymside.api.model.Routine;
@@ -25,7 +26,7 @@ public interface ApiRoutineService {
     LiveData<ApiResponse<Routine>> getRoutine(@Path("routineId") int routineId);
 
     @POST("routines/{routineId}/executions")
-    LiveData<ApiResponse<Routine>> addExecution(@Path("routineId") int routineId, @Body Execution execution);
+    LiveData<ApiResponse<Routine>> addExecution(@Path("routineId") int routineId, @Body ExecutionCreate execution);
 
     @PUT("routines/{routineId}")
     LiveData<ApiResponse<Routine>> modifyRoutine(@Path("routineId") int routineId, @Body Routine routine);

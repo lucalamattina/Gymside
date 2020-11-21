@@ -127,7 +127,7 @@ public class RoutineDetails extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), RoutineDetails.class);
+                Intent intent = new Intent(getApplicationContext(), RoutineExecution.class);
                 intent.putExtra("ROUTINE_ID", routineId);
                 startActivity(intent, new Bundle());
             }
@@ -318,11 +318,6 @@ public class RoutineDetails extends AppCompatActivity {
                     public boolean onMenuItemClick(MenuItem item) {
                         if (item.getTitle().equals("Profile") || item.getTitle().equals("Perfil")) {
                             startActivity(new Intent(getApplicationContext(), Profile.class));
-                            overridePendingTransition(0, 0);
-                            return true;
-                        }
-                        if (item.getTitle().equals("Settings") || item.getTitle().equals("Configuración")) {
-                            startActivity(new Intent(getApplicationContext(), Settings.class));
                             overridePendingTransition(0, 0);
                             return true;
                         }

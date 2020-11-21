@@ -33,7 +33,6 @@ import com.example.gymside.Profile;
 import com.example.gymside.R;
 import com.example.gymside.Register;
 import com.example.gymside.Routines;
-import com.example.gymside.Settings;
 import com.example.gymside.api.model.Credentials;
 import com.example.gymside.api.model.Error;
 import com.example.gymside.api.model.Sport;

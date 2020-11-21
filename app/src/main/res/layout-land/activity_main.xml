@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Login">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="280dp"
+            android:layout_marginBottom="88dp"
+            android:backgroundTint="#988C8C"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/username"
+            android:layout_width="267dp"
+            android:layout_height="44dp"
+            android:autofillHints="@string/username"
+            android:drawableEnd="@drawable/baseline_person_blackk_18dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="@string/username"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.363" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="271dp"
+            android:layout_height="47dp"
+            android:autofillHints="@string/username"
+            android:drawableEnd="@drawable/baseline_lock_blackk_18dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:text="@string/password"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username"
+            app:layout_constraintVertical_bias="0.094" />
+
+        <Button
+            android:id="@+id/signupButtonn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="88dp"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/signup"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/loginButton"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/Gymside"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/gymside"
+            android:textAllCaps="false"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@+id/username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.647" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <TextView
+            android:id="@+id/textShowError"
+            android:layout_width="123dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginBottom="336dp"
+            android:textColor="#FF0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
+<!--
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:title="@string/home"
+                app:titleTextColor="@color/white" />
+
+            <ImageButton
+                android:id="@+id/profileButton"
+                style="@style/Widget.AppCompat.ImageButton"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/roundcorner"
+                android:contentDescription="@string/avatar"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/toolbar"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.555"
+                app:srcCompat="@drawable/ic_profile" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:layout_width="201dp"
+        android:layout_height="92dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="398dp"
+        android:text="@string/home"
+        android:textSize="50sp"
+        android:textStyle="bold" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_above="@id/bottom_navigation"
+        android:background="@drawable/shadow"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_navigation"
+        app:itemBackground="@color/blue"
+        app:itemTextColor="@drawable/selector"
+        app:itemIconTint="@drawable/selector"
+        app:menu="@menu/menu_navigation"
+        android:layout_alignParentBottom="true"/>
+
+    <Button
+        android:id="@+id/loginViewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/loginViewButton" />
+
+
+</RelativeLayout>-->
+

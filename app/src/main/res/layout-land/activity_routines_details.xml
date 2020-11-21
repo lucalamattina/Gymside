@@ -54,25 +54,6 @@
         >
 
         <TextView
-            android:id="@+id/difficulty"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/routines_text"
-            android:layout_marginLeft="21dp"
-            android:layout_marginBottom="156dp"
-            android:layout_toRightOf="@id/category_label"
-            android:text="Routine Difficulty" />
-
-        <TextView
-            android:id="@+id/difficulty_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/routines_text"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="156dp"
-            android:text="@string/difficulty_label" />
-
-        <TextView
             android:id="@+id/routines_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -95,19 +76,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
-            android:layout_toRightOf="@id/category_label"
-            android:layout_marginBottom="208dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginBottom="47dp"
+            android:layout_toRightOf="@id/category_label"
             android:text="Routine Category" />
 
         <TextView
-            android:id="@+id/category_label"
+            android:id="@+id/difficulty"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
-            android:layout_marginBottom="208dp"
+            android:layout_marginLeft="21dp"
+            android:layout_marginBottom="80dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Difficulty" />
+
+        <TextView
+            android:id="@+id/difficulty_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
             android:layout_marginLeft="10dp"
-            android:text="@string/category_label" />
+            android:layout_marginBottom="80dp"
+            android:text="@string/difficulty_label" />
 
         <TextView
             android:id="@+id/body"
@@ -115,7 +106,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
             android:layout_marginLeft="21dp"
-            android:layout_marginBottom="75dp"
+            android:layout_marginBottom="7dp"
             android:layout_toRightOf="@id/category_label"
             android:text="Routine Detail" />
 
@@ -125,18 +116,8 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="75dp"
+            android:layout_marginBottom="7dp"
             android:text="@string/detail_label" />
-
-        <TextView
-            android:id="@+id/rating"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/routines_text"
-            android:layout_marginLeft="20dp"
-            android:layout_marginBottom="1dp"
-            android:layout_toRightOf="@id/category_label"
-            android:text="Routine Rating" />
 
         <TextView
             android:id="@+id/rating_label"
@@ -144,8 +125,27 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/routines_text"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="1dp"
+            android:layout_marginBottom="-32dp"
             android:text="@string/rating_label" />
+
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="-32dp"
+            android:layout_toRightOf="@id/category_label"
+            android:text="Routine Rating" />
+
+        <TextView
+            android:id="@+id/category_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/routines_text"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="47dp"
+            android:text="@string/category_label" />
 
         <Button
             android:layout_width="wrap_content"
@@ -169,18 +169,19 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             app:itemBackground="@color/blue"
+            android:background="@color/blue"
             app:itemIconTint="@drawable/selector"
             app:itemTextColor="@drawable/selector"
             app:menu="@menu/menu_navigation" />
 
         <ToggleButton
             android:id="@+id/myToggleButton"
-            android:layout_width="52dp"
+            android:layout_width="114dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="348dp"
+            android:layout_marginStart="704dp"
             android:layout_marginTop="11dp"
             android:layout_marginEnd="11dp"
             android:text="ToggleButton"
@@ -192,8 +193,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/bottom_navigation"
-            android:layout_marginBottom="81dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginBottom="8dp"
             android:text="Rate" />
 
         <Button
@@ -201,21 +202,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_above="@+id/bottom_navigation"
-            android:layout_marginBottom="81dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="20dp"
+            android:layout_marginBottom="11dp"
             android:text="@string/share" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view2"
-            android:layout_width="388dp"
-            android:layout_height="166dp"
+            android:layout_width="460dp"
+            android:layout_height="160dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginStart="13dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="196dp" />
+            android:layout_marginStart="260dp"
+            android:layout_marginEnd="109dp"
+            android:layout_marginBottom="124dp" />
 
     </RelativeLayout>
 </RelativeLayout>
