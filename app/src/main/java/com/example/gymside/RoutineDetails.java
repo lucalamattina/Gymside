@@ -65,7 +65,7 @@ public class RoutineDetails extends AppCompatActivity {
         detail = findViewById(R.id.body);
         category = findViewById(R.id.category);
         share = findViewById(R.id.share_button);
-        Button start = findViewById(R.id.start_routine);
+        Button start = findViewById(R.id.playButton);
 
         start.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -261,6 +261,11 @@ public class RoutineDetails extends AppCompatActivity {
             bottomNavigationView.getMenu().getItem(2).setChecked(false);
             bottomNavigationView.getMenu().getItem(1).setChecked(true);
         }
+        if(text.equals("f")) {
+            bottomNavigationView.getMenu().getItem(0).setChecked(false);
+            bottomNavigationView.getMenu().getItem(1).setChecked(false);
+            bottomNavigationView.getMenu().getItem(2).setChecked(true);
+        }
         // ATTENTION: This was auto-generated to handle app links.
         Intent appLinkIntent = getIntent();
         String appLinkAction = appLinkIntent.getAction();
@@ -273,11 +278,7 @@ public class RoutineDetails extends AppCompatActivity {
         super.onNewIntent(intent);
         handleIntent(intent);
 
-        if(text.equals("f")) {
-            bottomNavigationView.getMenu().getItem(0).setChecked(false);
-            bottomNavigationView.getMenu().getItem(1).setChecked(false);
-            bottomNavigationView.getMenu().getItem(2).setChecked(true);
-        }
+
 
         //if(getCallingActivity().getClassName().equals("com.example.gymside.Routines")) {
             //bottomNavigationView.getMenu().getItem(0).setChecked(false);

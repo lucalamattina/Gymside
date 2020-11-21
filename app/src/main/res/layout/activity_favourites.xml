@@ -63,7 +63,7 @@
 
 
 
-    <RelativeLayout>
+    <RelativeLayout android:layout_height="match_parent" android:layout_marginTop="55dp" android:layout_width="match_parent">
         <View
             android:layout_width="match_parent"
             android:layout_height="4dp"

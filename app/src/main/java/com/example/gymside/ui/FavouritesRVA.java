@@ -72,6 +72,7 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
                 intent.putExtra("ROUTINE_RATING", routines.get(position).getRating());
                 intent.putExtra("ROUTINE_DIFFICULTY", routines.get(position).getDifficulty());
                 intent.putExtra("ROUTINE_CATEGORY", routines.get(position).getCategory().getName());
+                intent.putExtra("ROUTINE_ID", routines.get(position).getId());
                 String textToPass = "f";
                 intent.putExtra(Intent.EXTRA_TEXT, textToPass);
                 startActivity(mContext, intent ,new Bundle());
@@ -98,16 +99,17 @@ public class FavouritesRVA extends RecyclerView.Adapter<com.example.gymside.ui.F
         TextView routine_difficulty;
         TextView routine_category;
         TextView routine_rating;
+        TextView routine_body;
         RelativeLayout routinesLayout;
         //Button activateB;
 
         public RoutinesViewHolder(@NonNull View itemView) {
             super(itemView);
 //            routine_image = itemView.findViewById(R.id.routine_image);
-            routine_name = itemView.findViewById(R.id.routine_name);
-            routine_difficulty = itemView.findViewById(R.id.routine_difficulty);
-            routine_category = itemView.findViewById(R.id.routine_category);
-            routine_rating = itemView.findViewById(R.id.routine_rating);
+            routine_name = itemView.findViewById(R.id.exercise_name);
+            routine_difficulty = itemView.findViewById(R.id.exercise_duration);
+            routine_category = itemView.findViewById(R.id.exercise_detail);
+            routine_rating = itemView.findViewById(R.id.exercise_type);
             routinesLayout = itemView.findViewById(R.id.routine_layout);
 //            activateB = itemView.findViewById(R.id.activateButton);
 
