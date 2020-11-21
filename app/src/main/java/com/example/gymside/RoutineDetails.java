@@ -168,7 +168,7 @@ public class RoutineDetails extends AppCompatActivity {
 
         toggleButton = (ToggleButton) findViewById(R.id.myToggleButton);
         toggleButton.setChecked(false);
-        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_favorites));
+        toggleButton.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_fav_red_empty));
         toggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
