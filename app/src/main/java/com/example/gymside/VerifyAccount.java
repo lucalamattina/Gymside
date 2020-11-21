@@ -36,8 +36,7 @@ public class VerifyAccount extends AppCompatActivity {
 
         Button cancelButton = findViewById(R.id.buttonCancel);
         cancelButton.setOnClickListener(v->{
-            startActivity(new Intent(getApplicationContext(), Register.class));
-            overridePendingTransition(0, 0);
+            finish();
         });
 
         EditText editEmail, editCode;
